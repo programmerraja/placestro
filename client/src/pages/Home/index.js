@@ -142,7 +142,7 @@ return ( <>
                 <h3>Connect With Us</h3>
             </div>
             <div className="follow_icons float_icon">
-                <a href="https://t.me/+9_4feGpoutgwMjc1">
+                <a href="https://t.me/+8NyoSBK1PXUytk1">
                     <i className="fab fa-telegram"></i>
                 </a>
             </div>
