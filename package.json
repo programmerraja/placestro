@@ -1,0 +1,41 @@
+{
+  "name": "PlaceStro",
+  "version": "1.0.0",
+  "description": "PlaceStro a website for posting company reviews and interview process",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "node server.js",
+    "client": "cd client && npm run start",
+    "seed": " node scripts/Seeds.js",
+    "install": "cd client && npm install ",
+    "build": "cd client && npm run build ",
+    "build2": "cd admin && npm install && npm run build ",
+    "heroku-postbuild": " npm run build && npm run build2"
+  },
+  "author": "K.boopathi",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "if-env": "^1.0.4",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "mongoose": "^5.12.13",
+    "nodemailer": "^6.7.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "sanitize-html": "^2.4.0",
+    "telegraf": "^4.5.2",
+    "ua-parser-js": "^1.0.2",
+    "validator": "^13.6.0"
+  }
+}

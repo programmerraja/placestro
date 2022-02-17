@@ -1,0 +1,114 @@
+[
+    {
+        "rating": 4,
+        "_id": "61a3250e8659a90029a54d72",
+        "name": "softsquare",
+        "noOfReviews": 1,
+        "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 12,
+        "_id": "61a367f02c3fdb0029db14d0",
+        "name": "avasoft",
+        "noOfReviews": 3,
+        "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 2,
+        "_id": "61a3856796fe330029e6aa7d",
+        "name": "jilaba",
+        "noOfReviews": 1,
+        "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 8,
+        "_id": "61a46ad35a024a0029f4b32b",
+        "name": "mobius",
+        "noOfReviews": 2,
+        "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 4,
+        "_id": "61b609cfd232b10029512f82",
+        "name": "tata consultancy services",
+        "noOfReviews": 1,
+        "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 10,
+        "_id": "61b76016aecf39002991247d",
+        "name": "zuci systems",
+        "noOfReviews": 2,
+        "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 12,
+        "_id": "61b79e445197e1002922845d",
+        "name": "chainsys",
+        "noOfReviews": 3,
+        "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 3,
+        "_id": "61b842add9952f0029e90e44",
+        "name": "vcidex",
+        "noOfReviews": 1,
+        "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 4.5,
+        "_id": "61c0bd6916c93300296002b8",
+        "name": "zoho corporation",
+        "noOfReviews": 1,
+        "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 2.5,
+        "_id": "61c2eb46535a5c0029646e09",
+        "name": "centizen",
+        "noOfReviews": 1,
+        "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 8,
+        "_id": "61c9c88eef4e99002903a767",
+        "name": "american megatrends",
+        "noOfReviews": 2,
+         "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 3,
+        "_id": "61d7cf6a30752900294abd86",
+        "name": "smackcoders",
+        "noOfReviews": 1,
+        "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 4,
+        "_id": "61d948498305f400292fd9d1",
+        "name": "wipro",
+        "noOfReviews": 1,
+        "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 8,
+        "_id": "61f63239dafc8c0029d6063c",
+        "name": "data logic",
+        "noOfReviews": 2,
+         "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 8,
+        "_id": "61f733455d8b84002962e920",
+        "name": "gigamon",
+        "noOfReviews": 2,
+         "collegeIds":["6209f0b219f4924948e3b8a2"]
+    },
+    {
+        "rating": 4,
+        "_id": "61fb855dc27fd30029ba235f",
+        "name": "klenty",
+        "noOfReviews": 1,
+        "collegeIds":["6209f0b219f4924948e3b8a2"]
+    }
+]

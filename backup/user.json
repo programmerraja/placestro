@@ -1,0 +1,182 @@
+[
+    {
+        "isEmailVerified": true,
+        "_id": "61a0ee5f70b6dd0029b59ed1",
+        "name": "K.boopathi",
+        "email": "boooathis123@gmail.com",
+        "password": "$2a$10$F3zA.PCIU8h7KM/audd0IuNkdqbjKs75qvC/d8v/88IzyL60bSycS",
+        "department": "CSE",
+        "collegeId":"6209f0b219f4924948e3b8a2",
+        "createdAt": "2021-11-26T14:25:35.327Z",
+        "updatedAt": "2022-01-29T13:55:11.626Z",
+        "passwordResetExpires": "2021-12-19T23:55:55.654Z",
+        "passwordResetToken": null,
+        "isAdmin": 1
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61a19ff8d1a0e900293e040d",
+        "name": "Aj.Mathavan",
+        "email": "950618104024@einsteincollege.ac.in",
+        "password": "$2a$10$0XJCirmFDBsIsFkZ4WtQ5.Bwp4qVACFbrA28jBQ8g0vRNqsFAbq5y",
+        "department": "CSE",
+        "collegeId":"6209f0b219f4924948e3b8a2",
+        "createdAt": "2021-11-27T03:03:20.149Z",
+        "updatedAt": "2021-11-27T03:03:20.149Z"
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61a1a78dd1a0e900293e0460",
+        "name": "Sidhik",
+        "email": "sidhiknew786@gmail.com",
+        "password": "$2a$10$CmY2jrr3eZ1KLzbTC1qSDuHo4ogCo9jluYgx9yaxgsE8VgOLjU0.m",
+        "department": "CSE",
+        "collegeId":"6209f0b219f4924948e3b8a2",
+        "createdAt": "2021-11-27T03:35:41.799Z",
+        "updatedAt": "2022-01-13T12:07:48.773Z",
+        "passwordResetExpires": "2022-01-13T12:26:35.289Z",
+        "passwordResetToken": null
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61a1af3bd1a0e900293e049b",
+        "name": "aravindh",
+        "email": "950718104005@einsteincollege.ac.in",
+        "password": "$2a$10$NxxfpTfwRZFQfzAOfYgcB.oTPLtYS9pDjrS.5Ddum1amiQfA6QCFa",
+        "department": "CSE",
+        "collegeId":"6209f0b219f4924948e3b8a2",
+        "createdAt": "2021-11-27T04:08:27.479Z",
+        "updatedAt": "2021-11-27T04:08:27.479Z"
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61a1cd16d1a0e900293e051d",
+        "name": "C.Ravi Kumar ",
+        "email": "ravikumarcrk688@gmail.com",
+        "password": "$2a$10$NUqK9zV7tqHv7TIGQe2oNOBdpa/m8wcHCgPW1N.Zyfe4/52J.uKnK",
+        "department": "CSE",
+        "collegeId":"6209f0b219f4924948e3b8a2",
+        "createdAt": "2021-11-27T06:15:50.144Z",
+        "updatedAt": "2021-12-27T14:01:50.322Z"
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61a4d5b1224d1d0029acb05a",
+        "name": "Sakthivel G",
+        "email": "sakthivel.be2019@gmail.com",
+        "password": "$2a$10$2Tb7kMnY8x3jgop2EZrnhOt.EAmiHUaviw9AmzuexXiITwe7E8U3O",
+        "department": "CSE",
+        "collegeId":"6209f0b219f4924948e3b8a2",
+        "createdAt": "2021-11-29T13:29:21.859Z",
+        "updatedAt": "2021-12-26T08:08:20.686Z"
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61b60727d232b10029512f78",
+        "name": "Krishna Chandar",
+        "email": "krishna.great5@gmail.com",
+        "password": "$2a$10$k9hum7yioKXFucsMoL8us.mK7U8pPJmyQTHXEnq4VWvIt1LJ1gQlG",
+        "department": "CSE",
+        "collegeId":"6209f0b219f4924948e3b8a2",
+        "createdAt": "2021-12-12T14:28:55.510Z",
+        "updatedAt": "2021-12-12T14:40:11.132Z"
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61b60af4d232b10029512f97",
+        "name": "Peer Mohammed Nowfal",
+        "email": "peermohamed6776@gmail.com",
+        "password": "$2a$10$z6omFMOSQuaodYTRtH6j8.yFoYnsQCZ/N/KTq8id5VlPGxHyO8Tui",
+        "department": "MECH",
+        "createdAt": "2021-12-12T14:45:08.001Z",
+        "updatedAt": "2021-12-12T14:46:30.245Z"
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61b70dbf43033f0029615295",
+        "name": "Velmurugan",
+        "email": "velmuruganpsy@gmail.com",
+        "password": "$2a$10$ynFqxi1BHiJK7Je3ZJIxBOQYR3hgBFmF.Dx90gvE4byPTKM1kJb1e",
+        "department": "CSE",
+        "collegeId":"6209f0b219f4924948e3b8a2",
+        "createdAt": "2021-12-13T09:09:19.342Z",
+        "updatedAt": "2021-12-14T00:05:48.114Z"
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61b798b45197e10029228441",
+        "name": "Sivasubramanian",
+        "email": "tsivasubramanian35@gmail.com",
+        "password": "$2a$10$v06y9Oh9VPbpSCDfKfbkTe/R6GffeFThKpisylSGLZ.ANFzjQaTnq",
+        "department": "CSE",
+        "collegeId":"6209f0b219f4924948e3b8a2",
+        "createdAt": "2021-12-13T19:02:12.611Z",
+        "updatedAt": "2021-12-13T19:19:27.447Z"
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61b8409ad9952f0029e90e37",
+        "name": "ASHOK K",
+        "email": "kumaresanashok7@gmail.com",
+        "password": "$2a$10$su2P4/squl.9H/IupC1a8eZbl/Tud7fb3MjuEG31n0dEW8An.BlLi",
+        "department": "ECE",
+        "createdAt": "2021-12-14T06:58:34.959Z",
+        "updatedAt": "2021-12-14T07:07:16.227Z"
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61bb3f41aefee70029ef84ce",
+        "name": "R.Akash Mayil",
+        "email": "950618104003@einsteincollege.ac.in",
+        "password": "$2a$10$gqFvXeUwv40t5UJ7QFSHJugKSUj/Vz/gCWCrAYEt.UUzbrgBXPeVm",
+        "department": "CSE",
+        "collegeId":"6209f0b219f4924948e3b8a2",
+        "createdAt": "2021-12-16T13:29:37.527Z",
+        "updatedAt": "2021-12-16T13:30:09.712Z"
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61cde5ce24dcaf00294af869",
+        "name": "THALAVAI P",
+        "email": "thalavai039@gmail.com",
+        "password": "$2a$10$VEZymMg.MYglR3XgDR/zC.sB23F1J6wBjUoK0Bx5NIvgHKkgoBGjK",
+        "department": "ECE",
+        "createdAt": "2021-12-30T17:01:02.867Z",
+        "updatedAt": "2021-12-30T17:02:05.321Z"
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61d93bdeff97730029b46929",
+        "name": "Ahamed Ashik A",
+        "email": "ashikahamed0806@gmail.com",
+        "password": "$2a$10$ry9un5GZxTl4tX/ZgQi4zu1qrEs0kiA6LrVi8ItbGweCvH77ZQdPi",
+        "department": "CSE",
+        "collegeId":"6209f0b219f4924948e3b8a2",
+        "createdAt": "2022-01-08T07:23:10.079Z",
+        "updatedAt": "2022-01-08T08:16:47.948Z"
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61e0036827c13f00297fc633",
+        "name": "Dhinakaran",
+        "email": "950618104011@einsteincollege.ac.in",
+        "password": "$2a$10$7RCtcWduB4eSD3ghfrPt2OSUYFtbvuIwTMmsdCHiD9JIqeGIhoFya",
+        "department": "CSE",
+        "collegeId":"6209f0b219f4924948e3b8a2",
+        "createdAt": "2022-01-13T10:48:08.763Z",
+        "updatedAt": "2022-01-13T10:49:39.639Z"
+    },
+    {
+        "isEmailVerified": true,
+        "_id": "61f62778dafc8c0029d60606",
+        "name": "Suresh C",
+        "email": "950618104047@einsteincollege.ac.in",
+        "password": "$2a$10$hA0fU3CRBxw78XJbj.Zf..uFnaFfZ6atLdZSY4cO5/jB4cWTQW/7q",
+        "department": "CSE",
+        "collegeId":"6209f0b219f4924948e3b8a2",
+        "createdAt": "2022-01-30T05:51:52.450Z",
+        "updatedAt": "2022-01-30T15:25:25.298Z",
+        "passwordResetExpires": "2022-01-30T15:44:53.320Z",
+        "passwordResetToken": null
+    }
+]
