@@ -21,20 +21,24 @@ function UserProfile() {
 
    const handleClick=()=> {
     setLoading(true)
-    API.updateProfile({name,old_password,new_password,linkdein_url})
-      .then((res)=>{
-          setLoading(false);
-          if(res.data.status==="sucess"){
-              errorHandler(false,res.data.msg);
-          }else{
-              errorHandler(true,res.data.msg);
-          }
-      })
-      .catch((res)=>{
-         res=res.response;
-         setLoading(false);
-         errorHandler(true,res.data.msg);
-      });
+    if(old_password){
+        API.updateProfile({name,old_password,new_password,linkdein_url})
+          .then((res)=>{
+              setLoading(false);
+              if(res.data.status==="sucess"){
+                  errorHandler(false,res.data.msg);
+              }else{
+                  errorHandler(true,res.data.msg);
+              }
+          })
+          .catch((res)=>{
+             res=res.response;
+             setLoading(false);
+             errorHandler(true,res.data.msg);
+          });
+    }else{
+      errorHandler(true,"plse provide old password");
+    }
    }
 
    const getProfile=()=>{

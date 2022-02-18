@@ -21,12 +21,12 @@ const Review = {
           //removing user detail if it is Anonymous and put as obj
           reviews.forEach((review) => {
             if (review.isAnonymous) {
-              review.user = { name: "anonymous", dept: "", regNo: "" ,isLiked:review.likes?.includes(req.user.id)};
+              review.user = { name: "anonymous", dept: "" ,isLiked:review.likes?.includes(req.user.id)};
             } else {
               review.user = {
                 name: review.user[0].name,
                 department: review.user[0].department,
-                regno: review.user[0].regno,
+                linkdein:review.user[0].linkdein,
                 isLiked:review.likes?.includes(req.user.id)
               };
             }
@@ -80,12 +80,12 @@ const Review = {
               //removing user detail if it is Anonymous and put as obj
               reviews.forEach((review) => {
                 if (review.isAnonymous) {
-                  review.user = { name: "anonymous", dept: "", regNo: "" ,isLiked:review.likes?.includes(req.user.id)};
+                  review.user = { name: "anonymous", dept: "" ,isLiked:review.likes?.includes(req.user.id)};
                 } else {
                   review.user = {
                     name: review.user[0].name,
                     department: review.user[0].department,
-                    regno: review.user[0].regno,
+                    linkdein:review.user[0].linkdein,
                     isLiked:review.likes?.includes(req.user.id)
                   };
                 }
