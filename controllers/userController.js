@@ -49,6 +49,10 @@ signUp: async function (req, res) {
        res.json({status: "failed", msg: "Invalid Email"});
        return;
       }
+      if(linkdein_url && linkdein_url.startsWith("https://linkdein.com/")){
+        res.json({status: "failed", msg: "Invalid linkdein url"});
+        return;
+      }
       let college_name=controllerUtil.getCollegeName(college_code);
       
       if(college_name){
@@ -101,7 +105,8 @@ signUp: async function (req, res) {
                 res.json({status: "failed",msg: "Sorry Something went wrong. Please try again"});
               }
             })
-            .catch((err) => {
+          .catch((err) => {
+              db.User.deleteOne({email:user_obj.email });
               // console.log(err)
               let msg = Util.dbErrorHandler(err);
               Util.logError(err.msg, err);

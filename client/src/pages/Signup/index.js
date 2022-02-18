@@ -29,9 +29,20 @@ function Signup() {
       }
       return false;
    }
+   function validateUrl(){
+      if(linkdein_url && !linkdein_url.startsWith("https://linkdein.com/")){
+        errorHandler(true,"Please enter valid linkdein url");
+        return false
+      }
+      if(linkdein_url && linkdein_url.startsWith("https://linkdein.com/")){
+        return true
+      }
+      return true
+   }
 
    function siginUp(){
      if(validate()){
+      if(validateUrl()){
        setLoading(true);
        API.signUp({name,email,college_code,department,linkdein_url,password})
        .then((res)=>{
@@ -48,7 +59,8 @@ function Signup() {
          res=res.response;
          setLoading(false);
          errorHandler(true,res.data.msg);
-    });
+        });
+      }
      }else{
         errorHandler(true,"Fill all detail");
      }

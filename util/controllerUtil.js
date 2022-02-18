@@ -48,7 +48,6 @@ const controllerUtil={
     },
     getCollegeName:(college_code)=>{
         college_code=parseInt(college_code)
-        console.log(college_code)
         if(college_code>=1102 && college_code<=4126){
           let colleges=require("./colleges/college1.json")
           let college_name=colleges[String(college_code)]

@@ -31,7 +31,9 @@ module.exports = {User,Companies,Reviews,Colleges};
 
 //for back up the data
 
-// User.find({}).then((u)=>{
+// User.findOneAndRemove({_id:"620fc43f85b631249a78dc6e"}).then((u)=>{})
+// User.find().then((u)=>{
+	// console.log(u)
 // fs.writeFile("../backup/user.json",JSON.stringify(u),"utf-8",(e)=>{console.log(e,"saved")})  
 // })
 
