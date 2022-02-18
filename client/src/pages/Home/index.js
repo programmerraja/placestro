@@ -150,7 +150,7 @@ return ( <>
                 <h3>Contribute to website</h3>
             </div>
             <div className="follow_icons">
-                <a href="https://github.com/programmerraja/Yuki22">
+                <a href="https://github.com/programmerraja/placestro">
                     <i className="fab fa-github"></i>
                 </a>
             </div>
