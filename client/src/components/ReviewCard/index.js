@@ -70,7 +70,7 @@ function ReviewCard({_id,placementType,offCampusDetail,rounds,roundsDetails,
 
           <div className="wrapper">
             <div className="review_text">
-              <p className="margin-0 review_text-bold">Passed out year:
+              <p className="margin-0 review_text-bold">Attended on(year):
                 <span className="">
                  {attendedOn}</span>
               </p>
