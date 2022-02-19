@@ -61,10 +61,13 @@ function ReviewCard({_id,placementType,offCampusDetail,rounds,roundsDetails,
                 }
               </div>
             <p className="user_name">{user.name}
-            {user.regno && 
-              <span>({user.regno})</span>
-            }</p>
-            <span className="user_text-small">{user.department}</span>
+             {user.department && 
+                <span className="user_text-small-yellow">({user.department})</span>
+             } 
+             </p>
+            {user.college_name && 
+              <span className="user_text-small">{user.college_name}</span>
+            }
           </div>
         </div>
 
@@ -157,14 +160,12 @@ function ReviewCard({_id,placementType,offCampusDetail,rounds,roundsDetails,
                   <p className="review_text-bold">Role:<span>{role}</span></p>
                 </div>
             }
-            {mobileNo && 
-                <div className="review_text">
-                  <p className="review_text-bold">Contact No:<span>{mobileNo}</span></p>
-                </div>
-            }
             {user.linkdein &&
                 <div className="review_text">
-                  <p className="review_text-bold">Linkdein:<span><a href={user.linkdein}>click here</a></span></p>
+                  Contact:{" "} 
+                  <a href={user.linkdein} className="review_link">
+                   <i className="fab fa-linkedin-in" ></i>
+                  </a>
                 </div>
             }
           </div>

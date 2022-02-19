@@ -44,7 +44,6 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
    const [salary,setSalary]=useState("");
    const [role,setRole]=useState("");
 
-   const [mobile_no,setMobileNo]=useState("");
    const[is_anonymous,setIsAnonymous]=useState(false);
 
    useEffect(()=>{
@@ -83,7 +82,6 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
                setSalary(temp_review["salary"]);
                setPros(temp_review["pros"]);
                setCons(temp_review["cons"]);
-               setMobileNo(temp_review["mobileNo"]);
                setRole(temp_review["role"]);
                setIsAnonymous(temp_review["isAnonymous"])
 
@@ -120,7 +118,6 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
                setSalary(review["salary"]?review["salary"]:"");
                setPros(review["pros"]?review["pros"]:"");
                setCons(review["cons"]?review["cons"]:"");
-               setMobileNo(review["mobile_no"]?review["mobile_no"]:"");
                setRole(review["role"]?review["role"]:"");
                setIsAnonymous(review["is_anonymous"]?review["is_anonymous"]:false);
                setSteps(review["steps"]?review["steps"]:1);
@@ -236,9 +233,9 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
              //storing on local storage
             let review=JSON.parse(localStorage.getItem("review"));
             if(review){
-              localStorage.setItem("review",JSON.stringify({...review,rating,pros,cons,mobile_no,salary,role,is_anonymous,steps:5}))
+              localStorage.setItem("review",JSON.stringify({...review,rating,pros,cons,salary,role,is_anonymous,steps:5}))
             }else{
-              localStorage.setItem("review",JSON.stringify({rating,pros,cons,mobile_no,salary,role,is_anonymous,steps:5}))
+              localStorage.setItem("review",JSON.stringify({rating,pros,cons,salary,role,is_anonymous,steps:5}))
             }
             return true
           }else{
@@ -282,7 +279,7 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
                         placement_type,rounds,
                         rounds_detail,is_placed,
                         rating,old_rating,pros,cons,
-                        salary,mobile_no,role,is_anonymous
+                        salary,role,is_anonymous
                       }
       }
       else{
@@ -290,7 +287,7 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
                         placement_type,off_campus_detail,rounds,
                         rounds_detail,is_placed,
                         rating,old_rating,pros,cons,
-                        salary,mobile_no,role,is_anonymous
+                        salary,role,is_anonymous
                       }
       }
 
@@ -386,8 +383,6 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
                             setCons={setCons}
                             salary={salary}
                             setSalary={setSalary}
-                            mobile_no={mobile_no}
-                            setMobileNo={setMobileNo}
                             role={role}
                             setRole={setRole}
                             is_anonymous={is_anonymous}

@@ -24,7 +24,6 @@ const controllerUtil={
                         pros:review.pros,
                         cons:review.cons,
                         salary:review.salary,
-                        mobileNo:review.mobile_no,
                         role:review.role,
                         isAnonymous:review.is_anonymous
                     }
@@ -41,7 +40,6 @@ const controllerUtil={
               pros:review.pros,
               cons:review.cons,
               salary:review.salary,
-              mobileNo:review.mobile_no,
               role:review.role,
               isAnonymous:review.is_anonymous
             }

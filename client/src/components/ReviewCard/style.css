@@ -156,12 +156,22 @@ summary:focus {
   color: red;
   border: 1px solid red;
 }
-.user_text-small {
+.user_text-small ,
+.user_text-small-yellow{
   font-size: 12px;
+}
+.user_text-small-yellow{
   color: yellow;
 }
 .review_rounds {
   padding-left: 1rem;
+}
+.review_link{
+  font-size: 0.9rem;
+  border: 1px solid var(--primary-color);
+  padding: 0rem 0.2rem;
+  color: white;
+  border-radius:3px;
 }
 /* media query for mobile phones */
 @media (max-width: 700px) {

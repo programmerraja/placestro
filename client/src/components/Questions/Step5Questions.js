@@ -9,8 +9,6 @@ function Step5Questions({ rating,
                           setCons,
                           salary,
                           setSalary,
-                          mobile_no,
-                          setMobileNo,
                           role,
                           setRole,
                           is_anonymous,
@@ -92,22 +90,7 @@ return ( <>
                                   />
                          </div>
                    </div>
-
-                    <div  className="add_review-from">
-                       <label for="mobile_no" className="add_review-label">
-                       <span>Provide your mobile number for further enquires for students </span></label>
-                         <div className="add_review-input-wrapper">
-                           <input
-                                  type="number" 
-                                  placeholder="mobile no"  
-                                  name="mobile_no"  
-                                  className="add_review-input" 
-                                  value={mobile_no}
-                                  onChange={(e)=>{setMobileNo(e.target.value);}}
-                                  />
-                         </div>
-                   </div>
-                     <div  className="add_review-from">
+                   <div  className="add_review-from">
                          <div className="add_review-input-wrapper">
                           <input
                                   type="checkbox" 

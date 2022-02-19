@@ -33,9 +33,6 @@ const ReviewsSchema = new mongoose.Schema(
     attendedOn:{
       type:String
     },
-    mobileNo:{
-      type:Number
-    },
     role:{
       type:String
     },
