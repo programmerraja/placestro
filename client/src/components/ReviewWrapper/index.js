@@ -211,7 +211,6 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
 
       }
       if(steps===4){
-        if(parseInt(is_placed)===0 || parseInt(is_placed)===1){ 
            //storing on local storage
             let review=JSON.parse(localStorage.getItem("review"));
             if(review){
@@ -220,10 +219,6 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
               localStorage.setItem("review",JSON.stringify({is_placed,steps:5}))
             }
           return true
-        }
-        else{
-          errorHandler(true,"Plse fill all the data");
-          return false
         }
 
       }
