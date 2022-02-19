@@ -218,9 +218,7 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
             }else{
               localStorage.setItem("review",JSON.stringify({is_placed,steps:5}))
             }
-          return true
-        }
-
+            return true
       }
       if(steps===5){
         if(rating){
