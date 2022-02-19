@@ -54,6 +54,9 @@ function ReviewCard({_id,placementType,offCampusDetail,rounds,roundsDetails,
                 {isPlaced===1 &&
                 <span className="user_text-green">Placed</span>
                 }
+                {isPlaced===2 &&
+                  <span className="user_text-green">Waiting</span>
+                }
                 {rating &&
                   <span className="user_text rating">
                   {rating.toFixed(1)}

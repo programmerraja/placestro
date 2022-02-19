@@ -117,7 +117,7 @@
     background: var(--primary-color);
     top: 0px;
     transition: transform  0.3s ease-in;
-    transform: translateX(-390px);
+    transform: translateX(-490px);
     z-index: 100;
   }
 

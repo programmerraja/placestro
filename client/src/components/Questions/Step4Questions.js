@@ -14,6 +14,8 @@ return ( <>
                                    defaultValue={is_placed}>
                               <option value="1" >Yes</option>
                               <option value="0" >No</option>
+                              <option value="2">Waiting</option>
+                              <option value="-1">Not interset to share</option>
                             </select>
                          </div>
                    </div>

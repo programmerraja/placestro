@@ -29,10 +29,9 @@ const Review = {
               college_list.forEach((college)=>{
                   hash_college_list[college._id]=college.name
               })
-              
               //removing user detail if it is Anonymous and put as obj and adding college name
               reviews.forEach((review) => {
-                filtered_college_list.push({_id:review.user[0].collegeId,name:hash_college_list[review.user[0].collegeId]})
+                filtered_college_list.push({_id:review?.user[0]?.collegeId,name:hash_college_list[review?.user[0]?.collegeId]})
                 if (review.isAnonymous) {
                   review.user = { name: "anonymous", dept: "" ,isLiked:review.likes?.includes(req.user.id)};
                 } else {
@@ -49,6 +48,7 @@ const Review = {
               res.json({ status: "sucess", reviews,college_list:filtered_college_list});
            })
            .catch((err)=>{
+            console.log(err)
               res.json({ status: "failed", msg: "Something went wrong" });
            })
           Util.sendReport(

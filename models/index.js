@@ -12,10 +12,13 @@ module.exports = {User,Companies,Reviews,Colleges};
 // const company=require("../backup/company.json")
 // const reviews=require("../backup/reviews.json")
 
+// Companies.findOneAndUpdate({name:"zuci systems"},{noOfReviews:3,rating:12}).then((a)=>console.log(a))
+// Reviews.findOneAndRemove({_id:"61c496518b932c00296398e0"}).then((a)=>console.log(a))
 // college.forEach((c)=>{
 	// 	Colleges.create(c).then(()=>console.log("college created")).catch((e)=>console.log(e))
 	// })
 
+User.find({}).then((a)=>console.log(a))
 // user.forEach((c)=>{
 //   User.create(c).then(()=>console.log("college created")).catch((e)=>console.log())
 // })
