@@ -4,7 +4,6 @@ import {useHistory,Link } from "react-router-dom";
 
 import "./style.css";
 
-import logo from "../../img/logo.png";
 import userImg from "../../img/user.svg";
 
 

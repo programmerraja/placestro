@@ -137,23 +137,33 @@ return ( <>
                  </div>
             </div>
         </section>
-        <section className="follow_container">  
+        <section className="follow_container">
+            <div className="follow_text">
+                <h3>About Me</h3>
+            </div>
+             <div className="follow_icons">
+                <a href="https://programmerraja.github.io" target="_blank">
+                    <i className="fas fa-user-circle"></i>
+                </a>
+            </div>  
+            <div className="follow_text">
+                <h3>Contribute</h3>
+            </div>
+            <div className="follow_icons">
+                <a href="https://github.com/programmerraja/placestro" target="_blank">
+                    <i className="fab fa-github"></i>
+                </a>
+            </div>
             <div className="follow_text">
                 <h3>Connect With Us</h3>
             </div>
             <div className="follow_icons float_icon">
-                <a href="https://t.me/+8NyoSBK1PXUytk1">
+                <a href="https://t.me/+8NyoSBK1PXUytk1" target="_blank">
                     <i className="fab fa-telegram"></i>
                 </a>
             </div>
-            <div className="follow_text">
-                <h3>Contribute to website</h3>
-            </div>
-            <div className="follow_icons">
-                <a href="https://github.com/programmerraja/placestro">
-                    <i className="fab fa-github"></i>
-                </a>
-            </div>
+            
+            
         </section>
         <Footer/>
     </>);

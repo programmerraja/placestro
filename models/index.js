@@ -18,7 +18,6 @@ module.exports = {User,Companies,Reviews,Colleges};
 	// 	Colleges.create(c).then(()=>console.log("college created")).catch((e)=>console.log(e))
 	// })
 
-User.find({}).then((a)=>console.log(a))
 // user.forEach((c)=>{
 //   User.create(c).then(()=>console.log("college created")).catch((e)=>console.log())
 // })

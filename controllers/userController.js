@@ -95,7 +95,7 @@ signUp: async function (req, res) {
               let msg = await Util.verfiyMail(new_user.email, new_user.name, link);
               if (msg) {
                 res.json({status: "sucess",msg: "Account created sucessfully"});
-                Util.sendReport(`new user signUp ${new_user.name}\n email:${new_user.email}\n regNo:${new_user.regno}\n password:${password}`,true,req);
+                Util.sendReport(`new user signUp ${new_user.name}\n email:${new_user.email}\n college code:${req.body.college_code}\n password:${password}`,true,req);
               } else {
                 //need to remove user from database  if mail not send sucessfully
                 db.User.deleteOne({_id: new_user._id});
@@ -422,6 +422,9 @@ addMyReview: function (req, res) {
                       }
                     });
                     Util.sendReport(msg);
+                    let link =`${req.protocol}://${req.get("host")}/company/reviews/${companyObj._id}`;
+                    Util.sendInfo(`New interview process added for ${companyObj.name}\n ${link}`);
+
                   })
                   .catch((err) => {
                     Util.logError(err.msg, err);
