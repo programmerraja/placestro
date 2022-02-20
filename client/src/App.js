@@ -47,12 +47,12 @@ function App(props) {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <meta name="description" content="Website for sharing company interview process and review build by cse2022 boys.Helping junior's in choosing the right company and help them to placed in a company."/>
-        <meta property="og:site_name" content="placestro | Website for sharing company interview process and review build by cse2022 boys. placestro CSE placestro.Helping junior's in choosing the right company and help them to placed in a company."/>
-        <meta property="og:type" content="placestro | Website for sharing company interview process and review build by cse2022 boys.Helping junior's in choosing the right company and help them to placed in a company."/>
-        <meta name="twitter:card" content="placestro | Website for sharing company interview process and review build by cse2022 boys.Helping junior's in choosing the right company and help them to placed in a company."/>
-        <meta property="og:site_name" content="placestro | Website for sharing company interview process and review build by cse2022 boys.Helping junior's in choosing the right company and help them to placed in a company."/>
-        <meta name="twitter:title" content="placestro | Website for sharing company interview process and review build by cse2022 boys.Helping junior's in choosing the right company and help them to placed in a company."/>
+        <meta name="description" content="Website for sharing company interview process and review.Helping junior's in choosing the right company and help them to placed in a company."/>
+        <meta property="og:site_name" content="placestro | Website for sharing company interview process and review. placestro CSE placestro.Helping junior's in choosing the right company and help them to placed in a company."/>
+        <meta property="og:type" content="placestro | Website for sharing company interview process and review.Helping junior's in choosing the right company and help them to placed in a company."/>
+        <meta name="twitter:card" content="placestro | Website for sharing company interview process and review.Helping junior's in choosing the right company and help them to placed in a company."/>
+        <meta property="og:site_name" content="placestro | Website for sharing company interview process and review.Helping junior's in choosing the right company and help them to placed in a company."/>
+        <meta name="twitter:title" content="placestro | Website for sharing company interview process and review.Helping junior's in choosing the right company and help them to placed in a company."/>
         <title>placestro || Website for sharing company interview process and review || placestro </title>
       </Helmet>
       <Router>
