@@ -81,7 +81,7 @@ signUp: async function (req, res) {
       }
       else{
             res.json({ status: "failed", msg: "Invalid College Code \nor Your college code may not present in our data\n Your college code is shared to admin soon your college code will be added to our data. \n so try again after some time or day"});
-            Util.sendReport(`code not present: ${req.body.college_code}`)
+            Util.sendReport(`code not present: ${req.body.college_code}`,true,req)
       }
       
       function createUser(college_id){
