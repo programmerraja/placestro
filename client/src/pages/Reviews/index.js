@@ -1,5 +1,4 @@
-import React from "react";
-import {useState,useEffect} from "react";
+import {useState,useEffect,React} from "react";
 import {useParams,useHistory} from "react-router-dom";
 
 import ReviewCard from "../../components/ReviewCard";
@@ -8,7 +7,7 @@ import CardLoader from '../../components/CardLoader';
 
 import API from "../../utils/API";
 import errorHandler from "../../utils/errorHandler";
-
+import askQuestion from "../../utils/askQuestion";
 
 import "./style.css";
 
@@ -45,6 +44,7 @@ function Reviews({isLoggedin}){
               setReviews(res.data.reviews);
               setCompany({...res.data.reviews[0].company})
               setCollegeLists(res.data.college_list);
+              askQuestion()
          }
          else{
           errorHandler(true,res.data.msg);
@@ -55,9 +55,11 @@ function Reviews({isLoggedin}){
          setLoading(false);
          errorHandler(true,res.data.msg);
     });
-  },[companyId])
+  },[companyId,askQuestion])
 
-  const FilteredCollegeList=(filter_by)=>{
+  
+
+  const filteredCollegeList=(filter_by)=>{
     if(filter_by){
        let query={college_id:filter_by,company_id:companyId}
        if(sort_by){
@@ -155,7 +157,7 @@ function Reviews({isLoggedin}){
                                value={filter_by} 
                                onChange={(e)=>{
                                setFilterBy(e.target.value);
-                               FilteredCollegeList(e.target.value);}}>
+                               filteredCollegeList(e.target.value);}}>
                               <option value="">None</option>
                               {college_lists.map((college)=>{
                                 return(<option key={college.code} value={college._id}>{college.name}</option>)

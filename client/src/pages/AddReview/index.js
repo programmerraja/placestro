@@ -29,7 +29,8 @@ function AddReview() {
         "Thank's a lot for adding interview process and review.\
         Your post will help someone to get a job."
         ).then(()=>{history.push("/user/myReviews");});
-      
+       //setting user added review
+        localStorage.setItem("is_review_added",6)
    }
 
    

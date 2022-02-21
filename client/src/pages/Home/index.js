@@ -1,4 +1,5 @@
-import {React} from "react";
+import {useEffect,React} from "react";
+
 import Footer from "../../components/Footer";
 
 import "./style.css";
@@ -25,10 +26,16 @@ import smackcoders from "../../img/company/smackcoders.png";
 import datalogic from "../../img/company/datalogic.png";
 import gigamon from "../../img/company/gigamon.png";
 
+import askQuestion from "../../utils/askQuestion";
+
 
 function Home() {
 
-return ( <>
+    useEffect(()=>{
+        askQuestion();
+    },[askQuestion])
+    
+    return ( <>
         <div className="hero_container">
            <div className="hero_text">
               <h1> Find the company that suits You </h1>

@@ -6,7 +6,7 @@ function checkMailVerified(req, res, next) {
     // next()
     res.json({
         status: "failed",
-        msg: "Please verify your mail to add your review"
+        msg: "Please verify your mail and come back your review will be safe here."
     });
     return;
 }
