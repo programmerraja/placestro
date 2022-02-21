@@ -44,7 +44,7 @@ function Reviews({isLoggedin}){
               setReviews(res.data.reviews);
               setCompany({...res.data.reviews[0].company})
               setCollegeLists(res.data.college_list);
-              askQuestion()
+              askQuestion(history)
          }
          else{
           errorHandler(true,res.data.msg);

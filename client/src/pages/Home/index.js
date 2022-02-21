@@ -1,4 +1,5 @@
 import {useEffect,React} from "react";
+import {useHistory} from "react-router-dom";
 
 import Footer from "../../components/Footer";
 
@@ -31,8 +32,10 @@ import askQuestion from "../../utils/askQuestion";
 
 function Home() {
 
+   const history=useHistory();
+
     useEffect(()=>{
-        askQuestion();
+        askQuestion(history);
     },[askQuestion])
     
     return ( <>
