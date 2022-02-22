@@ -245,18 +245,20 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
 
    
    let onNext=()=>{
-      if(steps+1===3){
-        isPrev=false
-      }
+      isPrev=false
+      // if(steps+1===3){
+      //   isPrev=false
+      // }
       if(validateForm()){
         setSteps(steps+1);
       }
    }
 
    let onPrevious=()=>{
-      if(steps-1===3){
-        isPrev=true;
-      }
+      isPrev=true;
+      // if(steps-1===3){
+      //   isPrev=true;
+      // }
       setSteps(steps-1);
    }
   
@@ -385,6 +387,28 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
 
 
 return ( <>
+          <div className="steps">
+            <div className={steps==1?"step step_active":"step"}>
+              {steps==1?<div className={isPrev?"step_actives_back":"step_actives_front"}></div>:null}
+              <p className="small_text">0%</p>
+            </div>
+            <div className={steps==2?"step step_active":"step"}>
+              {steps==2?<div className={isPrev?"step_actives_back":"step_actives_front"}></div>:null}
+              <p className="small_text">25%</p>
+            </div>
+            <div className={steps==3?"step step_active":"step"}>
+              {steps==3?<div className={isPrev?"step_actives_back":"step_actives_front"}></div>:null}
+              <p className="small_text">50%</p>
+            </div>
+            <div className={steps==4?"step step_active":"step"}>
+              {steps==4?<div className={isPrev?"step_actives_back":"step_actives_front"}></div>:null}
+              <p className="small_text">75%</p>
+            </div>
+            <div className={steps==5?"step step_active":"step"}>
+              {steps==5?<div className={isPrev?"step_actives_back":"step_actives_front"}></div>:null}
+              <p className="small_text">100%</p>
+            </div>
+          </div>
             <div className="add_review-wrapper">
               <div className="add_review-container">
                     {questions_to_show} 

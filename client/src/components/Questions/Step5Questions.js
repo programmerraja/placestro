@@ -15,7 +15,7 @@ function Step5Questions({ rating,
                           setIsAnonymous
                         }) {
    
-return ( <>
+return ( <div className="question_wrapper">
                   <div  className="add_review-from">
                    <label for="rating" className="add_review-label">
                    <span>Rate the company out of 5 </span><span className="red_color"> *</span></label>
@@ -103,7 +103,7 @@ return ( <>
                          </div>
                    </div>
             
-          </>);
+          </div>);
 
 }
 

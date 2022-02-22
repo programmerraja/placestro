@@ -4,8 +4,65 @@
 	justify-content: center;
 	align-items: center;
 	margin: 1rem;
+    overflow: hidden;
 }
-
+.steps{
+    display: flex;
+    justify-content: space-around;
+}
+.step{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0.3rem;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    padding: 0.2rem;
+    width: min-content;
+}
+.step p{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.step_active{
+    position: relative;
+}
+.step_actives_front,
+.step_actives_back{
+    position: absolute;
+    padding: 0.2rem;
+    height: 80%;
+    width: 80%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    animation: movef 0.5s ease-in;
+    border-radius: 2px;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+}
+.step_actives_back{
+    animation: moveb 0.5s ease-in;
+}
+@keyframes movef{
+    from{
+        transform: translateX(-300%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+@keyframes moveb{
+    from{
+        transform: translateX(300%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
 .add_review-container{
     background-color: var(--secondary-color-light);
     color: var(--font-color);
@@ -17,12 +74,28 @@
     max-width: 540px;
     min-width: 450px;
 }
+.question_wrapper{
+    animation: slide 0.3s ease-in;
+}
+.active{
+    animation: slide 0.6s ease-in;
+}
 .add_review-container label{
     color: var(--font-color);
 }
 .add_review-from{
 	margin-bottom: 12px;
+    animation: slide 0.3s ease-in;
 }
+@keyframes slide{
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
 .add_review-error-msg{
 	color:red;
 	text-align: center;

@@ -7,8 +7,8 @@ import Api from "../../utils/API";
 
 function Step2Questions({rounds,setRounds}) {
    
-return ( <>
-                  <div  className="add_review-from">
+return ( <div className="question_wrapper">
+                  <div  className="add_review-from ">
                    <label for="rounds" className="add_review-label">
                    <span>How many Rounds <span className="red_color">*</span></span></label>
                          <div className="add_review-input-wrapper">
@@ -21,7 +21,7 @@ return ( <>
                          </div>
                    </div>
             
-          </>);
+          </div>);
 
 }
 

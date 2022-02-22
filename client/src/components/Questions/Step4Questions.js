@@ -3,7 +3,7 @@ import React from "react";
 
 function Step4Questions({is_placed,setIsPlaced}) {
    
-return ( <>
+return ( <div className="question_wrapper">
                   <div  className="add_review-from">
                    <label for="isPlaced" className="add_review-label">
                    <span>Are you Placed in the company<span className="red_color"> *</span></span></label>
@@ -20,7 +20,7 @@ return ( <>
                          </div>
                    </div>
             
-          </>);
+          </div>);
 
 }
 

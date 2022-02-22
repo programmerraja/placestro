@@ -14,7 +14,7 @@ function Step1Questions({name,
                         setOffCampusDetail
                       }) {
 
-   return ( <>
+   return ( <div className="question_wrapper">
                 
                   <div  className="add_review-from">
                  
@@ -55,7 +55,7 @@ function Step1Questions({name,
                            </div>
                    </div> 
                    {placement_type==="offCampus" && <Step1_1Questions off_campus_detail={off_campus_detail} setOffCampusDetail={setOffCampusDetail}/>}
-          </>);
+          </div>);
 
 }
 

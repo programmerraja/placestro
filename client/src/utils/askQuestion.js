@@ -6,6 +6,7 @@ export default function askQuestion(history){
         if(Math.random()>0.5){
             swal({title: "🤔",text: "Are you placed?.",buttons: ["No", "Yes"]})
             .then((confirm) => {
+
                     if (confirm) {
                      swal({title:"😍",text:"Congratulations🎉\nAre you like to help someone by sharing your interview process it take just 3min", buttons: ["No", "Yes"]})
                      .then((confirm) => {
@@ -13,7 +14,7 @@ export default function askQuestion(history){
                          axios.get("/report?ques=placed and try to add review")
                           history.push("/user/addReview");
                         }else{
-                          swal({title:"😭",text:"It's painfull for us.Please help someone by sharing your interview process it take just 3min.",buttons:["Don't care","Ok I will add"]})
+                          swal({title:"😭",text:"It's painfull for us.Please help someone by sharing your interview process it take just 3min.",buttons:["I am Sorry","Ok I will add"]})
                           .then((confirm)=>{
                             if (confirm) {
                                 axios.get("/report?ques=placed and 2nd try to add review")

@@ -11,7 +11,7 @@ function Step3Questions({round_number,
 
     // const [roundName,setRoundName]=useState(round_name?round_name:"")
     
-return ( <>
+return ( <div className="question_wrapper">
              <div  className="add_review-from">
                    <label for="roundsName" className="add_review-label">
                    <span>Enter Round {round_number+1} name <span className="red_color"> *</span></span></label>
@@ -53,7 +53,7 @@ return ( <>
                     </textarea>
                    </div>
              </div>
-          </>);
+          </div>);
 
 }
 
