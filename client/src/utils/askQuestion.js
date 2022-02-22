@@ -5,12 +5,12 @@ export default function askQuestion(){
             swal({title: "🤔",text: "Are you placed?.",buttons: ["No", "Yes"]})
             .then((confirm) => {
                     if (confirm) {
-                     swal({title:"😍",text:"Congrats 🎉\nAre you like to help other's by adding interview process", buttons: ["No", "Yes"]})
+                     swal({title:"😍",text:"First congratulations🎉\nAre you like to help other's by adding your interview process", buttons: ["No", "Yes"]})
                      .then((confirm) => {
                         if (confirm) {
                           history.push("/user/addReview");
                         }else{
-                          swal({title:"😭",text:"It's painfull for us\n please help other's by adding review.",buttons:["Don't care","Ok I will add"]})
+                          swal({title:"😭",text:"It's painfull for us\n please help other's by adding your interview process.",buttons:["Don't care","Ok I will add"]})
                           .then((confirm)=>{
                             if (confirm) {
                                 history.push("/user/addReview");
@@ -19,7 +19,7 @@ export default function askQuestion(){
                         }
                      })
                     }else{
-                        swal({title: "🤗",text:"Don't worry you will be placed soon👍.",button:"Yeah I will"})
+                        swal({title: "🤗",text:"Don't worry you will be placed soon for your good heart ❤️.",button:"Yeah I will"})
                         localStorage.setItem("is_review_added",6)
                     }
             });
