@@ -25,9 +25,6 @@ export default {
   removeAuthHeader: function () {
     axios.defaults.headers.common["Authorization"] = "";
   },
-  sendReport:function(ans){
-    axios.get(`/report?ques=${ans}`)
-  },
   checkTokenExp: function () {
     let token = localStorage.getItem("token");
     //check only if token avalible and checking it is valid token 

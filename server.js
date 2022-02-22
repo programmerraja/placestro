@@ -27,7 +27,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.use(passport.initialize());
-
 // use API routes here
 app.use(routes);
 
@@ -38,7 +37,6 @@ mongoose.connect(process.env.MONGODB_URI,  {
   useFindAndModify: false, 
   useCreateIndex: true
 });
-
 
 app.get("/PlacestroAdmin", (req, res) => {
   res.sendFile(path.join(__dirname, "./admin/build/index.html"));
