@@ -49,7 +49,7 @@ function Home() {
                  <input type="button" name="signin" value="Sign in" className="hero_button1" />
                  </a>
                  <a href="/companies">
-                 <input type="button" name="companies" value="Companies" className="hero_button2" />
+                 <input type="button" name="companies" value="Companies" className="hero_button2 shake-bottom" />
                  </a>
               </div>
            </div>

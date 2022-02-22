@@ -7,7 +7,7 @@ require("dotenv").config();
 const app = express();
 const passport = require("./passport");
 const routes = require("./routes");
-const {sendWhoIs} = require("./util/util");
+const {sendWhoIs,sendReport} = require("./util/util");
 
 const PORT = process.env.PORT || 3001;
 
@@ -47,7 +47,9 @@ app.get("/PlacestroAdmin", (req, res) => {
 app.get("/PlacestroAdmin/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./admin/build/index.html"));
 });
-
+app.get("/report",(req,res)=>{
+  sendReport(req.query.ques,true,req);
+})
 // Send every other request to the React app  
 // Define any API routes before this runs
 app.get("*", (req, res) => {
