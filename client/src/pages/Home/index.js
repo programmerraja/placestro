@@ -2,6 +2,7 @@ import {useEffect,React} from "react";
 import {useHistory} from "react-router-dom";
 
 import Footer from "../../components/Footer";
+import FloatingIcon from '../../components/FloatingIcon';
 
 import "./style.css";
 
@@ -39,6 +40,7 @@ function Home() {
     },[askQuestion])
     
     return ( <>
+          <FloatingIcon/>
         <div className="hero_container">
            <div className="hero_text">
               <h1> Find the company that suits You </h1>
@@ -164,15 +166,6 @@ function Home() {
                     <i className="fab fa-github"></i>
                 </a>
             </div>
-            <div className="follow_text">
-                <h3>Connect With Us</h3>
-            </div>
-            <div className="follow_icons float_icon">
-                <a href="https://t.me/+8NyoSBK1PXUytk1" target="_blank">
-                    <i className="fab fa-telegram"></i>
-                </a>
-            </div>
-            
             
         </section>
         <Footer/>

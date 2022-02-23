@@ -10,10 +10,13 @@ export default function errorHandler(isError,msg) {
             });
 	}else{
 		if(!msg){
-			msg="<p>Something went wrong <br>Plse try again later</p>"
+			msg="<p>Sorry something went wrong <br>Plse try again later.</p>\
+				<a href='https://t.me/+8NyoSBK1PXUyZTk1' target='_blank'>\
+					Report Us\
+				</a>"
 		}
 		return swal({
-              title: "     ",
+              title: " ",
               content:{
               	element:"p",
               	attributes:{

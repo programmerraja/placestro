@@ -104,7 +104,7 @@ function ReviewCard({_id,placementType,offCampusDetail,rounds,roundsDetails,
               {
                 Object.keys(roundsDetails).map((roundName,index)=>{
                   return(
-                    <div className="review_rounds" key={roundName}>
+                    <div className="review_rounds" key={roundName+_id}>
                     <details>
                         <summary className="review_text-bold round_name" >
                         {index+1}.{roundName}</summary>
@@ -113,7 +113,7 @@ function ReviewCard({_id,placementType,offCampusDetail,rounds,roundsDetails,
                         roundsDetails[roundName]
                         .split("\n")
                         .map((text,index)=>{
-                              return(<p key={index} className="review_text-point">{text}</p>)
+                              return(<p key={index+_id} className="review_text-point">{text}</p>)
                          })
                       }
                       </div>
@@ -132,7 +132,7 @@ function ReviewCard({_id,placementType,offCampusDetail,rounds,roundsDetails,
                         pros
                         .split("\n")
                         .map((text,index)=>{
-                              return(<p key={index} className="review_text-point">{text}</p>)
+                              return(<p key={index+_id} className="review_text-point">{text}</p>)
                          })
                 }
               </div>
@@ -144,7 +144,7 @@ function ReviewCard({_id,placementType,offCampusDetail,rounds,roundsDetails,
                         cons
                         .split("\n")
                         .map((text,index)=>{
-                              return(<p key={index} className="review_text-point">{text}</p>)
+                              return(<p key={index+_id} className="review_text-point">{text}</p>)
                          })
                 }
               </div>

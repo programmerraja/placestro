@@ -172,7 +172,7 @@ function Reviews({isLoggedin}){
             !loading && reviews.map((review)=>{
               return(
                   <ReviewCard 
-                      key={review.user.name}
+                      key={review._id}
                       {...review}
                       isLoggedin={isLoggedin} 
                       likeTheReview={likeTheReview} />
