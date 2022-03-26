@@ -31,9 +31,15 @@ const Review = {
               })
               //removing user detail if it is Anonymous and put as obj and adding college name
               reviews.forEach((review) => {
-                filtered_college_list.push({_id:review?.user[0]?.collegeId,name:hash_college_list[review?.user[0]?.collegeId]})
+                if(hash_college_list[review.user[0].collegeId]){
+                  filtered_college_list.push(
+                      {_id:review.user[0].collegeId,
+                      name:hash_college_list[review.user[0].collegeId]
+                    })
+                    hash_college_list[review.user[0].collegeId]=null
+                }
                 if (review.isAnonymous) {
-                  review.user = { name: "anonymous", dept: "" ,isLiked:review.likes?.includes(req.user.id)};
+                  review.user = { name: "anonymous", dept: "" ,isLiked:review.likes.includes(req.user.id)};
                 } else {
                   review.user = {
                     id:review.user[0]._id,
@@ -41,7 +47,7 @@ const Review = {
                     department: review.user[0].department,
                     linkdein:review.user[0].linkdein,
                     college_name:hash_college_list[review.user[0].collegeId],
-                    isLiked:review.likes?.includes(req.user.id)
+                    isLiked:review.likes.includes(req.user.id)
                   };
                 }
               });
@@ -92,13 +98,13 @@ const Review = {
               //removing user detail if it is Anonymous and put as obj
               reviews.forEach((review) => {
                 if (review.isAnonymous) {
-                  review.user = { name: "anonymous", dept: "" ,isLiked:review.likes?.includes(req.user.id)};
+                  review.user = { name: "anonymous", dept: "" ,isLiked:review.likes.includes(req.user.id)};
                 } else {
                   review.user = {
                     name: review.user[0].name,
                     department: review.user[0].department,
                     linkdein:review.user[0].linkdein,
-                    isLiked:review.likes?.includes(req.user.id)
+                    isLiked:review.likes.includes(req.user.id)
                   };
                 }
               });

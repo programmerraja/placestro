@@ -27,6 +27,9 @@ import ami from "../../img/company/ami.png";
 import smackcoders from "../../img/company/smackcoders.png";
 import datalogic from "../../img/company/datalogic.png";
 import gigamon from "../../img/company/gigamon.png";
+import klenty from "../../img/company/klenty.png";
+import infosys from "../../img/company/infosys.png";
+
 
 import askQuestion from "../../utils/askQuestion";
 
@@ -106,10 +109,16 @@ function Home() {
                   <img src={zoho}/>
                 </div>
                 <div className="company_img">
+                  <img src={klenty}/>
+                </div>
+                <div className="company_img">
                   <img src={tcs}/>
                 </div>
                  <div className="company_img">
                   <img src={wipro}/>
+                </div>
+                <div className="company_img">
+                  <img src={infosys}/>
                 </div>
                 <div className="company_img">
                   <img src={softsquare}/>
@@ -150,14 +159,14 @@ function Home() {
             </div>
         </section>
         <section className="follow_container">
-            <div className="follow_text">
+            {/* <div className="follow_text">
                 <h3>About Me</h3>
             </div>
              <div className="follow_icons">
                 <a href="https://programmerraja.github.io" target="_blank">
                     <i className="fas fa-user-circle"></i>
                 </a>
-            </div>  
+            </div>   */}
             <div className="follow_text">
                 <h3>Contribute</h3>
             </div>

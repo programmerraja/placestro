@@ -49,6 +49,10 @@
   font-size: 0.75rem;
   font-weight: bold;
 }
+.review_text,
+.review_text-bold{
+  font-size: 1.1rem;
+}
 .reviewcard_like-icon{
   cursor: pointer;
   background-color: transparent;
