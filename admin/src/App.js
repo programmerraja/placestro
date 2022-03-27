@@ -57,7 +57,7 @@ function App(props) {
         <Switch>
           <ProtectedRoute exact path="/placestroAdmin" component={Home}/>
 
-          <ProtectedRoute exact path="/placestroAdmin/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
+          <Route exact path="/placestroAdmin/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
           <ProtectedRoute exact path="/placestroAdmin/companies" component={Companies} />
           <ProtectedRoute exact path="/placestroAdmin/company/reviews/:companyId"  component={Reviews}/>
 

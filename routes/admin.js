@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const userController = require("../controllers/userController.js");
 const adminController = require("../controllers/adminController.js");
 const companyController = require("../controllers/companyController.js");
 
 const auth = require("../middleware/auth.js");
 
 router.post("/user/signin",
-			userController.signIn);
+			adminController.signIn);
 
 router.get("/user/getCounts",
 			auth.isAuthenticatedUser(),

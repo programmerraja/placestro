@@ -31,7 +31,7 @@ function Signin({setUser}){
         API.setToken(res.data.token);
         API.setAuthHeader();
         setUser(true);
-        history.push("/placestroAdmin/user/myReviews");
+        history.push("/placestroAdmin");
       }
       else{
         setMsg(res.data.msg);

@@ -31,6 +31,9 @@ const admin = {
           if (err) {
             res.status(500).json({ status: "failed", msg: err });
           }
+          if(!user.isAdmin){
+            return res.json({ status: "failure",msg:"Invalid creds" });
+          }
           //filtering user id and email for payload and setting exp time as 7 day
           let payload = JSON.stringify({
             id: user._id,
@@ -90,7 +93,13 @@ const admin = {
   getAllUsers: function (req, res) {
     let limit = Number(req.query.limit) || 10;
     let skip = req.query.page > 1 ? Number((req.query.page - 1) * limit) : 0;
-    db.User.find()
+
+    let lookup = {from: "reviews",localField: "_id",foreignField: "userId",as: "reviews"};  
+
+    // let group=  {_id:"$reviews","numOfReviews":{$sum:1},user:{ "$push": "$$ROOT" }}
+    let group={ $addFields: {numOfReviews: {$size: "$reviews"}}}
+
+    db.User.aggregate([{ $lookup: lookup },group,{$unset:"reviews"}])
       .skip(skip)
       .limit(limit)
       .then((users) => {

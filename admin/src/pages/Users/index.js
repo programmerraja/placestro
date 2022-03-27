@@ -25,6 +25,16 @@ import errorHandler from "../../utils/errorHandler";
 
 import "./style.css";
 
+const querys={
+	hrating:{value:"rating",type:-1},
+	lrating:{value:"rating",type:1},
+	hreview:{value:"noOfReviews",type:-1},
+	lreview:{value:"noOfReviews",type:1},
+	hname:{value:"name",type:-1},
+	lname:{value:"name",type:1}
+}
+
+
 const useStyles = makeStyles({
     table: {
       minWidth: 650,
@@ -140,16 +150,35 @@ function Users(){
     <div>
       <SquareLoader loading={loading} />  
       <Box m={5}>
-      <Container maxWidth="false">
-      <Box m={1}>
-        <h3 >All Users</h3>
-				 <input type="text" 
-				 		className="companies_search" 
-				 		placeholder="Search here.."
-				 		value={search_content}
-				 		onChange={(e)=>{search(e.target.value)}}
-				 />
-      </Box>
+        <Container maxWidth="false">
+           <Box m={1}>
+                <h3 >All Users</h3>
+                <input type="text" 
+                    className="companies_search" 
+                    placeholder="Search here.."
+                    value={search_content}
+                    onChange={(e)=>{search(e.target.value)}}
+                />
+            </Box>
+            <Box display="flex">
+              <Box className="filter_option-wrapper">
+                        <label className="filter_option-label"><span>Sort By: </span></label>
+                                  <select className="filter_option" >
+                                      <option value="">None</option>
+                                      <option value="hrating">Rating High to Low</option>
+                                      <option value="lrating">Rating Low to High</option>
+                                      <option value="hreview">Reviews High to Low</option>
+                                      <option value="lreview">Reviews Low to High</option>
+                                      <option value="lname">Name(asec)</option>
+                                      <option value="hname">Name(desc)</option>
+                                </select>
+              </Box>
+              <Box className="filter_option-wrapper">
+                    <label className="filter_option-label"><span>Filter by: </span></label>
+                              <select className="filter_option">
+                            </select>
+              </Box>
+          </Box>
       {(users.length>0 && !loading && isFind) &&
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
@@ -157,10 +186,11 @@ function Users(){
               <TableRow>
                 <TableCell align="left"  className={classes.head}>Name</TableCell>
                 <TableCell align="left" className={classes.head}>Email</TableCell>
-                <TableCell align="left" className={classes.head}>Reg No</TableCell>
                 <TableCell align="left" className={classes.head}>Department</TableCell>
                 <TableCell align="left" className={classes.head}>Is Email Verified</TableCell>
                 <TableCell align="left" className={classes.head}>Created At</TableCell>
+                <TableCell align="left" className={classes.head}>Reviews</TableCell>
+
                 <TableCell align="left" className={classes.head}></TableCell>
               </TableRow>
             </TableHead>
@@ -176,10 +206,10 @@ function Users(){
                         </Link>
                       </TableCell>
                       <TableCell align="left">{user.email}</TableCell>
-                      <TableCell align="left">{user.regno}</TableCell>
                       <TableCell align="left">{user.department}</TableCell>
                       <TableCell align="left">{user.isEmailVerified?"Yes":"No"}</TableCell>
                       <TableCell align="left">{new Date(user.createdAt).toDateString()}</TableCell>
+                      <TableCell align="left">{user.numOfReviews}</TableCell>
                       <TableCell align="left" >
                       <IconButton className="delete_icon" aria-label="delete" onClick={()=>deleteUser(user._id)}>
                           <Delete />
