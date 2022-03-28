@@ -168,10 +168,10 @@ function Home() {
                 </a>
             </div>   */}
             <div className="follow_text">
-              <h3>Connect with us/h3>
+              <h3>Connect with us</h3>
             </div>
             <div className="follow_icons">
-              <a href="https://t.me/+8NyoSBK1PXUyZTk1" target="_blank">
+              <a href="https://t.me/+9_4feGpoutgwMjc1" target="_blank">
                     <i className="fab fa-telegram"></i>
                 </a>
           </div>

@@ -1,4 +1,6 @@
 const db = require("../models");
+
+const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 var validator = require("validator");
@@ -49,6 +51,53 @@ const admin = {
       }
     )(req, res);
   },
+  getCompanyData:function(req,res){
+    if(req.params.companyId){
+      db.Companies.findOne({_id:req.params.companyId})
+      .then((company)=>{
+        res.json({
+          status: "sucess",
+          company:company
+        });
+      })
+      .catch((err)=>{
+        res
+        .send(500)
+        .json({
+          status: "failure",
+          message: "Some Error Occured. Try Again!",
+        });
+      })
+    }
+  },
+  updateCompanyData:function(req,res){
+    if(req.params.companyId && req.body.company_name && req.body.company_rating && req.body.company_reviews){
+    
+      db.Companies.findOneAndUpdate({_id:req.params.companyId},{name:req.body.company_name,rating:req.body.company_rating,reviews:req.body.company_reviews})
+      .then((company)=>{
+        res.json({
+          status: "sucess",
+          msg:"Sucessfully updated"
+        });
+      })
+      .catch((err)=>{
+        res
+        .send(500)
+        .json({
+          status: "failure",
+          message: "Some Error Occured. Try Again!",
+        });
+      })
+    }else{
+      res
+        .send(500)
+        .json({
+          status: "failure",
+          message: "Some Error Occured. Try Again!",
+        });
+    }
+  },
+
   getCounts: function (req, res) {
     db.User.countDocuments({})
       .then((user_count) => {
@@ -249,6 +298,7 @@ const admin = {
       });
   },
   getCompanyList: function (req, res) {
+    let lookup=
     db.Companies.find({})
       .then((list) => {
         let new_list = [];
@@ -260,6 +310,86 @@ const admin = {
       .catch((err) => {
         res.json({ status: "failed", list: [] });
       });
+  },
+  getCollegeList:function(req,res){
+    let lookup = {from: "reviews",localField: "_id",foreignField: "collegeId",as: "reviews"};  
+    let lookup2 = {from: "users",localField: "_id",foreignField: "collegeId",as: "users"};  
+
+
+    // let group=  {_id:"$reviews","numOfReviews":{$sum:1},user:{ "$push": "$$ROOT" }}
+    let addField={ $addFields: {noOfReviews: {$size: "$reviews"},noOfUsers: {$size: "$users"}}}
+
+    db.Colleges.aggregate([{$lookup:lookup},{$lookup:lookup2},addField,{$unset:"reviews"},{$unset:"users"}])
+      .then((list) => {
+        res.json({ status: "sucess", list: list });
+      })
+      .catch((err) => {
+        res.json({ status: "failed", list: [] });
+      });
+  },
+  getCollegeData:function(req,res){
+    if(req.params.collegeId){
+      let match={_id: mongoose.Types.ObjectId(req.params.collegeId)}
+      let lookup = {from: "reviews",localField: "_id",foreignField: "collegeId",as: "reviews"};  
+      let lookup2 = {from: "users",localField: "_id",foreignField: "collegeId",as: "users"};  
+  
+  
+      // let group=  {_id:"$reviews","numOfReviews":{$sum:1},user:{ "$push": "$$ROOT" }}
+      let addField={ $addFields: {noOfReviews: {$size: "$reviews"},noOfUsers: {$size: "$users"}}}
+  
+      db.Colleges.aggregate([{$match:match},{$lookup:lookup},{$lookup:lookup2},addField,{$unset:"reviews"},{$unset:"users"}])
+        .then((list) => {
+          res.json({ status: "sucess", college: list[0] });
+        })
+        .catch((err) => {
+          res.json({ status: "failed", list: [] });
+        });
+    }
+  },
+  updateCollegeData:function(req,res){
+    if(req.params.collegeId && req.body.college_name && req.body.college_rating && req.body.college_reviews){
+    
+      db.Colleges.findOneAndUpdate({_id:req.params.collegeId},{name:req.body.college_name})
+      .then((college)=>{
+        res.json({
+          status: "sucess",
+          msg:"Sucessfully updated"
+        });
+      })
+      .catch((err)=>{
+        res
+        .send(500)
+        .json({
+          status: "failure",
+          message: "Some Error Occured. Try Again!",
+        });
+      })
+    }else{
+      res
+        .send(500)
+        .json({
+          status: "failure",
+          message: "Some Error Occured. Try Again!",
+        });
+    }
+  },
+
+  deleteCollege: function (req, res) {
+    if (req.params.collegeId) {
+      db.Colleges.findOneAndRemove({ _id: req.params.collegeId })
+        .then((collegeObj) => {
+          res.json({ status: "sucess", msg: "sucessfully deleted college" });
+        })
+        .catch((err) => {
+          logError(err.msg, err);
+          res.json({
+            status: "failed",
+            msg: "Sorry Something went wrong. Please try again",
+          });
+        });
+    } else {
+      res.json({ status: "failed", msg: "company id missing" });
+    }
   },
   deleteUserReview: function (req, res) {
     if (req.params.reviewId) {
@@ -297,14 +427,17 @@ const admin = {
     }
   },
   getUserReviews: function (req, res) {
-    db.Reviews.find({ userId: req.params.userId })
-      .then((reviews) => {
-        reviews.forEach((review) => {
-          review._doc.user = { name: "", department: "" };
-        });
-        res.json({ status: "sucess", reviews: reviews });
+    let match={ userId: mongoose.Types.ObjectId(req.params.userId) };
+    let lookup = {from: "companies",localField: "companyId",foreignField: "_id",as: "company"};  
+    let lookup2 = {from: "users",localField: "userId",foreignField: "_id",as: "user"};  
+      
+    db.Reviews
+      .aggregate([{$match: match},{ $lookup: lookup },{ $lookup: lookup2 }])
+      .then(async (reviews) => {
+        res.json({ status: "success", reviews: reviews });
       })
       .catch((err) => {
+        console.log(err)
         res.json({ status: "failed", msg: "Something went wrong" });
       });
   },

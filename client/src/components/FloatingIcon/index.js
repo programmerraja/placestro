@@ -5,7 +5,7 @@ import "./style.css";
 function FloatingIcon() {
       return(
           <div className="floating_icon">
-              <a href="https://t.me/+8NyoSBK1PXUyZTk1" target="_blank">
+              <a href="https://t.me/+9_4feGpoutgwMjc1" target="_blank">
                     <i className="fab fa-telegram"></i>
                 </a>
           </div>

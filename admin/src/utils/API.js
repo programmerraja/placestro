@@ -81,8 +81,18 @@ export default {
   logout:userService.logout,
 
   getCompanyList:companyService.getCompanyList,
+
+  getCollegeList:companyService.getCollegeList,
+  getCollegeData:companyService.getCollegeData,
+  updateCollegeData:companyService.updateCollegeData,
+  deleteCollege:companyService.deleteCollege,
+
+  getCompanyData:companyService.getCompanyData,
+  updateCompanyData:companyService.updateCompanyData,
   getCompanyReviews:companyService.getCompanyReviews,
-  deleteCompany:companyService.deleteCompany
+  deleteCompany:companyService.deleteCompany,
+  getFilteredCompanyList:companyService. getFilteredCompanyList,
+  getFilteredReviews:companyService.getFilteredReviews
 };
 
 function setAuthHeader() {

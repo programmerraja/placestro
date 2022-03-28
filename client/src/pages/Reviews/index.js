@@ -42,6 +42,7 @@ function Reviews({isLoggedin}){
         setLoading(false);
         if(res.data.status==="sucess"){
               setReviews(res.data.reviews);
+              setCacheReviews([...res.data.reviews]);
               setCompany({...res.data.reviews[0].company})
               setCollegeLists(res.data.college_list);
               askQuestion(history)
@@ -60,6 +61,7 @@ function Reviews({isLoggedin}){
   
 
   const filteredCollegeList=(filter_by)=>{
+    console.log(filter_by)
     if(filter_by){
        let query={college_id:filter_by,company_id:companyId}
        if(sort_by){
@@ -82,6 +84,7 @@ function Reviews({isLoggedin}){
         }
         });
     }else{
+      console.log(cache_reviews)
       setReviews([...cache_reviews]);
     }
   }

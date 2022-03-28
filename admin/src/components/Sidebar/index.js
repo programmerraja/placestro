@@ -2,7 +2,8 @@ import React,{useState} from "react";
 import { IconButton } from "@material-ui/core";
 import "./style.css"
 import { Link } from 'react-router-dom'
-import { Menu, Settings, Home ,Business} from "@material-ui/icons";
+import { Menu, Settings, Home ,Business,Apps} from "@material-ui/icons";
+// import AppsIcon from '@mui/icons-material/Apps';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PeopleIcon from '@material-ui/icons/People';
 import AssessmentIcon from '@material-ui/icons/Assessment';
@@ -14,7 +15,6 @@ export default function Sidebar() {
   return (
     <div className={!expanded?"sidebar position-fixed":"expanded sidebar position-fixed"}>
       <div className='d-flex justify-content-between align-items-center mb-3'>
-        {expanded?<h3 className='label'>Dashboard</h3>:null}
         <IconButton onClick={()=>expanded?setExpanded(false):setExpanded(true)}>
           <Menu />
         </IconButton>
@@ -38,6 +38,11 @@ export default function Sidebar() {
         {expanded?<Link to="/placestroAdmin" className='menu-bars'><Business className='icons'/>
           <span className='sidebar-text'>Companies</span>
         </Link>:<Link to ="/placestroAdmin/companies"><Business className="icon-collapsed"/></Link>}
+      </div>
+      <div className='Sidemenu'>
+        {expanded?<Link to="/placestroAdmin" className='menu-bars'><Apps className='icons'/>
+          <span className='sidebar-text'>Colleges</span>
+        </Link>:<Link to ="/placestroAdmin/Colleges"><Apps className="icon-collapsed"/></Link>}
       </div>
 
       <div className='Sidemenu'>

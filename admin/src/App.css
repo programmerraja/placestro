@@ -38,7 +38,12 @@ body{
 .swal-button:hover{
   box-shadow: none;
 }
+.swal-icon--success:before,
+.swal-icon--success:after ,
+.swal-icon--success__hide-corners {
+  background-color: var(--secondary-color);
 
+}
 @media (max-width:500px) {
 	.section_wrapper{
 		max-width: 100% !important;

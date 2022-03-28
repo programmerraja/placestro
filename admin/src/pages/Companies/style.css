@@ -87,6 +87,12 @@
 .flex2 {
   flex: 5;
 }
+.icon{
+  margin: 0 0.5rem;
+}
+a{
+  cursor: pointer;
+}
 
 /* media query for mobile phones */
 @media (max-width: 700px) {

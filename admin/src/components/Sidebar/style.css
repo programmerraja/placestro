@@ -38,9 +38,6 @@
   display: inline-flex;
 }
 
-h3 {
-  padding-left: 30px;
-}
 
 .icons {
   color: var(--font-color);

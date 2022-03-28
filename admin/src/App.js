@@ -16,6 +16,8 @@ import SquareLoader from './components/SquareLoader';
 //pages
 import Home from './pages/Home';
 import Companies from './pages/Companies';
+import Colleges from './pages/Colleges';
+
 
 import Signin from "./pages/Signin";
 
@@ -23,6 +25,10 @@ import AddReview from "./pages/AddReview";
 import Reviews from "./pages/Reviews";
 import UserReviews from "./pages/UserReviews";
 import EditReviews from "./pages/EditReviews";
+import EditCompany from "./pages/EditCompany";
+import EditCollege from "./pages/EditCollege";
+
+
 import Users from "./pages/Users";
 
 import Logout from "./pages/Logout";
@@ -59,6 +65,7 @@ function App(props) {
 
           <Route exact path="/placestroAdmin/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
           <ProtectedRoute exact path="/placestroAdmin/companies" component={Companies} />
+          <ProtectedRoute exact path="/placestroAdmin/colleges" component={Colleges} />
           <ProtectedRoute exact path="/placestroAdmin/company/reviews/:companyId"  component={Reviews}/>
 
           <ProtectedRoute path="/placestroAdmin/user/logout"  component={()=>{return(<Logout setUser={setUser}/>)}}/>
@@ -66,8 +73,11 @@ function App(props) {
           
           <ProtectedRoute path="/placestroAdmin/user/addReview"  component={AddReview} />
           <ProtectedRoute path="/placestroAdmin/user/userReviews/:userId"  component={UserReviews} />
-          <ProtectedRoute path="/placestroAdmin/user/edit/review/:reviewId"  
-          component={EditReviews} />
+          <ProtectedRoute path="/placestroAdmin/user/edit/review/:reviewId"  component={EditReviews} />
+          <ProtectedRoute path="/placestroAdmin/edit/company/:companyId"  component={EditCompany} />
+          <ProtectedRoute path="/placestroAdmin/edit/college/:collegeId"  component={EditCollege} />
+
+
         </Switch>
         </div>
           </div>

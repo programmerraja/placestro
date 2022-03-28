@@ -9,6 +9,34 @@ const auth = require("../middleware/auth.js");
 router.post("/user/signin",
 			adminController.signIn);
 
+router.get("/college/list",
+			adminController.getCollegeList);
+
+router.get("/college/:collegeId",
+			auth.isAuthenticatedUser(),
+			auth.isAdmin,
+			adminController.getCollegeData);
+
+router.post("/college/:collegeId",
+			auth.isAuthenticatedUser(),
+			auth.isAdmin,
+			adminController.updateCollegeData);
+
+
+
+router.get("/college/delete/:collegeId",
+			adminController.deleteCollege);
+
+router.get("/company/:companyId",
+			auth.isAuthenticatedUser(),
+			auth.isAdmin,
+			adminController.getCompanyData);
+
+router.post("/company/:companyId",
+			auth.isAuthenticatedUser(),
+			auth.isAdmin,
+			adminController.updateCompanyData);
+
 router.get("/user/getCounts",
 			auth.isAuthenticatedUser(),
 			auth.isAdmin,

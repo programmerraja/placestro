@@ -46,7 +46,7 @@ function UserReviews(){
   const deleteReview=(review_id)=>{
      swal({
       title: "Are you sure?",
-      text: "You want to delete this review.",
+      text: "You want to delete this user.",
       buttons: ["No", "Yes"],
       dangerMode: true,
     }).then((confirm) => {
@@ -86,8 +86,10 @@ function UserReviews(){
             !loading && reviews.map((review)=>{
               return(
                   <ReviewCard 
-                      key={review.user.name}
+                      key={review.user[0].name}
                       {...review}
+                      user={review.user[0]}
+                      myCompany={review.company[0]}
                       deleteReview={deleteReview}
                       isEditing={true}/>
                 ) 

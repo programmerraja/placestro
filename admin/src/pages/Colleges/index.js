@@ -20,10 +20,10 @@ const querys={
 	lname:{value:"name",type:1}
 }
 
-function Companies(){
-  const [company_lists,setCompanyLists]=useState([]);
-  const [cache_company_lists,setCacheCompanyLists]=useState([]);
+function Colleges(){
   const [college_lists,setCollegeLists]=useState([]);
+//   const [cache_college_lists,setCacheCompanyLists]=useState([]);
+//   const [college_lists,setCollegeLists]=useState([]);
 
   const[search_content,setSearchContent]=useState("");
   const[sort_by,setSortBy]=useState();
@@ -34,13 +34,13 @@ function Companies(){
   let isFind=0;
 
   useEffect(()=>{
-  	API.getCompanyList()
+  	API.getCollegeList()
   	.then((res)=>{
 		setLoading(false);
         if(res.data.status==="sucess"){
-              setCompanyLists(res.data.list.company_list);
-			  setCacheCompanyLists([...res.data.list.company_list])
-              setCollegeLists(res.data.list.college_list);
+              setCollegeLists(res.data.list);
+			//   setCacheCompanyLists([...res.data.list.company_list])
+            //   setCollegeLists(res.data.list.college_list);
          }
          else{
          	errorHandler(true,res.data.msg);
@@ -80,46 +80,21 @@ function Companies(){
 	    });
 	}
   }
-  const FilteredCollegeList=(filter_by)=>{
-	if(filter_by){
-		 let query={college_id:filter_by}
-		 if(sort_by){
-			  query= {...query,...querys[sort_by]}	 	
-		 }
-		 API.getFilteredCompanyList(query)
-			  .then((res)=>{
-				  if(res.data.status==="sucess"){
-					  setCompanyLists(res.data.list);
-				  }
-				  else{
-					  errorHandler(true,res.data.msg);
-				  }
-			  })
-			  .catch((res)=>{
-				if(res.data && res.data.msg){
-						errorHandler(true,res.data.msg);
-				}else{
-						errorHandler(true);
-				}
-			  });
-	}else{
-		setCompanyLists([...cache_company_lists]);
-	}
- }
+ 
   const search=(val)=>{
   		setSearchContent(val);
-  		company_lists.forEach((companiesObj)=>{
-  			console.log(companiesObj.name.startsWith(val.toLowerCase()))
-  			if(!companiesObj.name.toLowerCase().startsWith(val.toLowerCase())){
-  				companiesObj.isShow=true;
+  		college_lists.forEach((collegeObj)=>{
+  			console.log(collegeObj.name.startsWith(val.toLowerCase()))
+  			if(!collegeObj.name.toLowerCase().startsWith(val.toLowerCase())){
+  				collegeObj.isShow=true;
   			}
   			else{
-  				companiesObj.isShow=false;
+  				collegeObj.isShow=false;
   			}
   		})
   }
 
- const deleteCompany=(company_id)=>{
+ const deleteCollege=(college_id)=>{
      swal({
       title: "Are you sure?",
       text: "You want to delete this company.",
@@ -128,22 +103,23 @@ function Companies(){
     }).then((confirm) => {
       if (confirm) {
         setLoading(true);
-        API.deleteCompany(company_id)
+        API.deleteCollege(college_id)
         .then((res)=>{
             setLoading(false);
             if(res.data.status==="sucess"){
-              let new_company=[]
-              company_lists.forEach(company_obj=>{
-                if(company_obj._id!=company_id){
-                  new_company.push(company_obj)
+              let new_college=[]
+              college_lists.forEach(college_obj=>{
+                if(college_obj._id!=college_id){
+                  new_college.push(college_obj)
                 }
               });
-              setCompanyLists(new_company);
+              setCollegeLists(new_college);
               errorHandler(false,res.data.msg);
             }
         
         })
         .catch((res)=>{
+            console.log(res)
           setLoading(false);
           if(res.data && res.data.msg){
               errorHandler(true,res.data.msg);
@@ -184,45 +160,31 @@ function Companies(){
 			                  <option value="hname">Name(desc)</option>
 		                 </select>
 	          </div>
-	         <div className="filter_option-wrapper">
-						 <label className="filter_option-label">
-		                   <span>Filter by: </span></label>
-						  				 <select className="filter_option" 
-						  				 				 value={filter_by} 
-		                           onChange={(e)=>{
-		                           setFilterBy(e.target.value);
-		                           FilteredCollegeList(e.target.value);}}>
-		                     	    <option value="">None</option>
-		                     	    {college_lists.map((college)=>{
-		                     		    return(<option key={college.code} value={college._id}>{college.name}</option>)
-		                     	       })
-		                           }
-		                 </select>
-	                 </div>
-				 </div>
-			    	{
-				    	 company_lists.length>0
+              </div>
+	            	{
+				    	 college_lists.length>0
 				    	?
 				    	(
 				    		<div className="companies_content-wrapper">
-					    		{company_lists.map((companiesObj,index)=>
+					    		{college_lists.map((collegeObj,index)=>
 					    		{
-					    			if(!companiesObj.isShow){
+					    			if(!collegeObj.isShow){
 					    				isFind=1;
 						    			return(
-						    				<div className="companies_content" key={companiesObj.name}>
-						    				  <Link to={"/placestroAdmin/company/reviews/"+companiesObj._id} className="link flex2"> 
-						    					<p className="companies_content-text ">{index+1}.{companiesObj.name}</p>
+						    				<div className="companies_content" key={collegeObj.name}>
+						    				  <Link to={"/placestroAdmin/college/reviews/"+collegeObj._id} className="link flex2"> 
+						    					<p className="companies_content-text ">{index+1}.{collegeObj.name}</p>
 						    				  </Link>
-						    					<p className="companies_content-rating flex1">{companiesObj.rating && companiesObj.noOfReviews?(companiesObj.rating/companiesObj.noOfReviews).toFixed(1):0}<i className="far fa-star"></i> </p>
-						    					<p className="companies_content-review flex1">{companiesObj.noOfReviews}<i className="fas fa-user-friends"></i></p>
-												<div className="edit_icon icon">
-													<Link to={"/placestroAdmin/edit/company/"+companiesObj._id}>
+						    					<p className="companies_content-review flex1">{collegeObj.noOfUsers}<i className="fas fa-user-friends"></i></p>
+						    					<p className="companies_content-review flex1">{collegeObj.noOfReviews}<i className="fas fa-user-friends"></i></p>
+												
+                                                <div className="edit_icon icon">
+													<Link to={"/placestroAdmin/edit/college/"+collegeObj._id}>
 									             		 <i className="fas fa-edit" ></i>
 													</Link>
 									             </div>
 												 <div className="edit_icon icon">
-									             	 <i className="fas fa-trash-alt" onClick={()=>{deleteCompany(companiesObj._id)}}></i>
+									             	 <i className="fas fa-trash-alt" onClick={()=>{deleteCollege(collegeObj._id)}}></i>
 									             </div>
 						    				</div>
 						    			)
@@ -231,7 +193,7 @@ function Companies(){
 
 					    	}
 					    	{!isFind && (<div className="companies_content">
-						    					<p className="companies_content-text">No compaines find with name {search_content}</p>
+						    					<p className="companies_content-text">No college find with name {search_content}</p>
 						    				</div>)}
 						   </div>
 				    	)
@@ -255,4 +217,4 @@ function Companies(){
 	}
 }
 
-export default Companies;
+export default Colleges;

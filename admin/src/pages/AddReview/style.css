@@ -87,6 +87,7 @@
     border: 0;
     width: 90px;
     border-radius: 2px;
+    cursor: pointer;
 }
 .add_review-input,
 .add_review-textarea{
