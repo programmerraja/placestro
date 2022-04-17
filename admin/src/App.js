@@ -16,8 +16,7 @@ import SquareLoader from './components/SquareLoader';
 //pages
 import Home from './pages/Home';
 import Companies from './pages/Companies';
-import Colleges from './pages/Colleges';
-
+import Analytics from './pages/Analytics';
 
 import Signin from "./pages/Signin";
 
@@ -27,9 +26,11 @@ import UserReviews from "./pages/UserReviews";
 import EditReviews from "./pages/EditReviews";
 import EditCompany from "./pages/EditCompany";
 import EditCollege from "./pages/EditCollege";
+import PlacedStudents from "./pages/PlacedStudents";
 
 
 import Users from "./pages/Users";
+import Admins from "./pages/Admins";
 
 import Logout from "./pages/Logout";
 // import NotFound from "./pages/NotFound";
@@ -51,7 +52,7 @@ function App(props) {
       
       <Router>
       <Nav user={API.isAuth()}/>
-        <div className="d-flex">
+        <div className="d-flex2">
         <Sidebar />
         <div
             style={{
@@ -61,15 +62,17 @@ function App(props) {
             className="section_wrapper"
           >
         <Switch>
-          <ProtectedRoute exact path="/placestroAdmin" component={Home}/>
+          <ProtectedRoute exact path="/" component={Home}/>
 
           <Route exact path="/placestroAdmin/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
           <ProtectedRoute exact path="/placestroAdmin/companies" component={Companies} />
-          <ProtectedRoute exact path="/placestroAdmin/colleges" component={Colleges} />
+          <ProtectedRoute exact path="/placestroAdmin/analytics" component={Analytics} />
           <ProtectedRoute exact path="/placestroAdmin/company/reviews/:companyId"  component={Reviews}/>
 
           <ProtectedRoute path="/placestroAdmin/user/logout"  component={()=>{return(<Logout setUser={setUser}/>)}}/>
           <ProtectedRoute path="/placestroAdmin/users/"  component={Users} />
+          <ProtectedRoute path="/placestroAdmin/admins/"  component={Admins} />
+          <ProtectedRoute path="/placestroAdmin/placedStudents/:companyId"  component={PlacedStudents} />
           
           <ProtectedRoute path="/placestroAdmin/user/addReview"  component={AddReview} />
           <ProtectedRoute path="/placestroAdmin/user/userReviews/:userId"  component={UserReviews} />

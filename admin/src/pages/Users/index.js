@@ -25,15 +25,6 @@ import errorHandler from "../../utils/errorHandler";
 
 import "./style.css";
 
-const querys={
-	hrating:{value:"rating",type:-1},
-	lrating:{value:"rating",type:1},
-	hreview:{value:"noOfReviews",type:-1},
-	lreview:{value:"noOfReviews",type:1},
-	hname:{value:"name",type:-1},
-	lname:{value:"name",type:1}
-}
-
 
 const useStyles = makeStyles({
     table: {
@@ -56,13 +47,14 @@ function Users(){
    const classes = useStyles();
    const [loading, setLoading] = useState(true);
    const[search_content,setSearchContent]=useState("");
+   const [sortBy,setSortBy]=useState({department:"",passedout:""});
    const [users,setUsers]=useState([]);
    const [page, setPage] = useState(1);
    const [limit, setLimit] = useState(10);
    const [count, setCount] = useState(0);
 
    useEffect(() => {
-    API.getAllUsers(page, limit)
+    API.getAllUsers(page, limit,sortBy)
       .then((res) => {
         setLoading(false);
         setUsers(res.data.users);
@@ -77,7 +69,7 @@ function Users(){
 
    useEffect(() => {
     setLoading(true);
-    API.getAllUsers(page,limit)
+    API.getAllUsers(page,limit,sortBy)
       .then((res) => {
         setLoading(false);
         setUsers(res.data.users);
@@ -145,6 +137,20 @@ function Users(){
     setUsers(new_users);
     setSearchContent(val);
   }
+  const sortUsers=(sort_by)=>{
+      setLoading(true);
+      API.getAllUsers(page,limit,sort_by)
+      .then((res) => {
+        setLoading(false);
+        setUsers(res.data.users);
+        setCount(res.data.count);
+      })
+      .catch((error) => {
+        setLoading(false);
+        setUsers([]);
+        
+      });
+  }
 
   return (
     <div>
@@ -152,7 +158,7 @@ function Users(){
       <Box m={5}>
         <Container maxWidth="false">
            <Box m={1}>
-                <h3 >All Users</h3>
+                <h3 >All Students</h3>
                 <input type="text" 
                     className="companies_search" 
                     placeholder="Search here.."
@@ -161,21 +167,30 @@ function Users(){
                 />
             </Box>
             <Box display="flex">
+              
               <Box className="filter_option-wrapper">
-                        <label className="filter_option-label"><span>Sort By: </span></label>
-                                  <select className="filter_option" >
-                                      <option value="">None</option>
-                                      <option value="hrating">Rating High to Low</option>
-                                      <option value="lrating">Rating Low to High</option>
-                                      <option value="hreview">Reviews High to Low</option>
-                                      <option value="lreview">Reviews Low to High</option>
-                                      <option value="lname">Name(asec)</option>
-                                      <option value="hname">Name(desc)</option>
-                                </select>
+                    <label className="filter_option-label"><span>Department: </span></label>
+                              <select className="filter_option" 
+                              onChange={(e)=>{
+		                          	setSortBy({...sortBy,department:e.target.value});
+		                          	sortUsers({...sortBy,department:e.target.value})}}>
+                                      <option value="">All</option>
+                                      <option value="CSE">CSE</option>
+                                      <option value="EEE">EEE</option>
+                                      <option value="ECE">ECE</option>
+                                      <option value="MECH">MECH</option>
+                                      <option value="CIVIL">CIVIL</option>
+                            </select>
               </Box>
               <Box className="filter_option-wrapper">
-                    <label className="filter_option-label"><span>Filter by: </span></label>
-                              <select className="filter_option">
+                    <label className="filter_option-label"><span>Passed Out Year: </span></label>
+                              <select className="filter_option"
+                               onChange={(e)=>{
+		                          	setSortBy({...sortBy,passedOut:e.target.value});
+		                          	sortUsers({...sortBy,passedOut:e.target.value})}}
+                              >
+                                      <option value="">All</option>
+                                      <option value="2022">2022</option>
                             </select>
               </Box>
           </Box>

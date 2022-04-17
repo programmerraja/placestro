@@ -7,13 +7,19 @@ export default {
   getCounts:function () {
     return axios.get("/admin/user/getCounts");
   },
-  getAllUsers: function (page,limit) {
-    return axios.get(
-      "/admin/user/getAllUsers/?limit=" +
-        limit +
-        "&page=" +
-        page
-    );
+  getAllUsers: function (page,limit,sort_by,companyId) {
+    let query=`limit=${limit}&page=${page}&department=${sort_by.department}&passedout=${sort_by.passedout}`;
+    console.log(String(companyId).length)
+    companyId && String(companyId).length>4 ? query =`limit=${limit}&page=${page}&department=${sort_by.department}&passedout=${sort_by.passedout}&companyId=${companyId}`:null;
+    companyId && String(companyId).length<=4? query =`limit=${limit}&page=${page}&department=${sort_by.department}&passedout=${sort_by.passedout}&passedOut=${companyId}`:null;
+
+    return axios.get(`/admin/user/getAllUsers/?${query}`);
+  },
+  getAnalytics:function(){
+    return axios.get("/admin/user/getAnalytics/")
+  },
+  updateAnalytic:function(body){
+    return axios.post("/admin/user/updateAnalytic/",body);
   },
   deleteUser:function (user_id) {
       return axios.get("/admin/user/deleteUser/"+user_id);

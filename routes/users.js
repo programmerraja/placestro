@@ -59,4 +59,14 @@ router.get("/deleteMyReview/:reviewId",
 			auth.isAuthenticatedUser(),
 			userController.deleteMyReview);
 
+
+router.get("/getQuestion/",
+			auth.isAuthenticatedUser(),
+			userController.getQuestion);
+
+
+router.post("/submitAnswer/",
+			auth.isAuthenticatedUser(),
+			userController.submitAnswer);
+
 module.exports = router;

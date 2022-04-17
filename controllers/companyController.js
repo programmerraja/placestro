@@ -6,15 +6,8 @@ const company = {
   getCompanyList: function (req, res) {
     db.Companies.find({})
       .then((company_list) => {
-         db.Colleges
-           .find({})
-           .then((college_list) => {
-              let list={company_list,college_list}
-              res.json({ status: "sucess", list: list });
-            })
-           .catch((err) => {
-              res.json({ status: "failed", msg: "Something went wrong" });
-            });
+            let list={company_list}
+            res.json({ status: "sucess", list: list });
       })
       .catch((err) => {
         res.json({ status: "failed", msg: "Something went wrong" });

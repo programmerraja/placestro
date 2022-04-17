@@ -14,7 +14,7 @@ const ReviewsSchema = new mongoose.Schema(
     },
     rounds:{
       type:Number,
-    },
+    },  
     roundsDetails:{
       type:Object
     },

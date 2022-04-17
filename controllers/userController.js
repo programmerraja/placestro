@@ -139,11 +139,16 @@ verifiyMyEmail: function (req, res) {
     });
 },
 getMyProfile: function (req, res) {
-  res.json({
-    status: "sucess",
-    name: req.user.name,
-    linkdein:req.user.linkdein
-  });
+  db.Companies.find({})
+  .then((company)=>{
+     company=company.map((res)=>res.name);
+    res.json({
+      status: "sucess",
+      user:{...req.user._doc},
+      company:company
+    });
+  })
+  
 },
 updateMyProfile: async function (req, res) {
   if (req.body.name && req.body.old_password) {
@@ -164,9 +169,22 @@ updateMyProfile: async function (req, res) {
         if(req.body.linkdein_url!=user.linkdein){
           user.linkdein=req.body.linkdein_url;
         }
+
+        user["cgpa"]=req.body.cgpa;
+        user["historyOfArrear"]=req.body.historyOfArrear;
+        user["passedOut"]=req.body.passedOut;
+        user["mobileNo"]=req.body.mobileNo;
+        user["placedCompany"]=req.body.placedCompany;
+        user["noOfArrear"]=req.body.noOfArrear;
+        user["department"]=req.body.department;
+        user["marks"]=req.body.marks
+
+        // console.log(user)
+
         user
           .save()
           .then((user) => {
+            console.log(user)
             if (user) {
               res.json({
                 status: "sucess",
@@ -633,6 +651,40 @@ deleteMyReview: function (req, res) {
     res.json({ status: "failed", msg: "Review id missing" });
   }
 },
+
+getQuestion:function (req, res) {
+              let a=[{
+                "questionDesc": "Which is the prime number?<br><br>A) 403      B) 129       C) 423       D) 211",
+                "questionType": "QUANTITATIVE APPTITUDE",
+                "answer": "A"
+                },{
+                  "questionDesc": "Which is the prime number?<br><br>A) 403      B) 129       C) 423       D) 211",
+                  "questionType": "QUANTITATIVE APPTITUDE",
+                  "answer": "A"
+                  },{
+                    "questionDesc": "Which is the prime number?<br><br>A) 403      B) 129       C) 423       D) 211",
+                    "questionType": "QUANTITATIVE APPTITUDE",
+                    "answer": "A"
+                    },{
+                      "questionDesc": "Which is the prime number?<br><br>A) 403      B) 129       C) 423       D) 211",
+                      "questionType": "QUANTITATIVE APPTITUDE",
+                      "answer": "A"
+                      },{
+                "questionDesc": "Which is the prime number?<br><br>A) 403      B) 129       C) 423       D) 211",
+                "questionType": "QUANTITATIVE APPTITUDE",
+                "answer": "A"
+                }];
+              const questionObj=[
+                            "QUANTITATIVE APPTITUDE",[...a,...a,...a,...a],
+                            "Tech",[...a,...a,...a,...a],
+                            "OS",[...a,...a,...a,...a]
+                ]
+                res.json({status: "sucess", question:questionObj});
+  },
+  submitAnswer:function(req,res){
+    console.log(req.body)
+    res.send(200)
+  }     
 };
 
 module.exports = user;

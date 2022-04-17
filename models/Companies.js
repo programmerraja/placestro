@@ -16,8 +16,22 @@ const CompaniesSchema = new mongoose.Schema(
     noOfReviews:{
       type:Number
     },
-    collegeIds:{
-      type: [{type: String}]      
+    placedCount:{
+      type:Number,
+      required:true,
+      default:0      
+    },
+    status:{
+      type:String,
+    },
+    campusType:{
+      type:String,
+    },
+    lastVisitedDate:{
+      type:Date
+    },
+    upcomingDate:{
+      type:Date
     }
   },
 );

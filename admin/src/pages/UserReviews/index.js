@@ -26,7 +26,7 @@ function UserReviews(){
     API.getUserReviews(userId)
     .then((res)=>{
         setLoading(false);
-        if(res.data.status==="sucess"){
+        if(res.data.status==="success"){
               setReviews(res.data.reviews);
          }
          else{

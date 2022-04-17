@@ -17,7 +17,11 @@ passport.deserializeUser((userID, done) => {
 //  Use Strategies
 //startegy for users
 passport.use("user_local",localStrategy.userStrategy);
+passport.use("admin_local",localStrategy.adminStrategy);
+
 passport.use("user_jwt",jwtStrategy.userStrategy);
+passport.use("admin_jwt",jwtStrategy.adminStrategy);
+
 
 
 

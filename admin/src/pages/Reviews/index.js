@@ -28,7 +28,7 @@ function Reviews(){
     API.getCompanyReviews(companyId)
     .then((res)=>{
         setLoading(false);
-        if(res.data.status==="sucess"){
+        if(res.data.status==="success"){
               setReviews(res.data.reviews);
          }
          else{

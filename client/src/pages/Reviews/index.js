@@ -60,35 +60,7 @@ function Reviews({isLoggedin}){
 
   
 
-  const filteredCollegeList=(filter_by)=>{
-    console.log(filter_by)
-    if(filter_by){
-       let query={college_id:filter_by,company_id:companyId}
-       if(sort_by){
-        query= {...query,...querys[sort_by]}    
-       }
-       API.getFilteredReviews(query)
-        .then((res)=>{
-          if(res.data.status==="sucess"){
-            setReviews(res.data.reviews);
-          }
-          else{
-            errorHandler(true,res.data.msg);
-          }
-        })
-        .catch((res)=>{
-        if(res.data && res.data.msg){
-            errorHandler(true,res.data.msg);
-        }else{
-            errorHandler(true);
-        }
-        });
-    }else{
-      console.log(cache_reviews)
-      setReviews([...cache_reviews]);
-    }
-  }
-
+  
   const sortedReviewsList=(sort_by)=>{
     if(sort_by){
       let query={company_id:companyId,...querys[sort_by]}
@@ -153,21 +125,7 @@ function Reviews({isLoggedin}){
                         <option value="oldest">Oldest</option>
                      </select>
             </div>
-             <div className="filter_option-wrapper">
-             <label className="filter_option-label">
-                       <span>Filter by: </span></label>
-                       <select className="filter_option" 
-                               value={filter_by} 
-                               onChange={(e)=>{
-                               setFilterBy(e.target.value);
-                               filteredCollegeList(e.target.value);}}>
-                              <option value="">None</option>
-                              {college_lists.map((college)=>{
-                                return(<option key={college.code} value={college._id}>{college.name}</option>)
-                                 })
-                               }
-                     </select>
-                   </div>
+             
           </div>
         }
          <CardLoader loading={loading} is_review={true}/>

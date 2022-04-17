@@ -33,7 +33,7 @@ const admin = {
           if (err) {
             res.status(500).json({ status: "failed", msg: err });
           }
-          if(!user.isAdmin){
+          if(user.isAdmin){
             return res.json({ status: "failure",msg:"Invalid creds" });
           }
           //filtering user id and email for payload and setting exp time as 7 day
@@ -71,9 +71,13 @@ const admin = {
     }
   },
   updateCompanyData:function(req,res){
-    if(req.params.companyId && req.body.company_name && req.body.company_rating && req.body.company_reviews){
-    
-      db.Companies.findOneAndUpdate({_id:req.params.companyId},{name:req.body.company_name,rating:req.body.company_rating,reviews:req.body.company_reviews})
+    if(req.params.companyId && req.body.company_name && req.body.company_rating && req.body.company_reviews && req.body.company_placed_count){
+      let body={name:req.body.company_name,
+                rating:req.body.company_rating,
+                reviews:req.body.company_reviews,
+                placedCount:req.body.company_placed_count}
+                
+      db.Companies.findOneAndUpdate({_id:req.params.companyId},{body})
       .then((company)=>{
         res.json({
           status: "sucess",
@@ -147,12 +151,18 @@ const admin = {
 
     // let group=  {_id:"$reviews","numOfReviews":{$sum:1},user:{ "$push": "$$ROOT" }}
     let group={ $addFields: {numOfReviews: {$size: "$reviews"}}}
+    let match={}
+    req.query.department ? match["department"]=req.query.department:null;
+    req.query.passedout ? match["passedOutYear"]=Number(req.query.passedout):null;
+    req.query.companyId ? match["companyId"]=mongoose.Types.ObjectId(req.query.companyId):null;
+    req.query.passedOut ? match={...match,"passedOutYear":Number(req.query.passedOut),isPlaced:true} :null;
 
-    db.User.aggregate([{ $lookup: lookup },group,{$unset:"reviews"}])
+    console.log(match,req.query.department,skip)
+    db.User.aggregate([{$match:match},{ $lookup: lookup },group,{$unset:"reviews"}])
       .skip(skip)
       .limit(limit)
       .then((users) => {
-        db.User.countDocuments({})
+        db.User.countDocuments(match)
           .then((count) => {
             res.json({
               users: users,
@@ -311,86 +321,6 @@ const admin = {
         res.json({ status: "failed", list: [] });
       });
   },
-  getCollegeList:function(req,res){
-    let lookup = {from: "reviews",localField: "_id",foreignField: "collegeId",as: "reviews"};  
-    let lookup2 = {from: "users",localField: "_id",foreignField: "collegeId",as: "users"};  
-
-
-    // let group=  {_id:"$reviews","numOfReviews":{$sum:1},user:{ "$push": "$$ROOT" }}
-    let addField={ $addFields: {noOfReviews: {$size: "$reviews"},noOfUsers: {$size: "$users"}}}
-
-    db.Colleges.aggregate([{$lookup:lookup},{$lookup:lookup2},addField,{$unset:"reviews"},{$unset:"users"}])
-      .then((list) => {
-        res.json({ status: "sucess", list: list });
-      })
-      .catch((err) => {
-        res.json({ status: "failed", list: [] });
-      });
-  },
-  getCollegeData:function(req,res){
-    if(req.params.collegeId){
-      let match={_id: mongoose.Types.ObjectId(req.params.collegeId)}
-      let lookup = {from: "reviews",localField: "_id",foreignField: "collegeId",as: "reviews"};  
-      let lookup2 = {from: "users",localField: "_id",foreignField: "collegeId",as: "users"};  
-  
-  
-      // let group=  {_id:"$reviews","numOfReviews":{$sum:1},user:{ "$push": "$$ROOT" }}
-      let addField={ $addFields: {noOfReviews: {$size: "$reviews"},noOfUsers: {$size: "$users"}}}
-  
-      db.Colleges.aggregate([{$match:match},{$lookup:lookup},{$lookup:lookup2},addField,{$unset:"reviews"},{$unset:"users"}])
-        .then((list) => {
-          res.json({ status: "sucess", college: list[0] });
-        })
-        .catch((err) => {
-          res.json({ status: "failed", list: [] });
-        });
-    }
-  },
-  updateCollegeData:function(req,res){
-    if(req.params.collegeId && req.body.college_name && req.body.college_rating && req.body.college_reviews){
-    
-      db.Colleges.findOneAndUpdate({_id:req.params.collegeId},{name:req.body.college_name})
-      .then((college)=>{
-        res.json({
-          status: "sucess",
-          msg:"Sucessfully updated"
-        });
-      })
-      .catch((err)=>{
-        res
-        .send(500)
-        .json({
-          status: "failure",
-          message: "Some Error Occured. Try Again!",
-        });
-      })
-    }else{
-      res
-        .send(500)
-        .json({
-          status: "failure",
-          message: "Some Error Occured. Try Again!",
-        });
-    }
-  },
-
-  deleteCollege: function (req, res) {
-    if (req.params.collegeId) {
-      db.Colleges.findOneAndRemove({ _id: req.params.collegeId })
-        .then((collegeObj) => {
-          res.json({ status: "sucess", msg: "sucessfully deleted college" });
-        })
-        .catch((err) => {
-          logError(err.msg, err);
-          res.json({
-            status: "failed",
-            msg: "Sorry Something went wrong. Please try again",
-          });
-        });
-    } else {
-      res.json({ status: "failed", msg: "company id missing" });
-    }
-  },
   deleteUserReview: function (req, res) {
     if (req.params.reviewId) {
       db.Reviews.findOneAndRemove({ _id: req.params.reviewId })
@@ -501,6 +431,106 @@ const admin = {
     } else {
       res.json({ status: "failed", msg: "company id missing" });
     }
+  },
+  getAnalytics:function(req,res){
+    db.Analytics.find({})
+    .then((analytics) => {
+      res.json({ status: "sucess", data:analytics });
+    })
+    .catch((err) => {
+      logError(err.msg, err);
+      res.json({
+        status: "failed",
+        msg: "Sorry Something went wrong. Please try again",
+      });
+    });
+  },
+  updateAnalytic:function(req,res){
+    db.Analytics.findOneAndUpdate({_id:req.body.id},req.body)
+    .then(admin=>{
+      res.json({ status: "sucess", msg: "sucessfully updated the analytic" });
+    })
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
+  },
+  getAllAdmins: function (req, res) {
+    let limit = Number(req.query.limit) || 10;
+    let skip = req.query.page > 1 ? Number((req.query.page - 1) * limit) : 0;
+    let match={}
+    req.query.department ? match["department"]=req.query.department:null;
+
+    db.Admin.aggregate([{$match:match}])
+      .skip(skip)
+      .limit(limit)
+      .then((admins) => {
+        db.Admin.countDocuments(match)
+          .then((count) => {
+            res.json({
+              admins: admins,
+              count: count,
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+            res
+              .send(500)
+              .json({
+                status: "failure",
+                message: "Some Error Occured. Try Again!",
+              });
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(500).json({
+          status: "failure",
+          message: "Some Error Occured. Try Again!",
+        });
+      });
+  },
+  createAdmin:function(req,res){
+    db.Admin.create(req.body)
+    .then(admin=>{
+      res.json({ status: "sucess", msg: "sucessfully created the admin" });
+    })
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
+  },
+  updateAdmin:function(req,res){
+    db.Admin.findOneAndUpdate({_id:req.body.id},req.body)
+    .then(admin=>{
+      res.json({ status: "sucess", msg: "sucessfully updated the admin" });
+    })
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
+  },
+  deleteAdmin: function (req, res) {
+    db.Admin.findOneAndRemove({ _id: req.params.userId })
+      .then((user) => {
+        res.json({ status: "sucess", msg: "sucessfully deleted the admin" });
+      })
+      .catch((err) => {
+        logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+      });
   },
 };
 

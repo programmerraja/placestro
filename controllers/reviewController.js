@@ -13,50 +13,28 @@ const Review = {
       .aggregate([{$match: match},{ $lookup: lookup }])
       .then(async (reviews) => {
           //appending company data to first one
-          let company = await db.Companies.findOne({
-            _id: req.params.companyId,
-          });
-          reviews[0]["company"] = { ...company._doc };
-         
-          db.Colleges
-           .find({})
-           .then((college_list) => {
-              let hash_college_list={}
-              //college name that are in this review
-              let filtered_college_list=[]
+          let company = await db.Companies.findOne({_id: req.params.companyId});
 
-              //storing college id with name 
-              college_list.forEach((college)=>{
-                  hash_college_list[college._id]=college.name
-              })
-              //removing user detail if it is Anonymous and put as obj and adding college name
-              reviews.forEach((review) => {
-                if(hash_college_list[review.user[0].collegeId]){
-                  filtered_college_list.push(
-                      {_id:review.user[0].collegeId,
-                      name:hash_college_list[review.user[0].collegeId]
-                    })
-                    hash_college_list[review.user[0].collegeId]=null
-                }
-                if (review.isAnonymous) {
-                  review.user = { name: "anonymous", dept: "" ,isLiked:review.likes.includes(req.user.id)};
-                } else {
-                  review.user = {
-                    id:review.user[0]._id,
-                    name: review.user[0].name,
-                    department: review.user[0].department,
-                    linkdein:review.user[0].linkdein,
-                    college_name:hash_college_list[review.user[0].collegeId],
-                    isLiked:review.likes.includes(req.user.id)
-                  };
-                }
-              });
-              res.json({ status: "sucess", reviews,college_list:filtered_college_list});
-           })
-           .catch((err)=>{
-            console.log(err)
-              res.json({ status: "failed", msg: "Something went wrong" });
-           })
+          reviews[0]["company"] = { ...company._doc };
+        
+          //removing user detail if it is Anonymous and put as obj and adding college name
+          reviews.forEach((review) => {
+           
+            if (review.isAnonymous) {
+              review.user = { name: "anonymous", dept: "" ,isLiked:review.likes.includes(req.user.id)};
+            } else {
+              review.user = {
+                id:review.user[0]._id,
+                name: review.user[0].name,
+                department: review.user[0].department,
+                linkdein:review.user[0].linkdein,
+                isLiked:review.likes.includes(req.user.id)
+              };
+            }
+          });
+          
+          res.json({ status: "sucess", reviews});
+           
           Util.sendReport(
             `some one looking for reviews for the company ${reviews[0]["company"]["name"]}`,
             true,

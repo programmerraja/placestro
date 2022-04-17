@@ -1,4 +1,5 @@
 const express = require("express");
+const admin = require("../controllers/adminController.js");
 const router = express.Router();
 
 const adminController = require("../controllers/adminController.js");
@@ -9,72 +10,93 @@ const auth = require("../middleware/auth.js");
 router.post("/user/signin",
 			adminController.signIn);
 
-router.get("/college/list",
-			adminController.getCollegeList);
-
-router.get("/college/:collegeId",
-			auth.isAuthenticatedUser(),
+router.get("/user/sortBy",
+			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
-			adminController.getCollegeData);
+			adminController.getAllUsers);
 
-router.post("/college/:collegeId",
-			auth.isAuthenticatedUser(),
-			auth.isAdmin,
-			adminController.updateCollegeData);
-
-
-
-router.get("/college/delete/:collegeId",
-			adminController.deleteCollege);
+router.get("/company/list/",
+			companyController.getCompanyList);
 
 router.get("/company/:companyId",
-			auth.isAuthenticatedUser(),
+			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.getCompanyData);
 
 router.post("/company/:companyId",
-			auth.isAuthenticatedUser(),
+			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.updateCompanyData);
 
 router.get("/user/getCounts",
-			auth.isAuthenticatedUser(),
+			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.getCounts);
 
 router.get("/user/getUserReviews/:userId",
-			auth.isAuthenticatedUser(),
+			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.getUserReviews);
 
 router.get("/user/getUserReview/:reviewId",
-			auth.isAuthenticatedUser(),
+			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.getUserReview);
 
 router.get("/user/deleteUserReview/:reviewId",
-			auth.isAuthenticatedUser(),
+			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.deleteUserReview);
 
 router.post("/user/updateUserReview",
-			auth.isAuthenticatedUser(),
+			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.updateUserReview);
 
 router.get("/user/getAllUsers",
-			auth.isAuthenticatedUser(),
+			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.getAllUsers);
 
 router.get("/user/deleteUser/:userId",
-			auth.isAuthenticatedUser(),
+			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.deleteUser);
 
 router.get("/company/delete/:companyId",
-			auth.isAuthenticatedUser(),
+			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.deleteCompany);
+
+
+router.get("/user/getAnalytics",
+				auth.isAuthenticatedAdmin(),
+				auth.isAdmin,
+				adminController.getAnalytics);
+				
+router.post("/user/updateAnalytic",
+				auth.isAuthenticatedAdmin(),
+				auth.isAdmin,
+				adminController.updateAnalytic);
+
+router.post("/createAdmin",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.createAdmin);
+
+router.post("/updateAdmin",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.updateAdmin);
+
+router.get("/getAllAdmins",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.getAllAdmins);
+
+router.get("/deleteAdmin/:userId",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.deleteAdmin);
 
 module.exports = router;

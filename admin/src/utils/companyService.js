@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   getCompanyList:function(){
-    return axios.get("/company/list/");
+    return axios.get("/admin/company/list/");
   },
   getCollegeList:function(){
     return axios.get("/admin/college/list/");

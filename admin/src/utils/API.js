@@ -2,6 +2,8 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 import userService from "./userService";
+import adminService from "./adminService";
+
 import companyService from "./companyService";
 
 
@@ -78,6 +80,9 @@ export default {
   sendForgetPassword:userService.sendForgetPassword,
   sendResetPassword:userService.sendResetPassword,
 
+  getAnalytics:userService.getAnalytics,
+  updateAnalytic:userService.updateAnalytic,
+
   logout:userService.logout,
 
   getCompanyList:companyService.getCompanyList,
@@ -92,7 +97,13 @@ export default {
   getCompanyReviews:companyService.getCompanyReviews,
   deleteCompany:companyService.deleteCompany,
   getFilteredCompanyList:companyService. getFilteredCompanyList,
-  getFilteredReviews:companyService.getFilteredReviews
+  getFilteredReviews:companyService.getFilteredReviews,
+
+  getAllAdmins:adminService.getAllAdmins,
+  deleteAdmin:adminService.deleteAdmin,
+  createAdmin:adminService.createAdmin,
+  updateAdmin:adminService.updateAdmin,
+  updateProfile:adminService.updateProfile,
 };
 
 function setAuthHeader() {

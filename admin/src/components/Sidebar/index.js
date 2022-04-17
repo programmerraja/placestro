@@ -28,11 +28,9 @@ export default function Sidebar() {
 
       <div className='Sidemenu'>
         {expanded?<Link to="/placestroAdmin" className='menu-bars'><PeopleIcon className='icons'/>
-          <span className='sidebar-text'>Users</span>
+          <span className='sidebar-text'>Students</span>
         </Link>:<Link to ="/placestroAdmin/users"><PeopleIcon className="icon-collapsed"/></Link>}
       </div>
-
-      
 
       <div className='Sidemenu'>
         {expanded?<Link to="/placestroAdmin" className='menu-bars'><Business className='icons'/>
@@ -41,15 +39,21 @@ export default function Sidebar() {
       </div>
       <div className='Sidemenu'>
         {expanded?<Link to="/placestroAdmin" className='menu-bars'><Apps className='icons'/>
-          <span className='sidebar-text'>Colleges</span>
-        </Link>:<Link to ="/placestroAdmin/Colleges"><Apps className="icon-collapsed"/></Link>}
+          <span className='sidebar-text'>Analytics</span>
+        </Link>:<Link to ="/placestroAdmin/Analytics"><Apps className="icon-collapsed"/></Link>}
       </div>
-
+      <div className='Sidemenu'>
+        {expanded?<Link to="/placestroAdmin" className='menu-bars'><PeopleIcon className='icons'/>
+          <span className='sidebar-text'>Admins</span>
+        </Link>:<Link to ="/placestroAdmin/admins"><PeopleIcon className="icon-collapsed"/></Link>}
+      </div>
       <div className='Sidemenu'>
         {expanded?<Link to="/logout" className='menu-bars'><ExitToAppIcon className='icons'/>
           <span className='sidebar-text'>Logout</span>
         </Link>:<Link to ="/placestroAdmin/user/logout"><ExitToAppIcon className="icon-collapsed"/></Link>}
       </div>
+      
+
     </div>
   );
 }

@@ -5,6 +5,8 @@ import swal from "sweetalert";
 import {Box,Container} from "@material-ui/core";
 
 import SquareLoader from "../../components/SquareLoader";
+import CompanyCard from "../../components/CompanyCard";
+
 
 import API from "../../utils/API";
 import errorHandler from "../../utils/errorHandler";
@@ -23,7 +25,6 @@ const querys={
 function Companies(){
   const [company_lists,setCompanyLists]=useState([]);
   const [cache_company_lists,setCacheCompanyLists]=useState([]);
-  const [college_lists,setCollegeLists]=useState([]);
 
   const[search_content,setSearchContent]=useState("");
   const[sort_by,setSortBy]=useState();
@@ -40,7 +41,7 @@ function Companies(){
         if(res.data.status==="sucess"){
               setCompanyLists(res.data.list.company_list);
 			  setCacheCompanyLists([...res.data.list.company_list])
-              setCollegeLists(res.data.list.college_list);
+            //   setCollegeLists(res.data.list.college_list);
          }
          else{
          	errorHandler(true,res.data.msg);
@@ -184,7 +185,7 @@ function Companies(){
 			                  <option value="hname">Name(desc)</option>
 		                 </select>
 	          </div>
-	         <div className="filter_option-wrapper">
+	         {/* <div className="filter_option-wrapper">
 						 <label className="filter_option-label">
 		                   <span>Filter by: </span></label>
 						  				 <select className="filter_option" 
@@ -198,7 +199,7 @@ function Companies(){
 		                     	       })
 		                           }
 		                 </select>
-	                 </div>
+	                 </div> */}
 				 </div>
 			    	{
 				    	 company_lists.length>0
@@ -210,21 +211,7 @@ function Companies(){
 					    			if(!companiesObj.isShow){
 					    				isFind=1;
 						    			return(
-						    				<div className="companies_content" key={companiesObj.name}>
-						    				  <Link to={"/placestroAdmin/company/reviews/"+companiesObj._id} className="link flex2"> 
-						    					<p className="companies_content-text ">{index+1}.{companiesObj.name}</p>
-						    				  </Link>
-						    					<p className="companies_content-rating flex1">{companiesObj.rating && companiesObj.noOfReviews?(companiesObj.rating/companiesObj.noOfReviews).toFixed(1):0}<i className="far fa-star"></i> </p>
-						    					<p className="companies_content-review flex1">{companiesObj.noOfReviews}<i className="fas fa-user-friends"></i></p>
-												<div className="edit_icon icon">
-													<Link to={"/placestroAdmin/edit/company/"+companiesObj._id}>
-									             		 <i className="fas fa-edit" ></i>
-													</Link>
-									             </div>
-												 <div className="edit_icon icon">
-									             	 <i className="fas fa-trash-alt" onClick={()=>{deleteCompany(companiesObj._id)}}></i>
-									             </div>
-						    				</div>
+						    				<CompanyCard companiesObj={companiesObj}/>
 						    			)
 						    		}
 					    		})

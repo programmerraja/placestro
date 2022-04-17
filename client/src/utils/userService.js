@@ -7,6 +7,12 @@ export default {
   signUp: function (userCred) {
     return axios.post("/user/signup/",userCred);
   },
+  getQuestion:function(){
+    return axios.get("/user/getQuestion");
+  },
+  submitAnswer:function(answer){
+    return axios.post("/user/submitAnswer",answer)
+  },
   verfiyEmail:function(user_id){
     return axios.get("/user/verifiyMyEmail/"+user_id);
   },

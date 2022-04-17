@@ -22,19 +22,45 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required:true
     },
-    collegeId:{
-      type: ObjectId,
-      ref: "Colleges",
+    marks:{
+      type: Object,
+      default:{SSLC:"",HSSLC:"",sem1:"",sem2:"",sem3:"",sem4:"",sem5:"",sem6:"",sem7:"",sem8:""}
+    },
+    cgpa:{
+      type:Number
+    },
+    noOfArrear:{
+      type:Number
+    },
+    historyOfArrear:{
+      type:Number
+    },
+    project:{
+      type:Array
+    },
+    passedOut:{
+      type:Number
     },
     linkdein:{
       type:String
     },
-    isEmailVerified:{
+    mobileNo:{
+      type:Number
+    },
+    isPlaced:{
       type:Boolean,
       default:false
     },
-    isAdmin:{
-      type:Number,
+    placedCompany:{
+      type:String
+    },
+    companyId:{
+      type: ObjectId,
+      ref: "Compaines",
+    },
+    isEmailVerified:{
+      type:Boolean,
+      default:false
     }, 
     passwordResetToken:{
       type:String

@@ -22,7 +22,6 @@ function Companies(){
   const [company_lists,setCompanyLists]=useState([]);
   const [cache_company_lists,setCacheCompanyLists]=useState([]);
 
-  const [college_lists,setCollegeLists]=useState([]);
 
   const[search_content,setSearchContent]=useState("");
   const[sort_by,setSortBy]=useState();
@@ -38,7 +37,6 @@ function Companies(){
         if(res.data.status==="sucess"){
               setCompanyLists(res.data.list.company_list);
               setCacheCompanyLists([...res.data.list.company_list])
-              setCollegeLists(res.data.list.college_list);
          }
          else{
          	errorHandler(true,res.data.msg);
@@ -82,32 +80,7 @@ function Companies(){
 	return new_list;
   }
 
-  const FilteredCollegeList=(filter_by)=>{
-  	if(filter_by){
-  		 let query={college_id:filter_by}
-  		 if(sort_by){
-				query= {...query,...querys[sort_by]}	 	
-  		 }
-  		 API.getFilteredCompanyList(query)
-				.then((res)=>{
-					if(res.data.status==="sucess"){
-						setCompanyLists(res.data.list);
-					}
-					else{
-						errorHandler(true,res.data.msg);
-					}
-				})
-				.catch((res)=>{
-				if(res.data && res.data.msg){
-						errorHandler(true,res.data.msg);
-				}else{
-						errorHandler(true);
-				}
-				});
-  	}else{
-  		setCompanyLists([...cache_company_lists]);
-  	}
-  }
+  
   const sortedCompanyList=(sort_by)=>{
   	if(sort_by){
 	  	let query={...querys[sort_by]}
@@ -185,21 +158,7 @@ function Companies(){
 			                  <option value="hname">Name(desc)</option>
 		                 </select>
 	          </div>
-	           <div className="filter_option-wrapper">
-						 <label className="filter_option-label">
-		                   <span>Filter by: </span></label>
-						  				 <select className="filter_option" 
-						  				 				 value={filter_by} 
-		                           onChange={(e)=>{
-		                           setFilterBy(e.target.value);
-		                           FilteredCollegeList(e.target.value);}}>
-		                     	    <option value="">None</option>
-		                     	    {college_lists.map((college)=>{
-		                     		    return(<option key={college.code} value={college._id}>{college.name}</option>)
-		                     	       })
-		                           }
-		                 </select>
-	                 </div>
+	           
 					</div>
 			    	<Loader  loading={loading}/>
 

@@ -13,7 +13,7 @@ body{
   background-color: var(--secondary-color);
   font-family: 'Poppins',sans-serif;
 }
-.d-flex{
+.d-flex2{
 	display: flex;
 	align-items: flex-start;
 }

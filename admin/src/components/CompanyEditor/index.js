@@ -1,6 +1,6 @@
 import {React,useState} from "react";
 
-function CompanyEditor({company_name,setCompanyName,company_rating,setCompanyRating,company_reviews,setCompanyReviews}) {
+function CompanyEditor({company_name,setCompanyName,company_rating,setCompanyRating,company_reviews,setCompanyReviews,company_placed_count,setCompanyPlacedCount}) {
     return ( <>
                 
                   <div  className="add_review-from">
@@ -42,6 +42,19 @@ function CompanyEditor({company_name,setCompanyName,company_rating,setCompanyRat
                                   className="add_review-input" 
                                   value={company_reviews}
                                   onChange={(e)=>{setCompanyReviews(e.target.value);}}
+                                  />
+                           </div>
+                   </div>
+                   <div  className="add_review-from">
+                     <label forhtml="placedcount" className="add_review-label">
+                     <span>Placed Count <span className="red_color">*</span></span></label>
+                     <div className="add_review-input-wrapper">
+                         <input  type="number" 
+                                  placeholder="Placed Count"  
+                                  name="placedcount"  
+                                  className="add_review-input" 
+                                  value={company_placed_count}
+                                  onChange={(e)=>{setCompanyPlacedCount(e.target.value);}}
                                   />
                            </div>
                    </div> 

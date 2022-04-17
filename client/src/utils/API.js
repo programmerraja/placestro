@@ -74,6 +74,8 @@ export default {
   getMyProfile:userService.getMyProfile,
   updateProfile:userService.updateProfile,
   
+  getQuestion:userService.getQuestion,
+  submitAnswer:userService.submitAnswer,
   sendForgetPassword:userService.sendForgetPassword,
   sendResetPassword:userService.sendResetPassword,
 
