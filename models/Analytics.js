@@ -4,7 +4,8 @@ const { String,Number} = mongoose.Schema.Types;
 const AnalyticsSchema = new mongoose.Schema(
   {
     year:{
-        type:Number
+        type:Number,
+        unique: true,
     },
     placedCount:{
         type:Number

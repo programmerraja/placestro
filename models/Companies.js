@@ -10,7 +10,6 @@ const CompaniesSchema = new mongoose.Schema(
     },
     rating:{
       type:Number,
-      required:true,
       default:0
     },
     noOfReviews:{
@@ -18,7 +17,6 @@ const CompaniesSchema = new mongoose.Schema(
     },
     placedCount:{
       type:Number,
-      required:true,
       default:0      
     },
     status:{

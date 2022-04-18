@@ -159,7 +159,6 @@ function Admins(){
     setAdminType(admin_type);
   }
   const saveAdmin=()=>{
-    console.log(name,email,password,department,admin_type)
     if(name && email  && department && admin_type && (password || !isCreate)){
         let promise;
         if(isCreate){

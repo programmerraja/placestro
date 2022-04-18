@@ -2,10 +2,11 @@ import React from "react";
 import {useState,useEffect} from "react";
 import {useHistory,Link } from "react-router-dom";
 import swal from "sweetalert";
-import {Box,Container} from "@material-ui/core";
+import {Box,Container,Button} from "@material-ui/core";
 
 import SquareLoader from "../../components/SquareLoader";
 import CompanyCard from "../../components/CompanyCard";
+import CompanyPopup from "../../components/CompanyPopup";
 
 
 import API from "../../utils/API";
@@ -25,10 +26,24 @@ const querys={
 function Companies(){
   const [company_lists,setCompanyLists]=useState([]);
   const [cache_company_lists,setCacheCompanyLists]=useState([]);
+  const [showPopup, setShowPopup] = useState(false);
+
 
   const[search_content,setSearchContent]=useState("");
   const[sort_by,setSortBy]=useState();
   const[filter_by,setFilterBy]=useState();
+
+  const [id,setId]=useState("");
+
+  const [name,setName]=useState("");
+  const [rating,setRating]=useState("");
+  const [noOfReviews,setReviews]=useState("");
+  const [placedCount,setCompanyPlacedCount]=useState("");
+  const [status,setStatus]=useState("VISTITED");
+  const [campusType,setCampusType]=useState("onCampus");
+  const [upcomingDate,setUpcomingDate]=useState("");
+  const [lastVisitedDate,setLastVisitedDate]=useState("");
+  const [isCreate,setIsCreate]=useState(true);
 
 
   const [loading,setLoading]=useState(true);
@@ -81,32 +96,7 @@ function Companies(){
 	    });
 	}
   }
-  const FilteredCollegeList=(filter_by)=>{
-	if(filter_by){
-		 let query={college_id:filter_by}
-		 if(sort_by){
-			  query= {...query,...querys[sort_by]}	 	
-		 }
-		 API.getFilteredCompanyList(query)
-			  .then((res)=>{
-				  if(res.data.status==="sucess"){
-					  setCompanyLists(res.data.list);
-				  }
-				  else{
-					  errorHandler(true,res.data.msg);
-				  }
-			  })
-			  .catch((res)=>{
-				if(res.data && res.data.msg){
-						errorHandler(true,res.data.msg);
-				}else{
-						errorHandler(true);
-				}
-			  });
-	}else{
-		setCompanyLists([...cache_company_lists]);
-	}
- }
+
   const search=(val)=>{
   		setSearchContent(val);
   		company_lists.forEach((companiesObj)=>{
@@ -154,7 +144,55 @@ function Companies(){
         });
     }
     });
-  }
+  }	
+ const editCompany=(companiesObj)=>{
+	setShowPopup(true);
+	setIsCreate(false);
+	setId(companiesObj._id)
+	setName(companiesObj.name)
+	setCompanyPlacedCount(companiesObj.placedCount)
+	setRating(companiesObj.rating);
+	setReviews(companiesObj.noOfReviews)
+	setStatus(companiesObj.status)
+	setUpcomingDate(companiesObj.upcomingDate)
+	setLastVisitedDate(companiesObj.lastVisitedDate)
+	setCampusType(companiesObj.campusType)
+
+ }
+ const setEmpty=()=>{
+	setId("")
+	setName("")
+	setCompanyPlacedCount("")
+	setRating("");
+	setReviews("")
+	setStatus("VISITED")
+	setUpcomingDate("")
+	setLastVisitedDate("")
+	setCampusType("onCampus")
+ }
+ const saveCompany=()=>{
+	if(name){
+        let promise;
+        if(isCreate){
+           promise=API.createCompany({name,rating,placedCount,noOfReviews,status,upcomingDate,lastVisitedDate,campusType})
+        }else{
+          promise=API.updateCompany({id,name,rating,placedCount,noOfReviews,status,upcomingDate,lastVisitedDate,campusType})
+        }
+        promise.then((res) => {
+            setLoading(false);
+            setShowPopup(false)
+            errorHandler(false,res.data.msg); 
+          })
+          .catch((res) => {
+            setLoading(false);
+            setShowPopup(false)
+            errorHandler(true,res.data.msg); 
+          });
+        return
+    }   
+    errorHandler(true,"Plse provide company name")
+    
+ }
 
   if(!loading){
 	  return ( 
@@ -185,21 +223,9 @@ function Companies(){
 			                  <option value="hname">Name(desc)</option>
 		                 </select>
 	          </div>
-	         {/* <div className="filter_option-wrapper">
-						 <label className="filter_option-label">
-		                   <span>Filter by: </span></label>
-						  				 <select className="filter_option" 
-						  				 				 value={filter_by} 
-		                           onChange={(e)=>{
-		                           setFilterBy(e.target.value);
-		                           FilteredCollegeList(e.target.value);}}>
-		                     	    <option value="">None</option>
-		                     	    {college_lists.map((college)=>{
-		                     		    return(<option key={college.code} value={college._id}>{college.name}</option>)
-		                     	       })
-		                           }
-		                 </select>
-	                 </div> */}
+			  <Box className="filter_option-wrapper">
+                    <Button onClick={()=>{setShowPopup(true);setIsCreate(true);setEmpty()}} variant="contained">Create</Button>
+              </Box>
 				 </div>
 			    	{
 				    	 company_lists.length>0
@@ -211,7 +237,7 @@ function Companies(){
 					    			if(!companiesObj.isShow){
 					    				isFind=1;
 						    			return(
-						    				<CompanyCard companiesObj={companiesObj}/>
+						    				<CompanyCard companiesObj={companiesObj} editCompany={editCompany} deleteCompany={deleteCompany}/>
 						    			)
 						    		}
 					    		})
@@ -229,6 +255,50 @@ function Companies(){
 				    	</div>
 				    	)
 			    }
+				{showPopup && isCreate && <CompanyPopup
+								name={name}
+								setName={setName}
+								rating={rating}
+								setRating={setRating}
+								noOfReviews={noOfReviews}
+								setReviews={setReviews}
+								campusType={campusType}
+								setCampusType={setCampusType}
+								placedCount={placedCount}
+								status={status}
+								setStatus={setStatus}
+								upcomingDate={upcomingDate}
+								setUpcomingDate={setUpcomingDate}
+								lastVisitedDate={lastVisitedDate}
+								setLastVisitedDate={setLastVisitedDate}
+								setCompanyPlacedCount={setCompanyPlacedCount}
+								open={showPopup}
+								setShowPopup={setShowPopup}
+								saveCompany={saveCompany}
+								title={"Create Company"}
+							/>}
+				{showPopup && !isCreate && <CompanyPopup
+								name={name}
+								setName={setName}
+								rating={rating}
+								setRating={setRating}
+								noOfReviews={noOfReviews}
+								setReviews={setReviews}
+								campusType={campusType}
+								setCampusType={setCampusType}
+								placedCount={placedCount}
+								status={status}
+								setStatus={setStatus}
+								upcomingDate={upcomingDate}
+								setUpcomingDate={setUpcomingDate}
+								lastVisitedDate={lastVisitedDate}
+								setLastVisitedDate={setLastVisitedDate}
+								setCompanyPlacedCount={setCompanyPlacedCount}
+								open={showPopup}
+								setShowPopup={setShowPopup}
+								saveCompany={saveCompany}
+								title={"Update Company"}
+							/>}
 			 </div>
 			    
 	    </>);

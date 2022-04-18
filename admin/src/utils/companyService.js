@@ -4,17 +4,11 @@ export default {
   getCompanyList:function(){
     return axios.get("/admin/company/list/");
   },
-  getCollegeList:function(){
-    return axios.get("/admin/college/list/");
+  createCompany:function(body){
+    return axios.post(`/admin/createCompany/`,body);
   },
-  deleteCollege:function(collegeId){
-    return axios.get("/admin/college/delete/"+collegeId);
-  },
-  getCollegeData:function(collegeId){
-    return axios.get(`/admin/college/${collegeId}`);
-  },
-  updateCollegeData:function(data){
-    return axios.post(`/admin/college/${data.collegeId}`,data);
+  updateCompany:function(body){
+    return axios.post(`/admin/updateCompany/`,body);
   },
   getCompanyData:function(companyId){
     return axios.get(`/admin/company/${companyId}`);
@@ -32,7 +26,7 @@ export default {
     return axios.get("/company/getReviews/"+compainyId);
   },
   deleteCompany:function(companyId){
-    return axios.get("/admin/company/delete/"+companyId);
+    return axios.get("/admin/deleteCompany/"+companyId);
   },
   getFilteredReviews:function({company_id,college_id,value,type}){
     if(value && type){

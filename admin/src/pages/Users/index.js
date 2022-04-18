@@ -16,7 +16,7 @@ import {
     Container
     } from "@material-ui/core";
 
-import {Delete} from "@material-ui/icons";
+import {Delete,Edit} from "@material-ui/icons";
 import { Pagination } from "@material-ui/lab";
 
 import API from "../../utils/API";
@@ -202,10 +202,27 @@ function Users(){
                 <TableCell align="left"  className={classes.head}>Name</TableCell>
                 <TableCell align="left" className={classes.head}>Email</TableCell>
                 <TableCell align="left" className={classes.head}>Department</TableCell>
-                <TableCell align="left" className={classes.head}>Is Email Verified</TableCell>
-                <TableCell align="left" className={classes.head}>Created At</TableCell>
+                <TableCell align="left" className={classes.head}>Email Verified</TableCell>
                 <TableCell align="left" className={classes.head}>Reviews</TableCell>
+                <TableCell align="left" className={classes.head}>SSLC</TableCell>
+                <TableCell align="left" className={classes.head}>HSSLC</TableCell>
+                <TableCell align="left" className={classes.head}>sem1</TableCell>
+                <TableCell align="left" className={classes.head}>sem2</TableCell>
+                <TableCell align="left" className={classes.head}>sem3</TableCell>
+                <TableCell align="left" className={classes.head}>sem4</TableCell>
+                <TableCell align="left" className={classes.head}>sem5</TableCell>
+                <TableCell align="left" className={classes.head}>sem6</TableCell>
+                <TableCell align="left" className={classes.head}>sem7</TableCell>
+                <TableCell align="left" className={classes.head}>sem8</TableCell>
+                <TableCell align="left" className={classes.head}>cgpa</TableCell>
+                <TableCell align="left" className={classes.head}>noOfArrear</TableCell>
+                <TableCell align="left" className={classes.head}>historyOfArrear</TableCell>
+                <TableCell align="left" className={classes.head}>passedOut</TableCell>
+                <TableCell align="left" className={classes.head}>placedCompany</TableCell>
+                <TableCell align="left" className={classes.head}>mobileNo</TableCell>
+                <TableCell align="left" className={classes.head}>Created At</TableCell>
 
+                <TableCell align="left" className={classes.head}></TableCell>
                 <TableCell align="left" className={classes.head}></TableCell>
               </TableRow>
             </TableHead>
@@ -223,9 +240,32 @@ function Users(){
                       <TableCell align="left">{user.email}</TableCell>
                       <TableCell align="left">{user.department}</TableCell>
                       <TableCell align="left">{user.isEmailVerified?"Yes":"No"}</TableCell>
-                      <TableCell align="left">{new Date(user.createdAt).toDateString()}</TableCell>
                       <TableCell align="left">{user.numOfReviews}</TableCell>
+                      <TableCell align="left">{user.marks?.SSLC}</TableCell>
+                      <TableCell align="left">{user.marks?.HSSLC}</TableCell>
+                      <TableCell align="left">{user.marks?.sem1}</TableCell>
+                      <TableCell align="left">{user.marks?.sem2}</TableCell>
+                      <TableCell align="left">{user.marks?.sem3}</TableCell>
+                      <TableCell align="left">{user.marks?.sem4}</TableCell>
+                      <TableCell align="left">{user.marks?.sem5}</TableCell>
+                      <TableCell align="left">{user.marks?.sem6}</TableCell>
+                      <TableCell align="left">{user.marks?.sem7}</TableCell>
+                      <TableCell align="left">{user.marks?.sem8}</TableCell>
+                      <TableCell align="left">{user.cgpa}</TableCell>
+                      <TableCell align="left">{user.noOfArrear}</TableCell>
+                      <TableCell align="left">{user.historyOfArrear}</TableCell>
+                      <TableCell align="left">{user.passedOut}</TableCell>
+                      <TableCell align="left">{user.placedCompany}</TableCell>
+                      <TableCell align="left">{user.mobileNo}</TableCell>
+                      <TableCell align="left">{new Date(user.createdAt).toDateString()}</TableCell>
                       <TableCell align="left" >
+                      <IconButton className="delete_icon" aria-label="delete" >
+                        <Link to={`/placestroAdmin/edit/user/${user._id}`}>
+                          <Edit />
+                        </Link>
+                        </IconButton>
+                          </TableCell>
+                          <TableCell align="left" >
                       <IconButton className="delete_icon" aria-label="delete" onClick={()=>deleteUser(user._id)}>
                           <Delete />
                         </IconButton>

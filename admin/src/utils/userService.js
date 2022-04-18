@@ -15,6 +15,15 @@ export default {
 
     return axios.get(`/admin/user/getAllUsers/?${query}`);
   },
+  getUserProfile:function(userId){
+    return axios.get(`/admin/user/getUserProfile/${userId}`)
+  },
+  updateUserProfile:function(body){
+    return axios.get(`/admin/user/updateUserProfile/`,body)
+  },
+  generateAnalytics:function(year){
+    return axios.get("/admin/user/generateAnalytics/"+year);
+  },
   getAnalytics:function(){
     return axios.get("/admin/user/getAnalytics/")
   },

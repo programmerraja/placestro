@@ -82,15 +82,17 @@ export default {
 
   getAnalytics:userService.getAnalytics,
   updateAnalytic:userService.updateAnalytic,
+  generateAnalytics:userService.generateAnalytics,
+
+  getUserProfile:userService.getUserProfile,
+  updateUserProfile:userService.updateUserProfile,
 
   logout:userService.logout,
 
   getCompanyList:companyService.getCompanyList,
 
-  getCollegeList:companyService.getCollegeList,
-  getCollegeData:companyService.getCollegeData,
-  updateCollegeData:companyService.updateCollegeData,
-  deleteCollege:companyService.deleteCollege,
+  createCompany:companyService.createCompany,
+  updateCompany:companyService.updateCompany,
 
   getCompanyData:companyService.getCompanyData,
   updateCompanyData:companyService.updateCompanyData,

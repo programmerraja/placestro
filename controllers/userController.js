@@ -178,26 +178,42 @@ updateMyProfile: async function (req, res) {
         user["noOfArrear"]=req.body.noOfArrear;
         user["department"]=req.body.department;
         user["marks"]=req.body.marks
-
-        // console.log(user)
-
+        if(req.body.placedCompany){
+          db.Companies.findOne({name:req.body.placedCompany})
+          .then(async (comp)=>{
+            if(!comp){
+              comp =await db.Companies.create({name:req.body.placedCompany,placedCount:1})
+            }
+            user.companyId=comp._id;
+            user
+              .save()
+              .then((user) => {
+                  res.json({
+                    status: "sucess",
+                    name: user.name,
+                    msg: "sucessfully updated",
+                  });
+              })
+              .catch((err) => {
+                let msg = Util.dbErrorHandler(err);
+                res.json({
+                  status: "failed",
+                  name: req.user.name,
+                  msg: msg,
+                });
+              });
+            return;
+          })
+          return;
+        }
         user
           .save()
           .then((user) => {
-            console.log(user)
-            if (user) {
               res.json({
                 status: "sucess",
                 name: user.name,
                 msg: "sucessfully updated",
               });
-            } else {
-              res.json({
-                status: "failed",
-                name: req.user.name,
-                msg: "Something went wrong",
-              });
-            }
           })
           .catch((err) => {
             let msg = Util.dbErrorHandler(err);

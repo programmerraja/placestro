@@ -21,7 +21,7 @@ function AnalyticsCard({analyticsObj,showEdit})  {
           </div>
          <div className="wrapper">
                 <p className="review_text-bold">Placed Count:
-                    {analyticsObj.placeCount}
+                    {analyticsObj.placedCount}
                 </p>
          </div>
           <div className="wrapper">

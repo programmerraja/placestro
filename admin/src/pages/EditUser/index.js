@@ -1,5 +1,6 @@
 import React from "react";
 import {useState,useEffect} from "react";
+import {useHistory ,useParams} from "react-router-dom";
 import SquareLoader from  "../../components/SquareLoader";
 import Input from  "../../components/Input";
 
@@ -8,10 +9,10 @@ import Input from  "../../components/Input";
 import API from "../../utils/API";
 import errorHandler from "../../utils/errorHandler";
 
-import user from "../../img/user.svg";
+import "./style.css"
 
-const msg="Your profile is updating please wait."
-const msg2="Please wait we getting Your profile."
+const msg="User profile is updating please wait."
+const msg2="Please wait we getting user profile."
 
 function UserProfile() {
    const [name,setName]=useState("");
@@ -28,15 +29,17 @@ function UserProfile() {
 
    const [linkdein_url,setLinkdeinUrl]=useState("");
 
-   const [old_password,setOldPassword]=useState("");
-   const [new_password,setNewPassword]=useState("");
+   const { userId } = useParams();
 
    const [loading,setLoading]=useState("initial");
 
+   useEffect(()=>{
+      getProfile();
+    },[userId])
+ 
    const handleClick=()=> {
-    if(old_password){
        setLoading(true)
-        API.updateProfile({name,old_password,new_password,linkdein_url,cgpa,passedOut,noOfArrear,historyOfArrear,placedCompany,mobileNo,department,marks})
+        API.updateUserProfile({userId,name,linkdein_url,cgpa,passedOut,noOfArrear,historyOfArrear,placedCompany,mobileNo,department,marks})
           .then((res)=>{
               setLoading(false);
               if(res.data.status==="sucess"){
@@ -50,16 +53,14 @@ function UserProfile() {
              setLoading(false);
              errorHandler(true,res.data.msg);
           });
-    }else{
-      errorHandler(true,"plse provide old password");
-    }
    }
 
    const getProfile=()=>{
-    let res= API.getMyProfile()
+    console.log("haiai")
+    API.getUserProfile(userId)
     .then((res)=>{
-      setLoading(false);
-      if(res.data.status==="sucess"){
+        console.log(res)
+        setLoading(false);
         setName(res.data.user.name);
         setLinkdeinUrl(res.data.user.linkdein);
         setDepartment(res.data.user.department);
@@ -70,8 +71,7 @@ function UserProfile() {
         setMobileNo(res.data.user.mobileNo);
         setPlacedCompany(res.data.user.placedCompany);
         setCompanyName(res.data.company);
-        setMarks(res.data.user.marks)
-      }
+        setMarks(res.data.user.marks);
     })
     .catch((res)=>{
         console.log(res)
@@ -85,14 +85,10 @@ function UserProfile() {
     
    }
    
-   useEffect(()=>{
-      if(!name){
-        getProfile();
-      }
-   },[])
+
 return ( <>
           <SquareLoader  loading={loading} msg={loading==="initial"?msg2:msg}/>
-          <h3 style={{textAlign:"center"}}> Your Profile</h3>
+          <h3 style={{textAlign:"center"}}> User Profile</h3>
           <div className="profile_container">
               <div className="form_container" >
                <div  style={{display:"flex",flexWrap:"wrap"}}>
@@ -138,21 +134,11 @@ return ( <>
                   </div>
                   <div className="form_input">
                     <label for="name"> Placed Company</label>
-                    <Input name={placedCompany} setName={setPlacedCompany} list={company_names}/>
+                    {/* <Input name={placedCompany} setName={setPlacedCompany} list={company_names}/> */}
                   </div>
                   <div className="form_input">
                    <label for="linkdein"> Linkdein URL </label>
                    <input type="text" name="linkdein"  onChange={(e)=>{setLinkdeinUrl(e.target.value);}} value={linkdein_url} />
-                  </div>
-
-                  <div className="form_input">
-                    <label for="old_password"> Old Password<span className="red_color">*</span> </label>
-                    <input type="old_password" name="old_password" placeholder="Old password" required="true" onChange={(e)=>{setOldPassword(e.target.value);}} value={old_password} />
-                  </div>
-
-                  <div className="form_input">
-                    <label for="new_password"> New Password </label>
-                    <input type="new_password" name="new_password" placeholder="New password" onChange={(e)=>{setNewPassword(e.target.value);}} value={new_password} />
                   </div>
               </div>
               <div  className="myform" style={{width:"50%"}}>
@@ -168,12 +154,11 @@ return ( <>
                 </div>
                 </div>
                   <div className="form_button">
-                      <input type="submit" name="update" value="Update My Account" className="update" onClick={handleClick}/>
+                      <input type="submit" name="update" value="Update Account" className="update" onClick={handleClick}/>
                   </div>
               </div>
           </div>
           </>);
-
 }
 
 export default UserProfile;

@@ -16,6 +16,10 @@ function EditReview() {
 
    const [loading,setLoading]=useState(true);
    const [company_name,setCompanyName]=useState("");
+   const [status,setStatus]=useState("");
+   const [campusType,setCompanyType]=useState("");
+   const [upcomingDate,setUpcomingDate]=useState("");
+   const [lastVisitedDate,setLastVisitedDate]=useState("");
    const [company_rating,setCompanyRating]=useState("");
    const [company_reviews,setCompanyReviews]=useState("");
    const [company_placed_count,setCompanyPlacedCount]=useState("");

@@ -187,6 +187,21 @@ const admin = {
         });
       });
   },  
+  getUserProfile:function(req,res){
+    db.User.findOne({_id:req.params.userId})
+    .then((user)=>{
+      db.Companies.find({}).then((company)=>{
+
+        res.json({status:"sucess",user:user,company})
+      })
+    })
+  },
+  updateUserProfile:function(req,res){
+    db.User.findOneAndUpdate({_id:req.body.userId},req.body)
+    .then((user)=>{
+      res.json({status:"sucess",msg:"Sucessfully updated the user"})
+    })
+  },
   updateUserReview: function (req, res) {
     if (controllerUtil.checkReview(req.body)) {
       db.Companies.findOne({ name: req.body.name.toLowerCase() })
@@ -432,6 +447,47 @@ const admin = {
       res.json({ status: "failed", msg: "company id missing" });
     }
   },
+  generateAnalytics:function(req,res){
+    let year=req.params.year;
+    let placedCount;
+    let company=[]
+    let department={}
+    let totalStudent;
+
+    db.User.find({passedOut:year,isPlaced:true})
+    .then((user)=>{
+      placedCount=user.length;
+      company=user.map((user)=>user.placedCompany);
+      user.map((user)=>{
+        console.log(department[user.department])
+        if(department[user.department]!=undefined){
+          department[user.department]+=1;
+        }else{
+          department[user.department]=0;
+        }
+      })
+      db.User.countDocuments({passedOut:year})
+      .then((count)=>{
+        totalStudent=count;
+        console.log({year,placedCount,department,totalStudent,company})
+        db.Analytics.findOne({year}).then((an)=>{
+          if(!an){
+            db.Analytics.create({year,placedCount,department,totalStudent,company});
+          }else{
+            db.Analytics.findOneAndUpdate({year},{placedCount,department,totalStudent,company});
+          }
+        })
+        res.json({ status: "sucess", msg:"Sucessfully created" });
+      })
+    })
+    .catch((err) => {
+      logError(err.msg, err);
+      res.json({
+        status: "failed",
+        msg: "Sorry Something went wrong. Please try again",
+      });
+    });
+  },
   getAnalytics:function(req,res){
     db.Analytics.find({})
     .then((analytics) => {
@@ -448,6 +504,7 @@ const admin = {
   updateAnalytic:function(req,res){
     db.Analytics.findOneAndUpdate({_id:req.body.id},req.body)
     .then(admin=>{
+      console.log(admin,req.body)
       res.json({ status: "sucess", msg: "sucessfully updated the analytic" });
     })
     .catch((err) => {
@@ -531,6 +588,32 @@ const admin = {
           msg: "Sorry Something went wrong. Please try again",
         });
       });
+  },
+  createCompany:function(req,res){
+    db.Companies.create(req.body)
+    .then(admin=>{
+      res.json({ status: "sucess", msg: "sucessfully created the company" });
+    })
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
+  },
+  updateCompany:function(req,res){
+    db.Companies.findOneAndUpdate({_id:req.body.id},req.body)
+    .then(admin=>{
+      res.json({ status: "sucess", msg: "sucessfully updated the company" });
+    })
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
   },
 };
 

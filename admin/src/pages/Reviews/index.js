@@ -28,12 +28,7 @@ function Reviews(){
     API.getCompanyReviews(companyId)
     .then((res)=>{
         setLoading(false);
-        if(res.data.status==="success"){
-              setReviews(res.data.reviews);
-         }
-         else{
-          errorHandler(true,res.data.msg);
-         }
+        setReviews(res.data.reviews);
     })
     .catch((res)=>{
       setLoading(false);

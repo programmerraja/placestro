@@ -1,0 +1,22 @@
+canvas{
+    background-color:white;
+    border-radius: 1rem;
+    margin: 0.4rem;
+}
+.analytic_btn{
+    padding: 0.5rem;
+    margin: 0 .4rem;
+}
+.analytic-input{
+    box-sizing: border-box;
+    font-size: 15px;
+    height: 40px;
+    border-radius: 3px;
+    border: solid 1px #c4c7cc;
+    padding: 0 12px;
+    padding-right: 12px;
+    padding-left: 12px;
+    color: var(--font-color);
+    width: 200px;
+    background-color: var(--secondary-color-input);
+}

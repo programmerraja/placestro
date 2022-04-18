@@ -15,7 +15,9 @@ const querys={
 	hreview:{value:"noOfReviews",type:-1},
 	lreview:{value:"noOfReviews",type:1},
 	hname:{value:"name",type:-1},
-	lname:{value:"name",type:1}
+	lname:{value:"name",type:1},
+	VISITED:{value:"VISITED",type:"status"},
+	UPCOMING:{value:"UPCOMING",type:"status"}
 }
 
 function Companies(){
@@ -158,6 +160,21 @@ function Companies(){
 			                  <option value="hname">Name(desc)</option>
 		                 </select>
 	          </div>
+			  <div className="filter_option-wrapper">
+						 <label className="filter_option-label">
+		                   <span>Status: </span></label>
+						   <select
+		                          className="filter_option" 
+		                          onChange={(e)=>{
+		                          	setSortBy(e.target.value);
+		                          	sortedCompanyList(e.target.value);}}>
+			                  <option value="">None</option>
+			                  <option value="VISITED">Visited</option>
+			                  <option value="UPCOMING">Upcoming</option>
+							  
+
+		                 </select>
+	          </div>
 	           
 					</div>
 			    	<Loader  loading={loading}/>
@@ -176,6 +193,7 @@ function Companies(){
 							    				  <Link to={"/company/reviews/"+companiesObj._id} className="link flex2"> 
 							    					<p className="companies_content-text "><i className="far fa-building"></i>{' '}{companiesObj.name}</p>
 							    				  </Link>
+							    				  <p className="companies_content-rating flex1"><i class="fas fa-calendar"></i> {companiesObj.status?companiesObj.status:"UNKNOWN"}</p>
 							    					<p className="companies_content-rating flex1">{companiesObj.rating && companiesObj.noOfReviews?(companiesObj.rating/companiesObj.noOfReviews).toFixed(1):0}<i className="far fa-star"></i> </p>
 							    					<p className="companies_content-review flex1">{companiesObj.noOfReviews}<i className="fas fa-user-friends"></i></p>
 							    				</div>

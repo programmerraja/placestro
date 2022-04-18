@@ -25,7 +25,8 @@ import Reviews from "./pages/Reviews";
 import UserReviews from "./pages/UserReviews";
 import EditReviews from "./pages/EditReviews";
 import EditCompany from "./pages/EditCompany";
-import EditCollege from "./pages/EditCollege";
+import EditUser from "./pages/EditUser";
+
 import PlacedStudents from "./pages/PlacedStudents";
 
 
@@ -63,6 +64,7 @@ function App(props) {
           >
         <Switch>
           <ProtectedRoute exact path="/" component={Home}/>
+          <ProtectedRoute exact path="/placestroAdmin" component={Home}/>
 
           <Route exact path="/placestroAdmin/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
           <ProtectedRoute exact path="/placestroAdmin/companies" component={Companies} />
@@ -78,7 +80,7 @@ function App(props) {
           <ProtectedRoute path="/placestroAdmin/user/userReviews/:userId"  component={UserReviews} />
           <ProtectedRoute path="/placestroAdmin/user/edit/review/:reviewId"  component={EditReviews} />
           <ProtectedRoute path="/placestroAdmin/edit/company/:companyId"  component={EditCompany} />
-          <ProtectedRoute path="/placestroAdmin/edit/college/:collegeId"  component={EditCollege} />
+          <ProtectedRoute path="/placestroAdmin/edit/user/:userId"  component={EditUser} />
 
 
         </Switch>

@@ -26,7 +26,7 @@ function AdminPopup({year,setYear,placedcount,setPlacedCount,totalStudent,setTot
                    <label forhtml="attendedOn" className="add_review-label">
                    <span>placed Count <span className="red_color">*</span></span></label>
                          <div className="add_review-input-wrapper">
-                          <input  type="placedCount" 
+                          <input  type="number" 
                                   placeholder="placedCount"  
                                   name="rating"  
                                   className="add_review-input" 

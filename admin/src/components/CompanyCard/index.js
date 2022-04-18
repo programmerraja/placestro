@@ -3,12 +3,11 @@ import {Link } from "react-router-dom";
 
 import "./style.css";
 
-function companyCard({companiesObj})  {
- console.log(companiesObj)
+function companyCard({companiesObj,editCompany,deleteCompany})  {
   return ( 
     <>
         <div className="company_container">
-        <small className="margin-0">({companiesObj.compusType?companiesObj.compusType:"OnCampus"})</small>
+        <small className="margin-0">({companiesObj.campusType?companiesObj.campusType:"OnCampus"})</small>
          <div className="company_name margin-0">
             <Link to={"/placestroAdmin/company/reviews/"+companiesObj._id} className="link flex2"> 
 				<p className="companies_content-text ">{companiesObj.name}</p>
@@ -16,9 +15,9 @@ function companyCard({companiesObj})  {
             
           </div>
           <div className="edit_icon">
-           <Link to={"/placestroAdmin/edit/company/"+companiesObj._id}>
-				  <i className="fas fa-edit" ></i>
-		    </Link>
+           
+			    	  <i className="fas fa-edit" onClick={()=>{editCompany(companiesObj)}}></i>
+		  
           </div>
          
          <div className="wrapper">
@@ -29,6 +28,15 @@ function companyCard({companiesObj})  {
           <div className="wrapper">
                 <p className="review_text-bold">No Of Reviews:{companiesObj.noOfReviews}</p>
           </div>
+          {companiesObj.status && <div className="wrapper">
+                <p className="review_text-bold">Status:{companiesObj.status}</p>
+          </div>}
+          {companiesObj.upcomingDate && <div className="wrapper">
+                <p className="review_text-bold">Upcoming Date:{new Date(companiesObj.upcomingDate).toDateString()}</p>
+          </div>}
+          {companiesObj.lastVisitedDate && <div className="wrapper">
+                <p className="review_text-bold">Last Visited Date:{new Date(companiesObj.lastVisitedDate).toDateString()}</p>
+          </div>}
           <div className="wrapper">
               <p className="margin-0 review_text-bold">Placed Count:
                  {companiesObj.placedCount}

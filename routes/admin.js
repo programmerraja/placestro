@@ -58,16 +58,27 @@ router.get("/user/getAllUsers",
 			auth.isAdmin,
 			adminController.getAllUsers);
 
+router.get("/user/getUserProfile/:userId",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.getUserProfile);
+			
+
+router.post("/user/updateUserProfile",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.updateUserProfile);
+			
 router.get("/user/deleteUser/:userId",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.deleteUser);
 
-router.get("/company/delete/:companyId",
+
+router.get("/user/generateAnalytics/:year",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
-			adminController.deleteCompany);
-
+			adminController.generateAnalytics);
 
 router.get("/user/getAnalytics",
 				auth.isAuthenticatedAdmin(),
@@ -99,4 +110,18 @@ router.get("/deleteAdmin/:userId",
 			auth.isAdmin,
 			adminController.deleteAdmin);
 
+router.post("/createCompany/",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.createCompany)
+
+router.post("/updateCompany/",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.updateCompany)
+
+router.get("/deleteCompany/:companyId",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.deleteCompany);
 module.exports = router;
