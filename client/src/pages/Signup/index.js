@@ -8,15 +8,17 @@ import errorHandler from "../../utils/errorHandler";
 
 function Signup() {
    const [name,setName]=useState("");
-   const [college_codes,setCollegeCodees]=useState([]);
-   const [college_code,setCollegeCode]=useState("");
+  //  const [currentYears,setCurrentYeares]=useState([]);
+   const [currentYear,setCurrentYear]=useState("");
+   const [passedOut,setPassedOut]=useState("");
+
 
    const [department,setDepartment]=useState("CSE");
    const [email,setEmail]=useState("");
 
    const [password,setPassword]=useState("");
 
-   const [linkdein_url,setLinkdeinUrl]=useState("");
+   const [linkdein,setLinkdeinUrl]=useState("");
 
    const [loading,setLoading]=useState("");
 
@@ -24,17 +26,17 @@ function Signup() {
 
 
    function validate(){
-      if(name && college_code && department && email && password){
+      if(name && currentYear && department && email && password && passedOut){
         return true
       }
       return false;
    }
    function validateUrl(){
-      if(linkdein_url && !linkdein_url.startsWith("https://linkdein.com/")){
+      if(linkdein && !linkdein.startsWith("https://linkdein.com/")){
         errorHandler(true,"Please enter valid linkdein url");
         return false
       }
-      if(linkdein_url && linkdein_url.startsWith("https://linkdein.com/")){
+      if(linkdein && linkdein.startsWith("https://linkdein.com/")){
         return true
       }
       return true
@@ -44,7 +46,7 @@ function Signup() {
      if(validate()){
       if(validateUrl()){
        setLoading(true);
-       API.signUp({name,email,college_code,department,linkdein_url,password})
+       API.signUp({name,email,currentYear,passedOut,department,linkdein,password})
        .then((res)=>{
               setLoading(false);
              if(res.data.status==="sucess"){
@@ -78,13 +80,18 @@ return ( <>
             </div>
 
             <div className="form_input">
-              <label for="regno"> College code<span className="red_color">*</span>
-              <span className="sub_title">(not counselling code)</span></label>
-              <input type="number" value={college_code} onChange={(e)=>{setCollegeCode(e.target.value)}} />
+              <label for="regno"> Current Year<span className="red_color">*</span></label>
+              <input type="number" value={currentYear} onChange={(e)=>{setCurrentYear(e.target.value)}} />
             </div>
 
             <div className="form_input">
-              <label for="email"> Email<span className="red_color">*</span></label>
+              <label for="regno"> Passed Out Year<span className="red_color">*</span></label>
+              <input type="number" value={passedOut} onChange={(e)=>{setPassedOut(e.target.value)}} />
+            </div>
+
+            <div className="form_input">
+              <label for="email"> Email<span className="red_color">*</span>
+              <span className="sub_title">(College EmailId)</span></label>
               <input name="email" required={true} type="email" onChange={(e)=>{setEmail(e.target.value);}} value={email} />
             </div>
 
@@ -101,8 +108,9 @@ return ( <>
             </div>
 
             <div className="form_input">
-              <label for="linkdein"> Linkdein URL </label>
-              <input type="text" name="linkdein"  onChange={(e)=>{setLinkdeinUrl(e.target.value);}} value={linkdein_url} />
+              <label for="linkdein"> Linkdein URL 
+              <span className="sub_title">(Optional)</span></label>
+              <input type="text" name="linkdein"  onChange={(e)=>{setLinkdeinUrl(e.target.value);}} value={linkdein} />
             </div>
 
             <div className="form_input">

@@ -7,6 +7,7 @@ const passport = require("passport");
 const Util = require("../util/util");
 
 const controllerUtil = require("../util/controllerUtil");
+// Util.verfiyMail("boooathis123@gmail.com", "name", "dd");
 
 const user = {
 
@@ -42,52 +43,20 @@ signIn: function (req, res, next) {
 },
 
 signUp: async function (req, res) {
-  let { name, email,college_code,department,linkdein_url,password} = req.body;
+  let { name, email,currentYear,passedOut,department,linkdein,password} = req.body;
   
-  if (name && email && password && college_code && department) {
+  if (name && email && password && passedOut && department && currentYear) {
      if (!validator.isEmail(email)) {
        res.json({status: "failed", msg: "Invalid Email"});
        return;
       }
-      if(linkdein_url && linkdein_url.startsWith("https://linkdein.com/")){
+      if(linkdein && linkdein.startsWith("https://linkdein.com/")){
         res.json({status: "failed", msg: "Invalid linkdein url"});
         return;
       }
-      let college_name=controllerUtil.getCollegeName(college_code);
-      
-      if(college_name){
-        db.Colleges.findOne({code:college_code,name:college_name})
-        .then((college_obj)=>{
-          if(college_obj){
-            createUser(college_obj._id)
-          }
-          else{
-            db.Colleges.create({code:college_code,name:college_name})
-            .then((college_obj)=>{
-               if(college_obj){
-                createUser(college_obj._id)
-               }
-            })
-            .catch((err) => {
-              Util.logError(err.msg, err);
-              res.json({ status: "failed", msg: "Something went wrong Please try again"});
-            });
-          }
-        })
-        .catch((err) => {
-            Util.logError(err.msg, err);
-            res.json({ status: "failed", msg: "Something went wrong Please try again"});
-        });
-      }
-      else{
-            res.json({ status: "failed", msg: "Invalid College Code \nor Your college code may not present in our data\n Your college code is shared to admin soon your college code will be added to our data if it is vaild. \n so try again after some time or day"});
-            Util.sendReport(`code not present: ${req.body.college_code} \n ${req.body.email} \n ${req.body.name}` ,true,req)
-      }
-      
-      function createUser(college_id){
-          let user_obj={name,email,password,department,collegeId:college_id}
-          if(linkdein_url){
-            user_obj.linkdein_url=linkdein_url;
+       let user_obj={name,email,password,department,passedOut,currentYear}
+          if(linkdein){
+            user_obj.linkdein=linkdein;
           }
           db.User.create(user_obj)
           .then(async (new_user) => {
@@ -113,10 +82,9 @@ signUp: async function (req, res) {
               Util.logError(err.msg, err);
               res.json({ status: "failed", msg: msg });
             });
-          }
       }else {
-    res.json({ status: "failed", msg: "Please enter all the detail's." });
-  }
+        res.json({ status: "failed", msg: "Please enter all the detail's." });
+  } 
 },
 verifiyMyEmail: function (req, res) {
   db.User.findOneAndUpdate(
@@ -166,8 +134,8 @@ updateMyProfile: async function (req, res) {
           user.name = name;
           user.password = old_password;
         }
-        if(req.body.linkdein_url!=user.linkdein){
-          user.linkdein=req.body.linkdein_url;
+        if(req.body.linkdein!=user.linkdein){
+          user.linkdein=req.body.linkdein;
         }
 
         user["cgpa"]=req.body.cgpa;

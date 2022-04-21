@@ -41,6 +41,9 @@ const UserSchema = new mongoose.Schema(
     passedOut:{
       type:Number
     },
+    currentYear:{
+      type:Number
+    },
     linkdein:{
       type:String
     },
