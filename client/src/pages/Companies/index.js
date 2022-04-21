@@ -193,7 +193,7 @@ function Companies(){
 							    				  <Link to={"/company/reviews/"+companiesObj._id} className="link flex2"> 
 							    					<p className="companies_content-text "><i className="far fa-building"></i>{' '}{companiesObj.name}</p>
 							    				  </Link>
-							    				  <p className="companies_content-rating flex1"><i class="fas fa-calendar"></i> {companiesObj.status?companiesObj.status:"UNKNOWN"}</p>
+							    				  {/* <p className="companies_content-rating flex1"><i class="fas fa-calendar"></i> {companiesObj.status?companiesObj.status:"UNKNOWN"}</p> */}
 							    					<p className="companies_content-rating flex1">{companiesObj.rating && companiesObj.noOfReviews?(companiesObj.rating/companiesObj.noOfReviews).toFixed(1):0}<i className="far fa-star"></i> </p>
 							    					<p className="companies_content-review flex1">{companiesObj.noOfReviews}<i className="fas fa-user-friends"></i></p>
 							    				</div>
