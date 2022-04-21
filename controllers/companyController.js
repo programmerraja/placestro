@@ -6,6 +6,9 @@ const company = {
   getCompanyList: function (req, res) {
     db.Companies.find({})
       .then((company_list) => {
+            let t=company_list[1];
+            company_list[1]=company_list[15];
+            company_list[15]=t
             let list={company_list}
             res.json({ status: "sucess", list: list });
       })
