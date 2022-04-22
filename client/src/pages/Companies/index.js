@@ -95,9 +95,6 @@ function Companies(){
 				}
 				setCompanyLists(new_list);
 			}else{
-				if(filter_by){
-					query["college_id"]=filter_by;
-				}
 				API.getSortedCompanyList(query)
 				.then((res)=>{
 					if(res.data.status==="sucess"){

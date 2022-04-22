@@ -125,13 +125,17 @@ function Analytics(){
   }
 
   const generateAnalytics=()=>{
-    API.generateAnalytics(newYear)
-    .then((res) => {
-      errorHandler(false,res.data.msg); 
-    })
-    .catch((res) => {
-      errorHandler(true,res.data.msg); 
-    });
+    if(newYear>2018 && newYear<2022){
+        API.generateAnalytics(newYear)
+        .then((res) => {
+          errorHandler(false,res.data.msg); 
+        })
+        .catch((res) => {
+          errorHandler(true,res.data.msg); 
+        });
+    }else{
+      errorHandler(true,"Enter the valid year"); 
+    }
   }
 
   if(!loading){

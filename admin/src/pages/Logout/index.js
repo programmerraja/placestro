@@ -10,7 +10,7 @@ function Logout ({setUser}){
   	localStorage.removeItem("token");
     API.logout();
     setUser(false);
-    history.push("/signin");	
+    history.push("/placeStroAdmin/signin");	
   },[]);
 
   return null

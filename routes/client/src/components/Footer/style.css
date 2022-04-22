@@ -1,0 +1,17 @@
+.footer_container {
+    width: 100%;
+    bottom:0px;
+}
+.copyright {
+  text-align: center;
+  background-color: var(--primary-color);
+  color: white;
+  padding:6px;
+}
+
+/* media query for mobile phones */
+@media (max-width:500px) {
+  .copyright {
+    font-size: 13px;
+  }
+}

@@ -102,7 +102,7 @@ function Admins(){
    const deleteAdmin=(user_id)=>{
        swal({
       title: "Are you sure?",
-      text: "You want to delete this review.",
+      text: "You want to delete Admin.",
       buttons: ["No", "Yes"],
       dangerMode: true,
     }).then((confirm) => {

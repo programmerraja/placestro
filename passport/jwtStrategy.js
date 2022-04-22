@@ -34,7 +34,7 @@ const adminStrategy = new JWTstrategy(
       },
       async function(token, done){
               try {
-                  db.User.findOne({_id:token.id}, (err, user) => 
+                  db.Admin.findOne({_id:token.id}, (err, user) => 
                   {
                   if (err) {
                     return done(err);

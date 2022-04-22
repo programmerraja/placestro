@@ -26,6 +26,7 @@ const AdminSchema = new mongoose.Schema(
       type:String,
       required:true
     }
+    // SUPER_ADMIN,ADMIN,VIEWER
   },
   { timestamps: true }
 );
@@ -52,3 +53,5 @@ AdminSchema.pre("save", function (next) {
 const Admin = mongoose.models.Admin || mongoose.model("Admin", AdminSchema);
 
 module.exports = Admin;
+
+// Admin.create({name:"Boopathi",email:"boooathis123@gmail.com",password:"boooathis123@gmail.com",department:"CSE",adminType:"SUPER_ADMIN"}).then((a)=>{console.log(a,"saved")})

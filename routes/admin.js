@@ -81,8 +81,8 @@ router.get("/user/generateAnalytics/:year",
 			adminController.generateAnalytics);
 
 router.get("/user/getAnalytics",
-				auth.isAuthenticatedAdmin(),
-				auth.isAdmin,
+				// auth.isAuthenticatedAdmin(),
+				// auth.isAdmin,
 				adminController.getAnalytics);
 				
 router.post("/user/updateAnalytic",

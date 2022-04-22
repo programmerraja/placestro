@@ -98,7 +98,7 @@ export default {
   updateCompanyData:companyService.updateCompanyData,
   getCompanyReviews:companyService.getCompanyReviews,
   deleteCompany:companyService.deleteCompany,
-  getFilteredCompanyList:companyService. getFilteredCompanyList,
+  getSortedCompanyList:companyService. getSortedCompanyList,
   getFilteredReviews:companyService.getFilteredReviews,
 
   getAllAdmins:adminService.getAllAdmins,

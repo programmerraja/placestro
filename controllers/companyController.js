@@ -18,17 +18,15 @@ const company = {
   },
   getSortedCompanyList: function (req, res) {
     let query={},sort={}
-    // console.log(req.query)   
+    console.log(req.query)   
     if(req.query.type==="status"){
       query["status"]=req.query.sortBy;
     }
-    else if (req.query.sortBy && req.query.type) {
+    if (req.query.sortBy && req.query.type) {
       sort={ [req.query.sortBy]: req.query.type }
     }
-    if (req.query.collegeId) {
-        query["collegeIds"]={"$in":[String(req.query.collegeId)]}
-    }
-    console.log(query)
+    
+    console.log(query,"query",sort)
     db.Companies.find(query)
       .sort(sort)
       .then((company_list) => {

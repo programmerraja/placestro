@@ -1,0 +1,8 @@
+.answer_input{
+    width: 100px;
+    height: 27px;
+    border-radius: 3px;
+    outline: 0;
+    font-weight: 700;
+    /* border: 0; */
+}

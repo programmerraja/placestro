@@ -16,11 +16,8 @@ export default {
   updateCompanyData:function(data){
     return axios.post(`/admin/company/${data.companyId}`,data);
   },
-  getFilteredCompanyList:function({college_id,value,type}){
-    if(value && type){
-      return axios.get(`/company/sortedList/?collegeId=${college_id}&sortBy=${value}&type=${type}`);
-    }
-    return axios.get(`/company/sortedList/?collegeId=${college_id}`);
+  getSortedCompanyList:function({value,type}){
+    return axios.get(`/company/sortedList/?sortBy=${value}&type=${type}`);
   },
   getCompanyReviews:function(compainyId){
     return axios.get("/company/getReviews/"+compainyId);

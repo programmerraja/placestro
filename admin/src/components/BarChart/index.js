@@ -48,13 +48,27 @@ const options = {
 
 
 function BarChart({data,title}){
+    let new_options=options
     if(title){
-      options.plugins.title.text=title;
+      new_options = {
+        maintainAspectRatio:true,
+        responsive:true,
+        aspectRatio:1,
+        plugins: {
+          legend: {
+            position: 'top' 
+          },
+          title: {
+            display: true,
+            text: title
+          },
+        },
+      };
     }
     return(
         <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
             <div style={{width:"600px"}}>
-                <Line options={options} data={data} />
+                <Line options={new_options} data={data} />
             </div>
        </div>
         )

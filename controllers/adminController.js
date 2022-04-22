@@ -33,9 +33,6 @@ const admin = {
           if (err) {
             res.status(500).json({ status: "failed", msg: err });
           }
-          if(user.isAdmin){
-            return res.json({ status: "failure",msg:"Invalid creds" });
-          }
           //filtering user id and email for payload and setting exp time as 7 day
           let payload = JSON.stringify({
             id: user._id,
@@ -46,7 +43,7 @@ const admin = {
           // generate a signed son web token with the contents of user object and return it in the response
           const token = jwt.sign(payload, process.env.JWT_KEY);
           return res.json({ status: "sucess", token });
-          sendReport(`new user login ${user.name}`);
+          sendReport(`new Admin login ${user.name}`);
         });
       }
     )(req, res);
@@ -448,45 +445,47 @@ const admin = {
     }
   },
   generateAnalytics:function(req,res){
-    let year=req.params.year;
-    let placedCount;
-    let company=[]
-    let department={}
-    let totalStudent;
+    if(req.params.year>2018 && req.params.year<2022){
+      let year=req.params.year;
+      let placedCount;
+      let company=[]
+      let department={}
+      let totalStudent;
 
-    db.User.find({passedOut:year,isPlaced:true})
-    .then((user)=>{
-      placedCount=user.length;
-      company=user.map((user)=>user.placedCompany);
-      user.map((user)=>{
-        console.log(department[user.department])
-        if(department[user.department]!=undefined){
-          department[user.department]+=1;
-        }else{
-          department[user.department]=0;
-        }
-      })
-      db.User.countDocuments({passedOut:year})
-      .then((count)=>{
-        totalStudent=count;
-        console.log({year,placedCount,department,totalStudent,company})
-        db.Analytics.findOne({year}).then((an)=>{
-          if(!an){
-            db.Analytics.create({year,placedCount,department,totalStudent,company});
+      db.User.find({passedOut:year,isPlaced:true})
+      .then((user)=>{
+        placedCount=user.length;
+        company=user.map((user)=>user.placedCompany);
+        user.map((user)=>{
+          if(department[user.department]!=undefined){
+            department[user.department]+=1;
           }else{
-            db.Analytics.findOneAndUpdate({year},{placedCount,department,totalStudent,company});
+            department[user.department]=0;
           }
         })
-        res.json({ status: "sucess", msg:"Sucessfully created" });
+        db.User.countDocuments({passedOut:year})
+        .then((count)=>{
+          totalStudent=count;
+          db.Analytics.findOne({year}).then((an)=>{
+            if(!an){
+              db.Analytics.create({year,placedCount,department,totalStudent,company});
+            }else{
+              db.Analytics.findOneAndUpdate({year},{placedCount,department,totalStudent,company});
+            }
+          })
+          res.json({ status: "sucess", msg:"Sucessfully created" });
+        })
       })
-    })
-    .catch((err) => {
-      logError(err.msg, err);
-      res.json({
-        status: "failed",
-        msg: "Sorry Something went wrong. Please try again",
+      .catch((err) => {
+        logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
       });
-    });
+    }else{
+      res.json({ status: "sucess", msg:"Enter the valid year" });
+    }
   },
   getAnalytics:function(req,res){
     db.Analytics.find({})

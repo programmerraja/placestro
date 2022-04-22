@@ -9,6 +9,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
+import EmailIcon from '@material-ui/icons/Email';
 
 export default function Sidebar() {
   const [expanded, setExpanded] = useState(false);
@@ -23,7 +24,7 @@ export default function Sidebar() {
         {expanded?<Link to="/placestroAdmin" className='menu-bars'>
           <Home className='icons'/>
           <span className='sidebar-text'>Home</span>
-        </Link>:<Link to ="/placestroAdmin" ><Home className="icon-collapsed"/></Link>}
+        </Link>:<Link to ="/placestroAdmin/home" ><Home className="icon-collapsed"/></Link>}
       </div>
 
       <div className='Sidemenu'>
@@ -46,6 +47,11 @@ export default function Sidebar() {
         {expanded?<Link to="/placestroAdmin" className='menu-bars'><PeopleIcon className='icons'/>
           <span className='sidebar-text'>Admins</span>
         </Link>:<Link to ="/placestroAdmin/admins"><PeopleIcon className="icon-collapsed"/></Link>}
+      </div>
+      <div className='Sidemenu'>
+        {expanded?<Link to="/placestroAdmin" className='menu-bars'><PeopleIcon className='icons'/>
+          <span className='sidebar-text'>Send Mail</span>
+        </Link>:<Link to ="/placestroAdmin/sendMails"><EmailIcon className="icon-collapsed"/></Link>}
       </div>
       <div className='Sidemenu'>
         {expanded?<Link to="/logout" className='menu-bars'><ExitToAppIcon className='icons'/>

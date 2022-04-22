@@ -26,7 +26,7 @@ const adminStrategy = new LocalStrategy(
     usernameField: "email", // not necessary, DEFAULT
   },
   function (email, password, done) {
-    db.User.findOne({ email: email}, (err, user) => {
+    db.Admin.findOne({ email: email}, (err, user) => {
       if (err) {
         return done(err);
       }

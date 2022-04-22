@@ -77,9 +77,9 @@ function AdminPopup({name,setName,email,setEmail,password,setPassword,department
                 <div className="add_review-from">
                         <label for="admin"> admin Type<span className="red_color">*</span> </label>
                         <select name="admin"  onChange={(e)=>{setAdminType(e.target.value);}}>
-                            <option value="super admin ">super admin </option>
-                            <option value="admin">admin</option>
-                            <option value="viewer">viewer</option>
+                            <option value="SUPER_ADMIN">super admin </option>
+                            <option value="ADMIN">admin</option>
+                            <option value="VIEWER">viewer</option>
                         </select>
                 </div>   
                 {/* <small>Super Admin->Full power</small><br/>
