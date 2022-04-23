@@ -28,7 +28,7 @@ import EditCompany from "./pages/EditCompany";
 import EditUser from "./pages/EditUser";
 
 import PlacedStudents from "./pages/PlacedStudents";
-import sendMails from "./pages/sendMails";
+import SendMails from "./pages/SendMails";
 
 
 
@@ -76,7 +76,7 @@ function App(props) {
           <ProtectedRoute path="/placestroAdmin/user/logout"  component={()=>{return(<Logout setUser={setUser}/>)}}/>
           <ProtectedRoute path="/placestroAdmin/users/"  component={Users} />
           <ProtectedRoute path="/placestroAdmin/admins/"  component={Admins} />
-          <ProtectedRoute path="/placestroAdmin/sendMails/"  component={sendMails} />
+          <ProtectedRoute path="/placestroAdmin/sendMails/"  component={SendMails} />
           
           <ProtectedRoute path="/placestroAdmin/placedStudents/:companyId"  component={PlacedStudents} />
           

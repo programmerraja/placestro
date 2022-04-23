@@ -124,4 +124,11 @@ router.get("/deleteCompany/:companyId",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.deleteCompany);
+
+router.get("/getMails",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.getMails)
+
+			
 module.exports = router;

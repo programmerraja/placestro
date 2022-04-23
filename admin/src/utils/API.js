@@ -106,6 +106,8 @@ export default {
   createAdmin:adminService.createAdmin,
   updateAdmin:adminService.updateAdmin,
   updateProfile:adminService.updateProfile,
+  getMails:adminService.getMails,
+  
 };
 
 function setAuthHeader() {

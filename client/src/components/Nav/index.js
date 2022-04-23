@@ -26,10 +26,10 @@ function Nav({user}) {
     nav_link=(<><div className="nav_link">
                     <Link onClick={toggle} to="/companies"> Companies </Link>
                 </div>
-                <div className="nav_link">
+                {/* <div className="nav_link">
                     <Link onClick={toggle} to="/user/exam">Write Exam</Link>
                 </div>
-                <div className="nav_link">
+                <div className="nav_link"> */}
                     <Link onClick={toggle} to="/user/myReviews"> My Reviews </Link>
                 </div>
                  <div className="nav_link">
@@ -50,9 +50,9 @@ function Nav({user}) {
                 <div className="nav_link">
                     <Link onClick={toggle} to="/signup">Signup</Link>
                 </div>
-                <div className="nav_link">
+                {/* <div className="nav_link">
                     <Link onClick={toggle} to="/user/exam">Write Exam</Link>
-                </div>
+                </div> */}
                 <div className="nav_link">
                     <Link onClick={toggle} to="/companies"> Companies </Link>
                 </div>

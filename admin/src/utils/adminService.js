@@ -13,5 +13,8 @@ export default {
   },
   updateAdmin:function(body){
     return axios.post("/admin/updateAdmin/",body);
+  },
+  getMails:function(filter){
+    return axios.get(`/admin/getMails?department=${filter.department}&currentYear=${filter.currentYear}`)
   }
 };

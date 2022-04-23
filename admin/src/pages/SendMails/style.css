@@ -1,0 +1,13 @@
+.mail_filter-wrapper {
+    display:flex;
+    flex-wrap: wrap;
+}
+.mail_body{
+    display: flex;
+    flex-direction: column;
+
+}
+.mail_body textarea{
+    margin: 1rem;
+    padding: 0.4rem;
+}

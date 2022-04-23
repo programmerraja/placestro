@@ -614,6 +614,26 @@ const admin = {
         });
     });
   },
+  getMails:function(req,res){
+    // let user_fileds=["name","password","department","marks","cgpa","noOfArrear","historyOfArrear","project","passedOut","currentYear","linkdein","mobileNo","isPlaced","placedCompany","companyId","isEmailVerified","passwordResetToken","passwordResetExpires"]
+    let query={}
+    req.query.department && (req.query.department!=="all") ? query["department"]=req.query.department :null;
+    req.query.currentYear && (req.query.currentYear!=="all")? query["currentYear"]=req.query.currentYear :null;
+    console.log(query,req.params)
+    db.User.find(query,"email")
+    .then((users)=>{
+      let mails=users.map(user=>user.email)
+      res.json({ status: "sucess",mails });
+    })
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
+  }
+
 };
 
 module.exports = admin;
