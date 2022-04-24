@@ -16,5 +16,8 @@ export default {
   },
   getMails:function(filter){
     return axios.get(`/admin/getMails?department=${filter.department}&currentYear=${filter.currentYear}`)
+  },
+  sendMails:function(body){
+    return axios.post(`/admin/sendMails`,body)
   }
 };

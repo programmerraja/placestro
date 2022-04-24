@@ -13,6 +13,7 @@ const {
   generateToken,
   sendPasswordReset,
   sendReport,
+  sendMail
 } = require("../util/util");
 
 const controllerUtil = require("../util/controllerUtil");
@@ -106,12 +107,16 @@ const admin = {
           .then((company_count) => {
             db.Reviews.countDocuments({})
               .then((review_count) => {
-                res.json({
-                  status: "sucess",
-                  user_count,
-                  company_count,
-                  review_count,
-                });
+                db.User.countDocuments({isPlaced:true})
+                 .then((placed_count) => {
+                        res.json({
+                          status: "sucess",
+                          user_count,
+                          company_count,
+                          review_count,
+                          placed_count
+                        });
+                })
               })
               .catch((err) => {
                 res
@@ -632,8 +637,13 @@ const admin = {
           msg: "Sorry Something went wrong. Please try again",
         });
     });
-  }
-
+  },
+  sendMails:function(req,res){
+    let mails=req.body.mails;
+    mails.forEach(mail=>{
+      sendMail(req.body.subject,req.body.body,mail)
+    })
+  },
 };
 
 module.exports = admin;

@@ -149,6 +149,17 @@ function Users(){
                                       <option value="CIVIL">CIVIL</option>
                             </select>
               </Box>
+              <Box className="filter_option-wrapper">
+                    <label className="filter_option-label"><span>Passed Out Year: </span></label>
+                              <select className="filter_option"
+                               onChange={(e)=>{
+		                          	setSortBy({...sortBy,passedOut:e.target.value});
+		                          	sortUsers({...sortBy,passedOut:e.target.value})}}
+                              >
+                                      <option value="">All</option>
+                                      <option value="2022">2022</option>
+                            </select>
+              </Box>
           </Box>
       {(users.length>0 && !loading && isFind) &&
         <TableContainer component={Paper}>

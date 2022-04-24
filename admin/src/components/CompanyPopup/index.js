@@ -81,6 +81,7 @@ function CompanyPopup({name,setName,rating,setRating,noOfReviews,setReviews,plac
 		                          	}} defaultValue={status}>
 			                  <option value="VISITED">Visited</option>
 			                  <option value="UPCOMING">Upcoming</option>
+			                  <option value="OFFCAMPUS">offCampus</option>
 		                 </select>
 	          </div>
               <div className="add_review-from">

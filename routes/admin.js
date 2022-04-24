@@ -129,6 +129,10 @@ router.get("/getMails",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.getMails)
+router.post("/sendMails",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.sendMails)
 
 			
 module.exports = router;

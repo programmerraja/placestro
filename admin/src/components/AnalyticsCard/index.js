@@ -8,10 +8,7 @@ function AnalyticsCard({analyticsObj,showEdit})  {
     <>
         <div className="company_container">
          <div className="company_name margin-0">
-            <Link to={"/placestroAdmin/company/reviews/"+analyticsObj._id} className="link flex2"> 
 				<p className="companies_content-text ">{analyticsObj.year}</p>
-		    </Link>
-            
           </div>
           <div className="edit_icon">
 				  <i className="fas fa-edit" onClick={()=>showEdit(analyticsObj)}></i>

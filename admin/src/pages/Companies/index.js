@@ -38,7 +38,7 @@ function Companies(){
   const [name,setName]=useState("");
   const [rating,setRating]=useState("");
   const [noOfReviews,setReviews]=useState("");
-  const [placedCount,setCompanyPlacedCount]=useState("");
+  const [placedCount,setPlacedCount]=useState("");
   const [status,setStatus]=useState("VISTITED");
   const [campusType,setCampusType]=useState("onCampus");
   const [upcomingDate,setUpcomingDate]=useState("");
@@ -190,7 +190,7 @@ function Companies(){
 	setIsCreate(false);
 	setId(companiesObj._id)
 	setName(companiesObj.name)
-	setCompanyPlacedCount(companiesObj.placedCount)
+	setPlacedCount(companiesObj.placedCount)
 	setRating(companiesObj.rating);
 	setReviews(companiesObj.noOfReviews)
 	setStatus(companiesObj.status)
@@ -202,7 +202,7 @@ function Companies(){
  const setEmpty=()=>{
 	setId("")
 	setName("")
-	setCompanyPlacedCount("")
+	setPlacedCount("")
 	setRating("");
 	setReviews("")
 	setStatus("VISITED")
@@ -311,7 +311,7 @@ function Companies(){
 								setUpcomingDate={setUpcomingDate}
 								lastVisitedDate={lastVisitedDate}
 								setLastVisitedDate={setLastVisitedDate}
-								setCompanyPlacedCount={setCompanyPlacedCount}
+								setPlacedCount={setPlacedCount}
 								open={showPopup}
 								setShowPopup={setShowPopup}
 								saveCompany={saveCompany}
@@ -333,7 +333,7 @@ function Companies(){
 								setUpcomingDate={setUpcomingDate}
 								lastVisitedDate={lastVisitedDate}
 								setLastVisitedDate={setLastVisitedDate}
-								setCompanyPlacedCount={setCompanyPlacedCount}
+								setPlacedCount={setPlacedCount}
 								open={showPopup}
 								setShowPopup={setShowPopup}
 								saveCompany={saveCompany}

@@ -16,24 +16,64 @@ function SendMails(){
 	const[department,setDepartment]=useState("");
 	const[currentYear,setCurrentYear]=useState("");
 
-	const[mails,setMails]=useState()
+	const[subject,setSubject]=useState("");
+	const[body,setBody]=useState("");
+	const[mails,setMails]=useState("")
 
 	const getMails=(filter)=>{
 		setLoading(true);
 		API.getMails(filter)
 		.then((res) => {
             setLoading(false);
-			res.data.mails
-			setMails(res.data.mails)
+			// res.data.mails
+			setMails(res.data.mails.join(","))
           })
           .catch((res) => {
             setLoading(false);
             errorHandler(true,res.data.msg); 
           });
-    
 	}
- 
-	  return ( 
+
+	const validMails=(mails)=>{
+		console.log(mails)
+		if(mails[0]==''){
+			errorHandler(true,"Plse provide mails")
+			return false;
+		}
+		let inValidMails=mails.filter(mail=>!String(mail)
+		.toLowerCase()
+		.match(
+		  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+		))
+		if(inValidMails.length>0){
+			let msg=`Invalid Mails are \n ${inValidMails.join("\n")} \n Plse Enter Valid Email`
+			errorHandler(true,msg);
+			return false
+		}
+		return true
+	}
+	const validMailContent=()=>{
+		if(subject && body){
+			return true
+		}
+		errorHandler(true,"Plse provide subject and Mail body")
+	}
+	const sendMails=()=>{
+		let tmails=mails.split(",")
+		if(validMails(tmails) && validMailContent()){
+			API.sendMails({subject:subject,body:body,mails:tmails})
+			.then((res) => {
+				setLoading(false);
+				setMails(res.data.mails)
+			  })
+			  .catch((res) => {
+				setLoading(false);
+				errorHandler(true,res.data.msg); 
+			  });
+		}
+	}
+
+	return ( 
 	    <>
 	    <SquareLoader  loading={loading}/>
 		<div class="companies_container">
@@ -65,13 +105,14 @@ function SendMails(){
 	        	</div>
 			</div>
 			<div className="mail_body">
-				<textarea rows="10" cols="20" placeholder="test@gmail.com,test2@gmail.com.." value={mails}></textarea>
+				<textarea rows="10" cols="20" placeholder="test@gmail.com,test2@gmail.com.." value={mails} onChange={(e)=>setMails(e.target.value)}></textarea>
+				<textarea type="text" placeholder="Subject" value={subject} onChange={(e)=>setSubject(e.target.value)}/>
 				<textarea  
 						placeholder="Body of the mail" 
 						rows="17"
-						cols="84" >
+						cols="84" value={body} onChange={(e)=>{setBody(e.target.value)}}>
 				</textarea>
-				<button className="swal-button analytic_btn" >Send Mail</button>
+				<button className="swal-button analytic_btn"onClick={sendMails} >Send Mail</button>
 			</div>
 		</div>
 		</>

@@ -42,11 +42,11 @@ function Exam(){
 		});
 	},[])
 	const setAnswer=(answer,id)=>{
-		setAnswers({...answers,[id]:answer})
-		
+		setAnswers({...answers,[id]:answer});	
 	}
+
 	const submitAnswer=()=>{
-		API.submitAnswer()
+		API.submitAnswer(answers)
 		.then((res)=>{
 				errorHandler(true,res.data.msg);
 			})

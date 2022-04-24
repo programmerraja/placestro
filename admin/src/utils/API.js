@@ -107,6 +107,7 @@ export default {
   updateAdmin:adminService.updateAdmin,
   updateProfile:adminService.updateProfile,
   getMails:adminService.getMails,
+  sendMails:adminService.sendMails,
   
 };
 

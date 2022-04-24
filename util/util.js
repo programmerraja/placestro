@@ -181,6 +181,7 @@ module.exports=
 {
 	sendPasswordReset,
 	verfiyMail,
+	sendMail,
 	AppError,
 	logError,
 	dbErrorHandler,

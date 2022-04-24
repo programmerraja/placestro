@@ -56,16 +56,7 @@ function Analytics(){
 		setLoading(false);
         if(res.data.status==="sucess"){
               setAnalytics(res.data.data);
-              let labels=res.data.data.map((obj)=>obj.year)
-              let datasets=[{label:"Placed Students",data:[],backgroundColor: 'red'}]
-              datasets[0].data=res.data.data.map((obj)=>obj.placedCount)
-              setChartData({labels,datasets})
               
-              datasets=[{label:chartDep+"Department",data:[],backgroundColor: 'rgba(255, 99, 132, 0.5)'}]
-
-              datasets[0].data =res.data.data.map((obj)=>obj.department[chartDep]);
-                  
-              setChartData2({labels,datasets})
          }
          else{
            console.log(res.data.msg)
@@ -84,16 +75,6 @@ function Analytics(){
 
   },[])
 
-  useEffect(()=>{
-
-    let labels=analytics.map((obj)=>obj.year)
-    
-    let datasets=[{label:"Department",data:[],backgroundColor: 'rgba(255, 99, 132, 0.5)'}]
-
-    datasets[0].data =analytics.map((obj)=>obj.department[chartDep]);
-        
-    setChartData2({labels,datasets})
-  },[chartDep])
 
   const saveAnalytic=()=>{
 	  console.log(year,department,companies,totalStudent)
@@ -142,21 +123,7 @@ function Analytics(){
 	  return ( 
 	    <>
 	    <SquareLoader  loading={loading}/>
-      <div style={{display:"flex",justifyContent:"space-around",alignItems:"center",flexWrap:"wrap"}}>
-        <BarChart data={chartData} title={"Student placed Year Wise"}/>
-        <div>
-        <label className="filter_option-label"><span>Department: </span></label>
-                              <select className="filter_option" 
-                              onChange={(e)=>setChartDep(e.target.value)} defaultValue={chartDep}>
-                                      <option value="CSE">CSE</option>
-                                      <option value="EEE">EEE</option>
-                                      <option value="ECE">ECE</option>
-                                      <option value="MECH">MECH</option>
-                                      <option value="CIVIL">CIVIL</option>
-                            </select>
-          <BarChart data={chartData2} title={"Department wise placed student count"}/>
-        </div>
-      </div>
+      
 			<div className="Analytics_container">
         <div style={{display:"flex",justifyContent:"center",alignItems:"center",flexWrap:"wrap",margin:"1rem"}}>
           <input type="text" className="analytic-input" placeholder="year.." value={newYear} onChange={(e)=>setnewYear(e.target.value)}/>
