@@ -30,6 +30,7 @@ export default {
   updateAnalytic:function(body){
     return axios.post("/admin/user/updateAnalytic/",body);
   },
+  
   deleteUser:function (user_id) {
       return axios.get("/admin/user/deleteUser/"+user_id);
   },

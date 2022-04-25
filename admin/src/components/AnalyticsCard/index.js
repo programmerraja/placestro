@@ -25,8 +25,8 @@ function AnalyticsCard({analyticsObj,showEdit})  {
                <details>
                     <summary className="review_text-bold round_name" >Department wise</summary>
                     <div className="review_text">
-                        {Object.keys(analyticsObj.department).map((dep)=>
-                            <p className="review_text-bold p-3">{dep}:{analyticsObj.department[dep]}</p>
+                        {Object.keys(analyticsObj.departmentStudents).map((dep)=>
+                            <p className="review_text-bold p-3">{dep}:{analyticsObj.department[dep]}/{analyticsObj.departmentStudents[dep]}</p>
                         )}
                     </div>
                 </details>

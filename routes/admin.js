@@ -18,6 +18,13 @@ router.get("/user/sortBy",
 router.get("/company/list/",
 			companyController.getCompanyList);
 
+
+router.get("/company/generateAnalytics/",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.generateCompanyAnalytics);
+
+
 router.get("/company/:companyId",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
@@ -27,6 +34,11 @@ router.post("/company/:companyId",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.updateCompanyData);
+
+router.get("/company/analytics/:companyId",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.getCompanyAnalytics);
 
 router.get("/user/getCounts",
 			auth.isAuthenticatedAdmin(),
@@ -129,6 +141,7 @@ router.get("/getMails",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.getMails)
+			
 router.post("/sendMails",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,

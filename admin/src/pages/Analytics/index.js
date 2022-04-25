@@ -40,10 +40,6 @@ function Analytics(){
   const [department,setDepartment]=useState({});
   const [companies,setCompanies]=useState([]);
 
-  const [chartData,setChartData]=useState(data)
-  const [chartData2,setChartData2]=useState(data)
-  const [chartDep,setChartDep]=useState("CSE")
-
   const [newYear,setnewYear]=useState();
 
   const [isCreate,setIsCreate]=useState(true);
@@ -56,7 +52,6 @@ function Analytics(){
 		setLoading(false);
         if(res.data.status==="sucess"){
               setAnalytics(res.data.data);
-              
          }
          else{
            console.log(res.data.msg)
@@ -106,7 +101,7 @@ function Analytics(){
   }
 
   const generateAnalytics=()=>{
-    if(newYear>2018 && newYear<2022){
+    if(newYear>=2018 && newYear<=2022){
         API.generateAnalytics(newYear)
         .then((res) => {
           errorHandler(false,res.data.msg); 

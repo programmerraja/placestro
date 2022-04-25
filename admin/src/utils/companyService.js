@@ -19,8 +19,8 @@ export default {
   getSortedCompanyList:function({value,type}){
     return axios.get(`/company/sortedList/?sortBy=${value}&type=${type}`);
   },
-  getCompanyReviews:function(compainyId){
-    return axios.get("/company/getReviews/"+compainyId);
+  getCompanyReviews:function(companyId){
+    return axios.get("/company/getReviews/"+companyId);
   },
   deleteCompany:function(companyId){
     return axios.get("/admin/deleteCompany/"+companyId);
@@ -30,5 +30,12 @@ export default {
       return axios.get(`/company/sortedReviews/${company_id}?collegeId=${college_id}&sortBy=${value}&type=${type}`);
     }
     return axios.get(`/company/sortedReviews/${company_id}?collegeId=${college_id}`);
+  },
+  getCompanyAnalytics:function(companyId){
+    return axios.get("/admin/company/analytics/"+companyId);
+  },
+  generateCompanyAnalytics:function(year,companyId){
+    
+    return axios.get(`/admin/company/generateAnalytics/?year=${year}&companyId=${companyId}`);
   },
 };

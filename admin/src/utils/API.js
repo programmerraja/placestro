@@ -108,7 +108,8 @@ export default {
   updateProfile:adminService.updateProfile,
   getMails:adminService.getMails,
   sendMails:adminService.sendMails,
-  
+  getCompanyAnalytics:companyService.getCompanyAnalytics,
+  generateCompanyAnalytics:companyService.generateCompanyAnalytics
 };
 
 function setAuthHeader() {
@@ -119,3 +120,21 @@ function setAuthHeader() {
   }
 //setting token
 setAuthHeader();
+
+function checkTokenExp(){
+  let token = localStorage.getItem("token");
+    //check only if token avalible and checking it is valid token 
+    //if it valid token if we split according to dot the array length will greater then or =2
+    if (token && token.split(".").length>=2)  {
+      var decoded = jwt_decode(token);
+      let currentDate = new Date();
+      // JWT exp is in seconds
+      if (decoded.exp * 1000 < currentDate.getTime()) {
+        //removing user data from local storage
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        return true;
+      }
+    }
+}
+checkTokenExp();

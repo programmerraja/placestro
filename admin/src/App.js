@@ -17,6 +17,7 @@ import SquareLoader from './components/SquareLoader';
 import Home from './pages/Home';
 import Companies from './pages/Companies';
 import Analytics from './pages/Analytics';
+import CompanyAnalytics from "./pages/CompanyAnalytics";
 
 import Signin from "./pages/Signin";
 
@@ -71,6 +72,9 @@ function App(props) {
           <Route exact path="/placestroAdmin/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
           <ProtectedRoute exact path="/placestroAdmin/companies" component={Companies} />
           <ProtectedRoute exact path="/placestroAdmin/analytics" component={Analytics} />
+
+          <ProtectedRoute exact path="/placestroAdmin/company/analytics/:companyId" component={CompanyAnalytics} />
+
           <ProtectedRoute exact path="/placestroAdmin/company/reviews/:companyId"  component={Reviews}/>
 
           <ProtectedRoute path="/placestroAdmin/user/logout"  component={()=>{return(<Logout setUser={setUser}/>)}}/>

@@ -30,7 +30,10 @@ const CompaniesSchema = new mongoose.Schema(
     },
     upcomingDate:{
       type:Date
-    }
+    },
+    analyticsYear:{
+      type:Object
+    },
   },
 );
 

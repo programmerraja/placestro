@@ -17,6 +17,8 @@ const {
 } = require("../util/util");
 
 const controllerUtil = require("../util/controllerUtil");
+const company = require("./companyController");
+const { copy } = require("../routes/admin");
 
 const admin = {
   signIn: function (req, res, next) {
@@ -450,7 +452,7 @@ const admin = {
     }
   },
   generateAnalytics:function(req,res){
-    if(req.params.year>2018 && req.params.year<2022){
+    if(req.params.year>=2018 && req.params.year<=2022){
       let year=req.params.year;
       let placedCount;
       let company=[]
@@ -465,17 +467,22 @@ const admin = {
           if(department[user.department]!=undefined){
             department[user.department]+=1;
           }else{
-            department[user.department]=0;
+            department[user.department]=1;
           }
         })
-        db.User.countDocuments({passedOut:year})
-        .then((count)=>{
-          totalStudent=count;
+        db.User.aggregate([{$match:{passedOut:year}},{"$group" : {_id:"$department", count:{$sum:1}}}])
+        .then((users)=>{
+          totalStudent=0;
+          departmentStudents={}
+          users.forEach(user=>{
+            totalStudent+=user.count;
+            departmentStudents[user._id]=user.count;
+          })
           db.Analytics.findOne({year}).then((an)=>{
             if(!an){
-              db.Analytics.create({year,placedCount,department,totalStudent,company});
+              db.Analytics.create({year,placedCount,department,totalStudent,company,departmentStudents});
             }else{
-              db.Analytics.findOneAndUpdate({year},{placedCount,department,totalStudent,company});
+              db.Analytics.findOneAndUpdate({year},{placedCount,department,totalStudent,company,departmentStudents});
             }
           })
           res.json({ status: "sucess", msg:"Sucessfully created" });
@@ -618,6 +625,70 @@ const admin = {
           msg: "Sorry Something went wrong. Please try again",
         });
     });
+  },
+  getCompanyAnalytics:function(req,res){
+    db.Companies.findOne({_id:req.params.companyId})
+    .then(company=>{
+      console.log(company,req.params.companyId)
+      res.json({ status: "sucess",analytics:company.analyticsYear});
+    })
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
+  },
+  generateCompanyAnalytics:function(req,res){
+      if(req.query.year>=2018 && req.query.year<=2022){
+        let year=req.query.year;
+        let placedCount;
+        let analyticsDepartment={}
+        let totalStudent;
+
+        db.User.find({passedOut:year,isPlaced:true,companyId:req.query.companyId})
+        .then((user)=>{
+          user.map((user)=>{
+            if(analyticsDepartment[user.department]!=undefined){
+              analyticsDepartment[user.department]+=1;
+            }else{
+              analyticsDepartment[user.department]=1;
+            }
+          })
+          analyticsYear={[year]:analyticsDepartment};
+          db.Companies.findOne({_id:req.query.companyId})
+          .then((company)=>{
+              console.log(company)
+              if(!company.analyticsYear){
+                // console.log(analyticsYear,analyticsDepartment,"d")
+                db.Companies.findOneAndUpdate({_id:req.query.companyId},{analyticsYear})
+                .then(()=>{
+                  res.json({ status: "sucess", msg:"Sucessfully created" });
+                })
+              }else{
+                analyticsYear={...company.analyticsYear,...analyticsYear};
+                analyticsDepartment={...company.analyticsDepartment,...analyticsDepartment};
+                // console.log(analyticsYear,analyticsDepartment)
+                db.Companies.findOneAndUpdate({_id:req.query.companyId},{analyticsYear})
+                .then(()=>{
+                  res.json({ status: "sucess", msg:"Sucessfully created" });
+                })
+              }
+          
+        })
+        .catch((err) => {
+          console.log(err)
+          logError(err.msg, err);
+          //  res.json({
+          //   status: "failed",
+          //   msg: "Sorry Something went wrong. Please try again",
+          // });
+        });
+      });
+      }else{
+        // res.json({ status: "sucess", msg:"Enter the valid year" });
+      }
   },
   getMails:function(req,res){
     // let user_fileds=["name","password","department","marks","cgpa","noOfArrear","historyOfArrear","project","passedOut","currentYear","linkdein","mobileNo","isPlaced","placedCompany","companyId","isEmailVerified","passwordResetToken","passwordResetExpires"]

@@ -9,10 +9,9 @@ function companyCard({companiesObj,editCompany,deleteCompany})  {
         <div className="company_container">
         <small className="margin-0">({companiesObj.campusType?companiesObj.campusType:"OnCampus"})</small>
          <div className="company_name margin-0">
-            <Link to={"/placestroAdmin/company/reviews/"+companiesObj._id} className="link flex2"> 
+                   <Link to={"/placestroAdmin/company/analytics/"+companiesObj._id}>
 				<p className="companies_content-text ">{companiesObj.name}</p>
-		    </Link>
-            
+                   </Link>
           </div>
           <div className="edit_icon">
            
@@ -44,10 +43,13 @@ function companyCard({companiesObj,editCompany,deleteCompany})  {
          </div>
           <div className="wrapper">
                   <p className="review_text-bold"> 
-                    <Link to={"/placestroAdmin/placedStudents/"+companiesObj._id}>
-                        Placed Students
-				    </Link>
+                    <Link to={"/placestroAdmin/placedStudents/"+companiesObj._id}>Placed Students</Link>
                   </p>
+          </div>
+          <div className="wrapper">
+          <p className="review_text-bold ">
+            <Link to={"/placestroAdmin/company/reviews/"+companiesObj._id} > Reviews</Link>
+          </p>
           </div>
           <div className="edit_icon icon">
 			 <i className="fas fa-trash-alt" onClick={()=>{deleteCompany(companiesObj._id)}}></i>

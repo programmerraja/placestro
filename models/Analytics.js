@@ -13,6 +13,10 @@ const AnalyticsSchema = new mongoose.Schema(
     totalStudent:{
       type:Number
     },
+    departmentStudents:{
+      type:Object,
+      default:{CSE:0,ECE:0,EEE:0,MECH:0,CIVIL:0}
+    },
     department:{
       type:Object
     },

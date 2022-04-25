@@ -51,7 +51,7 @@ function AdminPopup({year,setYear,placedcount,setPlacedCount,totalStudent,setTot
                  {Object.keys(department).map(dep=>{
                         return (<div  className="add_review-from">
                         <label forhtml="noofreviews" className="add_review-label">
-                        <span>{dep} <span className="red_color">*</span></span></label>
+                        <span>{dep}(placed student count) <span className="red_color">*</span></span></label>
                         <div className="add_review-input-wrapper">
                             <input  type="text" 
                                      placeholder=".."  
