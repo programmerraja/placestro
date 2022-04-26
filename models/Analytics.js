@@ -21,7 +21,7 @@ const AnalyticsSchema = new mongoose.Schema(
       type:Object
     },
     companies:{
-        type:Array
+        type:Object
     }
   },
 );

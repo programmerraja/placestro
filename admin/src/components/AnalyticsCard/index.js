@@ -36,7 +36,7 @@ function AnalyticsCard({analyticsObj,showEdit})  {
                     <summary className="review_text-bold round_name" >Compaines</summary>
                     <div className="review_text">
                         {
-                            analyticsObj.companies.map((dep)=><p className="review_text p-3">{dep}</p>)
+                            Object.keys(analyticsObj.companies).map((companyName)=><p className="review_text p-3">{companyName}:{analyticsObj.companies[companyName]}</p>)
                         }
                     </div>
                 </details>

@@ -455,14 +455,17 @@ const admin = {
     if(req.params.year>=2018 && req.params.year<=2022){
       let year=req.params.year;
       let placedCount;
-      let company=[]
+      let companies={}
       let department={}
       let totalStudent;
 
       db.User.find({passedOut:year,isPlaced:true})
       .then((user)=>{
         placedCount=user.length;
-        company=user.map((user)=>user.placedCompany);
+        user.map((user)=>
+        {
+          companies[user.placedCompany] ? companies[user.placedCompany]+=1 : companies[user.placedCompany]=1
+        });
         user.map((user)=>{
           if(department[user.department]!=undefined){
             department[user.department]+=1;
@@ -470,19 +473,25 @@ const admin = {
             department[user.department]=1;
           }
         })
-        db.User.aggregate([{$match:{passedOut:year}},{"$group" : {_id:"$department", count:{$sum:1}}}])
+      
+        db.User.aggregate([{$match:{passedOut:Number(year)}},{"$group" : {_id:"$department", count:{$sum:1}}}])
         .then((users)=>{
+          console.log(users)
           totalStudent=0;
           departmentStudents={}
           users.forEach(user=>{
             totalStudent+=user.count;
             departmentStudents[user._id]=user.count;
           })
+          console.log(departmentStudents,companies)
           db.Analytics.findOne({year}).then((an)=>{
             if(!an){
-              db.Analytics.create({year,placedCount,department,totalStudent,company,departmentStudents});
+              db.Analytics.create({year,placedCount,department,totalStudent,companies,departmentStudents})
+              .then((a)=>{})
             }else{
-              db.Analytics.findOneAndUpdate({year},{placedCount,department,totalStudent,company,departmentStudents});
+              // console.log(an)
+              db.Analytics.findOneAndUpdate({year},{placedCount,department,totalStudent,companies,departmentStudents})
+              .then((a)=>{})
             }
           })
           res.json({ status: "sucess", msg:"Sucessfully created" });

@@ -4,14 +4,22 @@
   bottom: 50px;
   z-index: 999;
 }
+.floating_icon2{
+  position: fixed;
+  right: 10px;
+  bottom: 100px;
+  z-index: 999;
+}
 
 .floating_icon a{
 }
-.floating_icon i{
+.floating_icon i,
+.floating_icon2 i{
   font-size: 2.4rem;
   color: var(--primary-color);
 }
-.floating_icon::after{
+.floating_icon::after,
+.floating_icon2::after{
   content: "";
   position: absolute;
   bottom: 4px;
@@ -24,7 +32,8 @@
   z-index: -111;
   background-color: var(--primary-color);
 }
-.floating_icon::before{
+.floating_icon::before,
+.floating_icon2::before{
   content: "Help";
   position: absolute;
   bottom: 4px;

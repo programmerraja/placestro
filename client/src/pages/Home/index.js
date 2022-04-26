@@ -43,7 +43,8 @@ function Home() {
     },[askQuestion])
     
     return ( <>
-          <FloatingIcon/>
+        <FloatingIcon url={"https://t.me/+9_4feGpoutgwMjc1"} fbtype={"tg"}/>
+        <FloatingIcon url={"https://chat.whatsapp.com/FbevGeS7EsEDkqiyimHtzX"} fbtype={"wb"}/>
         <div className="hero_container">
            <div className="hero_text">
               <h1> Find the company that suits You </h1>

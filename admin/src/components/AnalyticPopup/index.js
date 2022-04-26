@@ -64,22 +64,27 @@ function AdminPopup({year,setYear,placedcount,setPlacedCount,totalStudent,setTot
                     </div>
                     )
                  })}
-                  <div  className="add_review-from">
-                     <label forhtml="noofreviews" className="add_review-label">
-                     <span>companies <span className="red_color">*</span></span></label>
-                     <div className="add_review-input-wrapper">
-                         <input  type="text" 
-                                  placeholder="companies"  
-                                  name="noofreviews"  
-                                  className="add_review-input" 
-                                  value={companies.join(",")}
-                                  onChange={(e)=>{setCompanies(e.target.value.split(","));}}
-                                  />
-                           </div>
-                 </div>
-                 
-                   
-              
+
+                 {
+                    Object.keys(companies).map((companyName)=>{
+                        return(
+                            <div  className="add_review-from">
+                                <label forhtml="noofreviews" className="add_review-label">
+                                <span>{companyName} <span className="red_color">*</span></span></label>
+                                <div className="add_review-input-wrapper">
+                                    <input  type="text" 
+                                            placeholder="companies"  
+                                            name="noofreviews"  
+                                            className="add_review-input" 
+                                            value={companies[companyName]}
+                                            onChange={(e)=>{setCompanies({...companies,companyName:e.target.value});}}
+                                            />
+                                </div>
+                             </div>
+                        )
+
+                    })
+                 }
                 </Popup>
           </>);
 
