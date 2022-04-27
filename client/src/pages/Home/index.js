@@ -29,6 +29,8 @@ import datalogic from "../../img/company/datalogic.png";
 import gigamon from "../../img/company/gigamon.png";
 import klenty from "../../img/company/klenty.png";
 import infosys from "../../img/company/infosys.png";
+import Capgemini from "../../img/company/Capgemini.png";
+
 
 
 import askQuestion from "../../utils/askQuestion";
@@ -117,6 +119,9 @@ function Home() {
                 </div>
                  <div className="company_img">
                   <img src={wipro}/>
+                </div>
+                <div className="company_img">
+                  <img src={Capgemini}/>
                 </div>
                 <div className="company_img">
                   <img src={infosys}/>
