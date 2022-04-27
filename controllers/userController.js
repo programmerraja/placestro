@@ -156,19 +156,21 @@ updateMyProfile: async function (req, res) {
             user
               .save()
               .then((user) => {
-                  res.json({
-                    status: "sucess",
-                    name: user.name,
-                    msg: "sucessfully updated",
-                  });
+                  res.json({status: "sucess",name: user.name,msg: "sucessfully updated"});
+                  let msg=""
+                  Object.keys(user._doc).forEach((key)=>{
+                    if(!["createdAt","_id","updatedAt","collegeId","password","_v","companyId"].includes(key)){
+                      msg+=`${key}:${user._doc[key]}\n`
+                    }
+                    if(key==="marks"){
+                      msg+=`${key}:${JSON.stringify(user._doc[key])}\n`
+                    }
+                  })
+                  Util.sendReport(`New profile update \n ${msg}`);
               })
               .catch((err) => {
                 let msg = Util.dbErrorHandler(err);
-                res.json({
-                  status: "failed",
-                  name: req.user.name,
-                  msg: msg,
-                });
+                res.json({status: "failed",name: req.user.name,msg: msg});
               });
             return;
           })
@@ -177,11 +179,17 @@ updateMyProfile: async function (req, res) {
         user
           .save()
           .then((user) => {
-              res.json({
-                status: "sucess",
-                name: user.name,
-                msg: "sucessfully updated",
-              });
+              res.json({status: "sucess",name: user.name,msg: "sucessfully updated"});
+              let msg=""
+              Object.keys(user._doc).forEach((key)=>{
+                if(!["createdAt","_id","updatedAt","collegeId","password","_v","companyId"].includes(key)){
+                  msg+=`${key}:${user._doc[key]}\n`
+                }
+                if(key==="marks"){
+                  msg+=`${key}:${JSON.stringify(user._doc[key])}\n`
+                }
+              })
+              Util.sendReport(`New profile update \n ${msg}`); 
           })
           .catch((err) => {
             let msg = Util.dbErrorHandler(err);

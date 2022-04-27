@@ -41,6 +41,7 @@ const admin = {
             id: user._id,
             username: user.username,
             email: user.email,
+            isAdmin:true,
             exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7,
           });
           // generate a signed son web token with the contents of user object and return it in the response

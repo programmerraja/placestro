@@ -66,7 +66,7 @@ function App(props) {
             className="section_wrapper"
           >
         <Switch>
-          <ProtectedRoute exact path="/" component={Home}/>
+          <ProtectedRoute exact path="/placestroAdmin" component={Home}/>
           <ProtectedRoute exact path="/placestroAdmin/home" component={Home}/>
 
           <Route exact path="/placestroAdmin/signin" component={()=>{return(<Signin setUser={setUser}/>)}}/>
