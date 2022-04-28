@@ -8,10 +8,10 @@ export default {
     return axios.get("/admin/user/getCounts");
   },
   getAllUsers: function (page,limit,sort_by,companyId) {
-    let query=`limit=${limit}&page=${page}&department=${sort_by.department}&passedout=${sort_by.passedout}`;
+    let query=`limit=${limit}&page=${page}&department=${sort_by.department}&passedout=${sort_by.passedOut}`;
     console.log(String(companyId).length)
-    companyId && String(companyId).length>4 ? query =`limit=${limit}&page=${page}&department=${sort_by.department}&passedout=${sort_by.passedout}&companyId=${companyId}`:null;
-    companyId && String(companyId).length<=4? query =`limit=${limit}&page=${page}&department=${sort_by.department}&passedout=${sort_by.passedout}&passedOut=${companyId}`:null;
+    companyId && String(companyId).length>4 ? query =`limit=${limit}&page=${page}&department=${sort_by.department}&passedout=${sort_by.passedOut}&companyId=${companyId}`:null;
+    companyId && String(companyId).length<=4? query =`limit=${limit}&page=${page}&department=${sort_by.department}&passedout=${sort_by.passedOut}&passedOut=${companyId}`:null;
 
     return axios.get(`/admin/user/getAllUsers/?${query}`);
   },

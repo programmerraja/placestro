@@ -158,9 +158,9 @@ const admin = {
     let group={ $addFields: {numOfReviews: {$size: "$reviews"}}}
     let match={}
     req.query.department ? match["department"]=req.query.department:null;
-    req.query.passedout ? match["passedOutYear"]=Number(req.query.passedout):null;
+    req.query.passedout ? match["passedOut"]=Number(req.query.passedout):null;
     req.query.companyId ? match["companyId"]=mongoose.Types.ObjectId(req.query.companyId):null;
-    req.query.passedOut ? match={...match,"passedOutYear":Number(req.query.passedOut),isPlaced:true} :null;
+    req.query.companyId && req.query.passedout ? match={...match,"passedOut":Number(req.query.passedout),isPlaced:true} :null;
 
     console.log(match,req.query.department,skip)
     db.User.aggregate([{$match:match},{ $lookup: lookup },group,{$unset:"reviews"}])

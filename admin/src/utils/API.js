@@ -35,7 +35,7 @@ export default {
       var decoded = jwt_decode(token);
       let currentDate = new Date();
       // JWT exp is in seconds
-      if (decoded.exp * 1000 < currentDate.getTime() && !decoded.isAdmin) {
+      if (decoded.exp * 1000 < currentDate.getTime() ||  decoded.isAdmin===undefined) {
         //removing user data from local storage
         localStorage.removeItem("user");
         localStorage.removeItem("token");

@@ -47,7 +47,7 @@ function Users(){
    const classes = useStyles();
    const [loading, setLoading] = useState(true);
    const[search_content,setSearchContent]=useState("");
-   const [sortBy,setSortBy]=useState({department:"",passedout:""});
+   const [sortBy,setSortBy]=useState({department:"",passedOut:""});
    const [users,setUsers]=useState([]);
    const [page, setPage] = useState(1);
    const [limit, setLimit] = useState(10);
@@ -157,7 +157,9 @@ function Users(){
 		                          	sortUsers({...sortBy,passedOut:e.target.value})}}
                               >
                                       <option value="">All</option>
+                                      <option value="2021">2021</option>
                                       <option value="2022">2022</option>
+                                      <option value="2023">2023</option>
                             </select>
               </Box>
           </Box>
