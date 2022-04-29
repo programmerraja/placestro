@@ -150,10 +150,10 @@ return ( <>
                     <input type="old_password" name="old_password" placeholder="Old password" required="true" onChange={(e)=>{setOldPassword(e.target.value);}} value={old_password} />
                   </div>
 
-                  <div className="form_input">
+                  {/* <div className="form_input">
                     <label for="new_password"> New Password </label>
                     <input type="new_password" name="new_password" placeholder="New password" onChange={(e)=>{setNewPassword(e.target.value);}} value={new_password} />
-                  </div>
+                  </div> */}
               </div>
               <div  className="myform" style={{width:"50%"}}>
                   
