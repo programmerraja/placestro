@@ -47,7 +47,7 @@ function Users(){
    const classes = useStyles();
    const [loading, setLoading] = useState(true);
    const[search_content,setSearchContent]=useState("");
-   const [sortBy,setSortBy]=useState({department:"",passedout:""});
+   const [sortBy,setSortBy]=useState({department:"",passedOut:""});
    const [users,setUsers]=useState([]);
    const [page, setPage] = useState(1);
    const [limit, setLimit] = useState(10);

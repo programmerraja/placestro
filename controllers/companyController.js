@@ -22,7 +22,7 @@ const company = {
     if(req.query.type==="status"){
       query["status"]=req.query.sortBy;
     }
-    if (req.query.sortBy && req.query.type) {
+    if (req.query.sortBy && req.query.type && req.query.type!="status") {
       sort={ [req.query.sortBy]: req.query.type }
     }
     

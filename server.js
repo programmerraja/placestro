@@ -8,6 +8,7 @@ const app = express();
 const passport = require("./passport");
 const routes = require("./routes");
 const {sendWhoIs,sendReport} = require("./util/util");
+const { spawn } = require('child_process');
 
 const {PythonShell} =require('python-shell');
 
@@ -20,20 +21,8 @@ let options = {
 
 
 
-// const { spawn } = require('child_process');
 
-// const pyProg = spawn('python', ['./python/machinelearning.py']);
-// console.log(pyProg)
-// pyProg.stdout.on('data', function(data) {
-//     console.log(data.toString());
-//     // res.write(data);
-//     // res.end('end');
-// });
-// pyProg.stderr.on('data', function(data) {
-//   console.log(data.toString());
-//   // res.write(data);
-//   // res.end('end');
-// });
+
 
 const PORT = process.env.PORT || 3001;
 
@@ -64,14 +53,26 @@ mongoose.connect(process.env.MONGODB_URI,  {
 });
 
 app.get("/model/python",(req,res)=>{
-  PythonShell.run('machinelearning.py', options, function (err, result){
-    if (err) throw err;
-    // result is an array consisting of messages collected
-    //during execution of script.
-    console.log('result: ', result.toString());
-    res.send(result.toString())
-  });
-})
+      const pyProg = spawn(req.query.type);
+    // console.log(pyProg)
+    pyProg.stdout.on('data', function(data) {
+        console.log(data.toString());
+        res.write(data);
+        res.end('end');
+    });
+    pyProg.stderr.on('data', function(data) {
+      console.log(data.toString());
+      res.write(data);
+      res.end('end');
+    });
+  // PythonShell.run('machinelearning.py', options, function (err, result){
+  //   if (err) throw err;
+  //   // result is an array consisting of messages collected
+  //   //during execution of script.
+  //   console.log('result: ', result.toString());
+  //   res.send(result.toString())
+  // });
+});
 
 app.get("/PlacestroAdmin", (req, res) => {
   res.sendFile(path.join(__dirname, "./admin/build/index.html"));
