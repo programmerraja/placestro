@@ -44,7 +44,7 @@ function ReviewCard({
         }
         {isEditing &&
           <div className="edit_icon">
-            <Link to={`/yukiAdmin/user/edit/review/${_id}`}>
+            <Link to={`/placestroAdmin/user/edit/review/${_id}`}>
              <i className="fas fa-edit"></i>
             </Link>
           </div>

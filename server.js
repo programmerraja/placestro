@@ -63,15 +63,15 @@ mongoose.connect(process.env.MONGODB_URI,  {
   useCreateIndex: true
 });
 
-app.get("/model/python",(req,res)=>{
-  PythonShell.run('machinelearning.py', options, function (err, result){
-    if (err) throw err;
-    // result is an array consisting of messages collected
-    //during execution of script.
-    console.log('result: ', result.toString());
-    res.send(result.toString())
-  });
-})
+// app.get("/model/python",(req,res)=>{
+//   PythonShell.run('machinelearning.py', options, function (err, result){
+//     if (err) throw err;
+//     // result is an array consisting of messages collected
+//     //during execution of script.
+//     console.log('result: ', result.toString());
+//     res.send(result.toString())
+//   });
+// })
 
 app.get("/PlacestroAdmin", (req, res) => {
   res.sendFile(path.join(__dirname, "./admin/build/index.html"));
