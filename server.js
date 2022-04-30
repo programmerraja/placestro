@@ -71,7 +71,7 @@ mongoose.connect(process.env.MONGODB_URI,  {
 //     console.log('result: ', result.toString());
 //     res.send(result.toString())
 //   });
-// })
+// });
 
 app.get("/PlacestroAdmin", (req, res) => {
   res.sendFile(path.join(__dirname, "./admin/build/index.html"));
