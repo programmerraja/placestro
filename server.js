@@ -9,6 +9,32 @@ const passport = require("./passport");
 const routes = require("./routes");
 const {sendWhoIs,sendReport} = require("./util/util");
 
+const {PythonShell} =require('python-shell');
+
+let options = {
+  mode: 'text',
+  pythonOptions: ['-u'], // get print results in real-time
+    scriptPath: './python/', //If you are having python_test.py script in same folder, then it's optional.
+  args: [''] //An argument which can be accessed in the script using sys.argv[1]
+};
+
+
+
+// const { spawn } = require('child_process');
+
+// const pyProg = spawn('python', ['./python/machinelearning.py']);
+// console.log(pyProg)
+// pyProg.stdout.on('data', function(data) {
+//     console.log(data.toString());
+//     // res.write(data);
+//     // res.end('end');
+// });
+// pyProg.stderr.on('data', function(data) {
+//   console.log(data.toString());
+//   // res.write(data);
+//   // res.end('end');
+// });
+
 const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
@@ -37,6 +63,16 @@ mongoose.connect(process.env.MONGODB_URI,  {
   useCreateIndex: true
 });
 
+app.get("/model/python",(req,res)=>{
+  PythonShell.run('machinelearning.py', options, function (err, result){
+    if (err) throw err;
+    // result is an array consisting of messages collected
+    //during execution of script.
+    console.log('result: ', result.toString());
+    res.send(result.toString())
+  });
+})
+
 app.get("/PlacestroAdmin", (req, res) => {
   res.sendFile(path.join(__dirname, "./admin/build/index.html"));
 });
@@ -57,6 +93,8 @@ app.get("*", (req, res) => {
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
+
+
 
 
 

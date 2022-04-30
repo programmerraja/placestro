@@ -1,0 +1,65 @@
+[{
+"questionDesc": "Who invented Java Programming?<br> a) Guido van Rossum<br> b) James Gosling<br> c) Dennis Ritchie<br>d) Bjarne Stroustrup<br>",
+"questionType": "TECHNICAL APPTITUDE",
+"answer": "B"
+},
+{
+"questionDesc": "Which statement is true about Java?<br> a) Java is a sequence-dependent programming language<br> b) Java is a code dependent programming language<br> c) Java is a platform-dependent programming language<br>d) Java is a platform-independent programming language<br>",
+"questionType": "TECHNICAL APPTITUDE",
+"answer": "D"
+},
+{
+"questionDesc": "Which component is used to compile, debug and execute the java programs?<br> a) JRE<br> b) JIT<br> c) JDK<br>d) JVM<br>",
+"questionType": "TECHNICAL APPTITUDE",
+"answer": "C"
+},
+{
+"questionDesc": "Which one of the following is not a Java feature?<br> a) Object-oriented<br> b) Use of pointers<br> c) Portable<br>d) Dynamic and Extensible<br>",
+"questionType": "TECHNICAL APPTITUDE",
+"answer": "B"
+},
+{
+"questionDesc": "Which of these cannot be used for a variable name in Java?<br> a) identifier &amp; keyword<br> b) identifier<br> c) keyword<br>d) none of the mentioned<br>",
+"questionType": "TECHNICAL APPTITUDE",
+"answer": "C"
+},
+{
+"questionDesc": "What is the extension of java code files?<br> a) .js<br> b) .txt<br> c) .class<br>d) .java<br>",
+"questionType": "TECHNICAL APPTITUDE",
+"answer": "D"
+},
+{
+"questionDesc": "Which environment variable is used to set the java path?<br> a) MAVEN_Path<br> b) JavaPATH<br> c) JAVA<br>d) JAVA_HOME<br>",
+"questionType": "TECHNICAL APPTITUDE",
+"answer": "D"
+},
+{
+"questionDesc": "Which of the following is not an OOPS concept in Java?<br> a) Polymorphism<br> b) Inheritance<br> c) Compilation<br>d) Encapsulation<br>",
+"questionType": "TECHNICAL APPTITUDE",
+"answer": "C"
+},
+{
+"questionDesc": "What is not the use of “this” keyword in Java?<br> a) Referring to the instance variable when a local variable has the same name<br> b) Passing itself to the method of the same class<br> c) Passing itself to another method<br>d) Calling another constructor in constructor chaining<br>",
+"questionType": "TECHNICAL APPTITUDE",
+"answer": "B"
+},
+{
+"questionDesc": "Which of the following is a type of polymorphism in Java Programming?<br> a) Multiple polymorphism<br> b) Compile time polymorphism<br> c) Multilevel polymorphism<br>d) Execution time polymorphism<br>",
+"questionType": "TECHNICAL APPTITUDE",
+"answer": "B"
+},
+{
+"questionDesc": "What is Truncation in Java?<br> a) Floating-point value assigned to a Floating type<br> b) Floating-point value assigned to an integer type<br> c) Integer value assigned to floating type<br>d) Integer value assigned to floating type<br>",
+"questionType": "TECHNICAL APPTITUDE",
+"answer": "B"
+},
+{
+"questionDesc": "What will be the output of the following Java program?<br><pre>class Output {public static void main(String args[]){   int arr[] = {1, 2, 3, 4, 5};for ( int i = 0; i < arr.length - 2; ++i)                System.out.println(arr[i] + ' ');        }     }    </pre><br> a) 1 2 3 4 5<br> b) 1 2 3 4<br> c) 1 2<br>d) 1 2 3<br>",
+"questionType": "TECHNICAL APPTITUDE",
+"answer": "D"
+},
+{
+"questionDesc": "What will be the output of the following Java code snippet?<br><br><pre>class abc{    public static void main(String args[])    {        if(args.length>0)        System.out.println(args.length);    }}</pre><br> a) The snippet compiles and runs but does not print anything<br> b) The snippet compiles, runs and prints 0<br> c) The snippet compiles, runs and prints 1<br>d) The snippet does not compile<br>",
+"questionType": "TECHNICAL APPTITUDE",
+"answer": "A"
+}]

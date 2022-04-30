@@ -1,0 +1,101 @@
+
+ [{
+"questionDesc": "<p> The method of design encompassing the process of object oriented decomposition and a notation for depicting  both     logical and physical and as well as static and dynamic models of the system under design is known as:<br>
+a) Object- Oriented Programming<br>
+b) Object- Oriented Design<br>
+c) Object- Oriented Analysis<br>
+d) None of  the mentioned<br>",
+"questionType": "OOAD APPTITUDE",
+"answer": "B"
+},
+ {
+"questionDesc": " What is the programming style of the object oriented conceptual model?<br>
+a) Invariant relationships<br>
+b) Algorithms<br>
+c) Classes and objects<br>
+d) Goals, often expressed in a predicate calculus.<br>",
+"questionType": "OOAD APPTITUDE",
+"answer": "C"
+},
+ {
+"questionDesc": "The process of compartmentalizing the elements of an abstraction that constitute its structure and behavior is called as<br>
+a) Hierarchy<br>
+b) Encapsulation<br>
+c) Modularity<br>
+d) Entity Abstraction<br>",
+"questionType": "OOAD APPTITUDE",
+"answer": "B"
+},
+ {
+"questionDesc": "Single inheritance, Multiple inheritance, and Aggregation comes under _______<br>
+a) Modularity<br>
+b) Typing<br>
+c) Hierarchy<br>
+d) None of the mentioned<br>",
+"questionType": "OOAD APPTITUDE",
+"answer": "C"
+},
+ {
+"questionDesc": "Which of the following statements about Persistence is correct?<br>
+a) It is the enforcement of the class of an object, such that objects of different types may not be interchanged, or at the most they may be interchanged only in very restricted ways.<br>
+b) It is the property of an object through which its existence transcends time and/or space.<br>
+c) It is the property that distinguishes an active object from one that is not active.<br>
+d) All of the mentioned<br>",
+"questionType": "OOAD APPTITUDE",
+"answer": "B"
+},
+ {
+"questionDesc": "What is that concept in type theory in which a single name may denote objects of many different  classes that are related by some common super class referred to ______<br>
+a) Monomorphism<br>
+b) Type Checking<br>
+c) Polymorphism<br>
+d) Generalization<br>",
+"questionType": "OOAD APPTITUDE",
+"answer": "C"
+},
+ {
+"questionDesc": "Callback is an operation provided by<br>
+a) Inheritance<br>
+b) Encapsulation<br>
+c) Modularity<br>
+d) Abstraction<br>",
+"questionType": "OOAD APPTITUDE",
+"answer": "D"
+},
+ {
+"questionDesc": ":reader, :writer or :accessor are the slot options in<br>
+a) Smalltalk<br>
+b) LISP<br>
+c) Object Pascal<br>
+d) CLOS<br>",
+"questionType": "OOAD APPTITUDE",
+"answer": "A"
+},
+
+ {
+"questionDesc": "Subclass represents _______________ abstractions<br>
+a) Generalized abstractions<br>
+b) Specialization abstractions<br>
+c) Both<br>
+d) None of the mentioned<br>",
+"questionType": "OOAD APPTITUDE",
+"answer": "B"
+},
+ {
+"questionDesc": " _____________ is the property that distinguishes an active object from one that is not active.<br>
+a) Persistence<br>
+b) Typing<br>
+c) Aggregation<br>
+d) Concurrency<br>",
+"questionType": "OOAD APPTITUDE",
+"answer": "D"
+},
+ {
+"questionDesc": " Object oriented technology is built upon a sound engineering foundation, whose elements are collectively called as _________<br>
+a) Von Neumann Model<br>
+b) Object Model<br>
+c) Structured Model<br>
+d) Programming Model<br>",
+"questionType": "OOAD APPTITUDE",
+"answer": "B"
+}]

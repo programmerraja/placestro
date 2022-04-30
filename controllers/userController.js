@@ -4,6 +4,10 @@ const bcrypt = require("bcryptjs");
 var validator = require("validator");
 const passport = require("passport");
 
+const aptitude = require("../util/questions/aptitude.json");
+const technicalQuestion = require("../util/questions/technical.json");
+
+
 const Util = require("../util/util");
 
 const controllerUtil = require("../util/controllerUtil");
@@ -645,32 +649,8 @@ deleteMyReview: function (req, res) {
 },
 
 getQuestion:function (req, res) {
-              let a=[{
-                "questionDesc": "Which is the prime number?<br><br>A) 403      B) 129       C) 423       D) 211",
-                "questionType": "QUANTITATIVE APPTITUDE",
-                "answer": "A"
-                },{
-                  "questionDesc": "Which is the prime number?<br><br>A) 403      B) 129       C) 423       D) 211",
-                  "questionType": "QUANTITATIVE APPTITUDE",
-                  "answer": "A"
-                  },{
-                    "questionDesc": "Which is the prime number?<br><br>A) 403      B) 129       C) 423       D) 211",
-                    "questionType": "QUANTITATIVE APPTITUDE",
-                    "answer": "A"
-                    },{
-                      "questionDesc": "Which is the prime number?<br><br>A) 403      B) 129       C) 423       D) 211",
-                      "questionType": "QUANTITATIVE APPTITUDE",
-                      "answer": "A"
-                      },{
-                "questionDesc": "Which is the prime number?<br><br>A) 403      B) 129       C) 423       D) 211",
-                "questionType": "QUANTITATIVE APPTITUDE",
-                "answer": "A"
-                }];
-              const questionObj=[
-                            "QUANTITATIVE APPTITUDE",[...a,...a,...a,...a],
-                            "Tech",[...a,...a,...a,...a],
-                            "OS",[...a,...a,...a,...a]
-                ]
+              let a=[];
+              const questionObj=["QUANTITATIVE APPTITUDE",[...aptitude],"OS",[...technicalQuestion]]
                 res.json({status: "sucess", question:questionObj});
   },
   submitAnswer:function(req,res){

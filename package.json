@@ -5,14 +5,14 @@
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "node server.js",
+    "start:prod": "node index.js",
+    "start:dev": "node index.js",
     "client": "cd client && npm run start",
-    "seed": " node scripts/Seeds.js",
+    "admin": "cd admin && npm run start",
     "install": "cd client && npm install ",
     "build": "cd client && npm run build ",
-    "build2": "cd admin && npm install && npm run build ",
-    "heroku-postbuild": " npm run build && npm run build2"
+    "push": " git push heroku main",
+    "heroku-postbuild": " npm run build"
   },
   "author": "K.boopathi",
   "license": "MIT",
@@ -34,6 +34,7 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "python-shell": "^3.0.1",
     "sanitize-html": "^2.4.0",
     "telegraf": "^4.5.2",
     "ua-parser-js": "^1.0.2",
