@@ -1,7 +1,7 @@
 import os
-os.system('pip install pandas')
-os.system('pip install matplotlib')
-os.system('pip install sklearn')
+os.system('pip3 install pandas')
+os.system('pip3 install matplotlib')
+os.system('pip3 install sklearn')
 
 
 import pandas as pd
