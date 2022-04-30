@@ -1,6 +1,6 @@
 {
   "name": "PlaceStro",
-  "version": "1.0.0",
+  "version": "1.0.",
   "description": "PlaceStro a website for posting company reviews and interview process",
   "main": "server.js",
   "scripts": {
