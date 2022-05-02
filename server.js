@@ -40,7 +40,21 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.use(express.static("admin/build"));
 }
-
+/**
+ * @description Redirect any http requests to https in production environments
+ */
+function redirectToSSL(req, res, next) {
+	if (req.headers['x-forwarded-proto'] != 'https' && https_environments[process.env.NODE_ENV]) {
+		let redirectTo = options.https_url + req.url;
+		if ('https://' + req.get('host') + req.url === redirectTo) {
+			res.redirect(options.https_url + req.url);
+		} else next();
+	}
+	else {
+		next(); /* Continue to other routes if we're not redirecting */
+	}
+}
+app.get('*', redirectToSSL);
 app.use(passport.initialize());
 // use API routes here
 app.use(routes);
