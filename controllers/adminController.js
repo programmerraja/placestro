@@ -723,6 +723,62 @@ const admin = {
       sendMail(req.body.subject,req.body.body,mail)
     })
   },
+  getNotice:function(req,res){
+    db.Notices.find()
+    .then(notices=>{
+      res.json({status:"sucess",notices:notices})
+    }) 
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
+  },
+  createNotice:function(req,res){
+    db.Notices.create({...req.body,postedBy:req.user.name})
+    .then(notices=>{
+      res.json({status:"sucess",msg:"Notice created Sucessfully"})
+    }) 
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
+  },
+  updateNotice:function(req,res){
+    let body={info:req.body.info}
+    req.body.image? body["image"]=req.body.image:null
+    db.Notices.findOneAndUpdate({_id:req.body._id},body)
+    .then(notices=>{
+      res.json({status:"sucess",msg:"Notice updated Sucessfully"})
+    }) 
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
+  },
+  deleteNotice:function(req,res){
+    console.log(req.params)
+    db.Notices.findOneAndRemove({_id:req.params.noticeId})
+    .then(notices=>{
+      res.json({status:"sucess",msg:"Notice removed Sucessfully"})
+    }) 
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
+  },
+
 };
 
 module.exports = admin;

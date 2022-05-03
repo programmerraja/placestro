@@ -12,11 +12,6 @@ import errorHandler from "../../utils/errorHandler";
 import "./style.css"
 
 
-// let init_review={name:"",attended_on:"",placement_type:"onCampus",
-//           off_campus_detail:"",rounds:"",rounds_details:[],
-//           rounds_names:[],is_placed:1,rating:"",salary:"",pros:"",
-//           cons:"",mobile_no:"",role:"",is_anonymous:false,steps:1};
-
 function AddReview() {
 
    const [loading,setLoading]=useState(false);

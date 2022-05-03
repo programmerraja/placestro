@@ -53,6 +53,8 @@ export default {
   },
   deleteMyReview:function(review_id){
     return axios.get("/user/deleteMyReview/"+review_id);
-  }
-
+  },
+  getNotice:function(){
+    return axios.get("/user/getNotice/");
+  },
 };

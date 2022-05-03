@@ -6,7 +6,7 @@ import { Menu, Settings, Home ,Business,Apps} from "@material-ui/icons";
 // import AppsIcon from '@mui/icons-material/Apps';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PeopleIcon from '@material-ui/icons/People';
-import AssessmentIcon from '@material-ui/icons/Assessment';
+import BorderColorIcon from '@material-ui/icons/BorderColor';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import EmailIcon from '@material-ui/icons/Email';
@@ -49,6 +49,11 @@ export default function Sidebar() {
         </Link>:<Link to ="/placestroAdmin/admins"><PeopleIcon className="icon-collapsed"/></Link>}
       </div>
       <div className='Sidemenu'>
+        {expanded?<Link to="/placestroAdmin/notice" className='menu-bars'><BorderColorIcon className='icons'/>
+          <span className='sidebar-text'>Notice Board</span>
+        </Link>:<Link to ="/placestroAdmin/notice"><BorderColorIcon className="icon-collapsed"/></Link>}
+      </div>
+      <div className='Sidemenu'>
         {expanded?<Link to="/placestroAdmin" className='menu-bars'><PeopleIcon className='icons'/>
           <span className='sidebar-text'>Send Mail</span>
         </Link>:<Link to ="/placestroAdmin/sendMails"><EmailIcon className="icon-collapsed"/></Link>}
@@ -58,7 +63,6 @@ export default function Sidebar() {
           <span className='sidebar-text'>Logout</span>
         </Link>:<Link to ="/placestroAdmin/user/logout"><ExitToAppIcon className="icon-collapsed"/></Link>}
       </div>
-      
 
     </div>
   );

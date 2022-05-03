@@ -653,10 +653,23 @@ getQuestion:function (req, res) {
               const questionObj=["QUANTITATIVE APPTITUDE",[...aptitude],"OS",[...technicalQuestion]]
                 res.json({status: "sucess", question:questionObj});
   },
-  submitAnswer:function(req,res){
+submitAnswer:function(req,res){
     console.log(req.body)
     res.send(200)
-  }     
+},
+getNotice:function(req,res){
+  db.Notices.find()
+  .then(notices=>{
+    res.json({status:"sucess",notices:notices})
+  }) 
+  .catch((err) => {
+    logError(err.msg, err);
+      res.json({
+        status: "failed",
+        msg: "Sorry Something went wrong. Please try again",
+      });
+  });
+},     
 };
 
 module.exports = user;

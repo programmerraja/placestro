@@ -29,6 +29,9 @@ function Nav({user}) {
                 <div className="nav_link">
                     <Link onClick={toggle} to="/user/exam">Write Exam</Link>
                   </div>
+                  <div className="nav_link">
+                    <Link onClick={toggle} to="/user/notice">Notice Board</Link>
+                  </div>
                 <div className="nav_link"> 
                     <Link onClick={toggle} to="/user/myReviews"> My Reviews </Link>
                 </div>
@@ -53,6 +56,9 @@ function Nav({user}) {
                 <div className="nav_link">
                     <Link onClick={toggle} to="/user/exam">Write Exam</Link>
                 </div>
+                <div className="nav_link">
+                    <Link onClick={toggle} to="/user/notice">Notice Board</Link>
+                  </div>
                 <div className="nav_link">
                     <Link onClick={toggle} to="/companies"> Companies </Link>
                 </div>

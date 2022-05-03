@@ -79,7 +79,10 @@ export default {
   sendForgetPassword:userService.sendForgetPassword,
   sendResetPassword:userService.sendResetPassword,
 
+  getNotice:userService.getNotice,
   logout:userService.logout,
+
+
 
   getCompanyList:companyService.getCompanyList,
   getSortedCompanyList:companyService.getSortedCompanyList,

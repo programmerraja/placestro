@@ -69,4 +69,8 @@ router.post("/submitAnswer/",
 			auth.isAuthenticatedUser(),
 			userController.submitAnswer);
 
+router.get("/getNotice",
+			auth.isAuthenticatedUser(),
+			userController.getNotice)
+
 module.exports = router;

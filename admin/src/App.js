@@ -30,6 +30,8 @@ import EditUser from "./pages/EditUser";
 
 import PlacedStudents from "./pages/PlacedStudents";
 import SendMails from "./pages/SendMails";
+import NoticeBoard from "./pages/NoticeBoard";
+
 
 
 
@@ -81,6 +83,7 @@ function App(props) {
           <ProtectedRoute path="/placestroAdmin/users/"  component={Users} />
           <ProtectedRoute path="/placestroAdmin/admins/"  component={Admins} />
           <ProtectedRoute path="/placestroAdmin/sendMails/"  component={SendMails} />
+          <ProtectedRoute path="/placestroAdmin/notice/"  component={NoticeBoard} />
           
           <ProtectedRoute path="/placestroAdmin/placedStudents/:companyId"  component={PlacedStudents} />
           

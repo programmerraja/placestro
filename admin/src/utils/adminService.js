@@ -18,6 +18,18 @@ export default {
     return axios.get(`/admin/getMails?department=${filter.department}&currentYear=${filter.currentYear}`)
   },
   sendMails:function({subject,}){
-    return axios.post(`/admin/sendMails`,body)
-  }
+    return axios.post(`/admin/sendMails`,body);
+  },
+  createNotice:function(body){
+    return axios.post(`/admin/createNotice`,body);
+  },
+  updateNotice:function(body){
+    return axios.post(`/admin/updateNotice`,body);
+  },
+  getNotice:function(body){
+    return axios.get(`/admin/getNotice`);
+  },
+  deleteNotice:function(id){
+    return axios.get(`/admin/deleteNotice/${id}`);
+  },
 };

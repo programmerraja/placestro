@@ -27,7 +27,8 @@ let options = {
 const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());  
+app.use(express.json({limit: '50mb'}));  
+// app.use(express.bodyParser({));
 app.use(cors())
 
 app.get("/", (req, res) => {
@@ -56,12 +57,12 @@ app.get("/model/python",(req,res)=>{
       const pyProg = spawn(req.query.type);
     // console.log(pyProg)
     pyProg.stdout.on('data', function(data) {
-        console.log(data.toString());
+        // console.log(data.toString());
         res.write(data);
         res.end('end');
     });
     pyProg.stderr.on('data', function(data) {
-      console.log(data.toString());
+      // console.log(data.toString());
       res.write(data);
       res.end('end');
     });

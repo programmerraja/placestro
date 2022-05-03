@@ -147,5 +147,24 @@ router.post("/sendMails",
 			auth.isAdmin,
 			adminController.sendMails)
 
+router.get("/getNotice",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.getNotice)
+
+router.post("/createNotice",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.createNotice)
+
+router.post("/updateNotice",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.updateNotice)
+
+router.get("/deleteNotice/:noticeId",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.deleteNotice)
 			
 module.exports = router;

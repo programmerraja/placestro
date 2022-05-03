@@ -109,7 +109,12 @@ export default {
   getMails:adminService.getMails,
   sendMails:adminService.sendMails,
   getCompanyAnalytics:companyService.getCompanyAnalytics,
-  generateCompanyAnalytics:companyService.generateCompanyAnalytics
+  generateCompanyAnalytics:companyService.generateCompanyAnalytics,
+
+  getNotice:adminService.getNotice,
+  createNotice:adminService.createNotice,
+  updateNotice:adminService.updateNotice,
+  deleteNotice:adminService.deleteNotice,
 };
 
 function setAuthHeader() {

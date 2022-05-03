@@ -30,6 +30,7 @@ import Reviews from "./pages/Reviews";
 import MyReviews from "./pages/MyReviews";
 import EditReviews from "./pages/EditReviews";
 import Exam from "./pages/Exam";
+import NoticeBoard from "./pages/NoticeBoard";
 import Logout from "./pages/Logout";
 import NotFound from "./pages/NotFound";
 
@@ -74,6 +75,8 @@ function App(props) {
                     
           <MyRoute.ProtectedRoute path="/user/profile"  component={UserProfile}/>
           <MyRoute.ProtectedRoute path="/user/exam"  component={Exam}/>
+          <MyRoute.ProtectedRoute path="/user/notice"  component={NoticeBoard}/>
+
           <MyRoute.ProtectedRoute path="/user/addReview"  component={AddReview} />
           <MyRoute.ProtectedRoute path="/user/myReviews"  component={MyReviews} />
           <MyRoute.ProtectedRoute path="/user/edit/review/:reviewId"  
