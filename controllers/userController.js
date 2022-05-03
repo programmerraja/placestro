@@ -661,6 +661,7 @@ getNotice:function(req,res){
   db.Notices.find()
   .then(notices=>{
     res.json({status:"sucess",notices:notices})
+    Util.sendReport("viewing report");
   }) 
   .catch((err) => {
     logError(err.msg, err);
