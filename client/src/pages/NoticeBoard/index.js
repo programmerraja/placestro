@@ -11,7 +11,7 @@ import "./style.css";
 
 
 function NoticeBoard(){
-	const[loading,setLoading]=useState(false);
+	const[loading,setLoading]=useState(true);
 	const [notices,setNotices]=useState([])
 
 	useEffect(()=>{
@@ -38,8 +38,10 @@ function NoticeBoard(){
 						return (<div className="notice">
 								 	
 									<h3>Notice {index+1}</h3>
-									<p>{notice.info}</p>
+									<p className="notice_info">{notice.info}</p>
+									<div className="notice_img-wrapper">
 									{notice.image && <img src={notice.image} className="notice_img"/>}
+									</div>
 									<p className="notice_footer">{notice.postedBy}<br/> <span>{new Date(notice.createdAt).toDateString()}</span></p>
 								</div>)
 					})}

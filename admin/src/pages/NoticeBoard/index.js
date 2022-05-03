@@ -15,7 +15,7 @@ import "./style.css";
 
 
 function NoticeBoard(){
-	const[loading,setLoading]=useState(false);
+	const[loading,setLoading]=useState(true);
 	const[isCreate,setIsCreate]=useState(-1);
 
 	const [notices,setNotices]=useState([])
@@ -90,6 +90,7 @@ function NoticeBoard(){
 	    <SquareLoader  loading={loading}/>
 		{isCreate>=1 && <NoticePopup saveNotice={saveNotice} notice={notice} setNotice={setNotice} open={isCreate==1 || isCreate==2} setShowPopup={(a)=>setIsCreate(-1)}/>}
 		<div className="noticeboard_wrapper">
+			<h1>Notice Board </h1>
 			<div>
 				<button className="swal-button analytic_btn" onClick={()=>{setIsCreate(1)}}>Create</button>
 			</div>
@@ -100,8 +101,10 @@ function NoticeBoard(){
 										<i className="fas fa-edit" onClick={()=>{setIsCreate(2);setNotice(notice)}}></i>
 									</div>
 									<h3>Notice {index+1}</h3>
-									<p>{notice.info}</p>
+									<p className="notice_info">{notice.info}</p>
+									<div className="notice_img-wrapper">
 									{notice.image && <img src={notice.image} className="notice_img"/>}
+									</div>
 									<p className="notice_footer">{notice.postedBy}<br/> <span>{new Date(notice.createdAt).toDateString()}</span></p>
 
 									<div className="edit_icon">

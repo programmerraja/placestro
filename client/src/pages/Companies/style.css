@@ -98,21 +98,21 @@
   text-transform: capitalize;
 }
 
-/* media query for mobile phones */
-@media (max-width: 700px) {
-  .companies_container {
-    width: 83%;
+  /* media query for mobile phones */
+  @media (max-width: 700px) {
+    .companies_container {
+      width: 83%;
+    }
+    .companies_content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 95%;
+    }
+    .companies_search {
+      width: 100%;
+    }
+    .companies_info,.review_info{
+      font-size: 0.7rem; 
+    }
   }
-  .companies_content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 95%;
-  }
-  .companies_search {
-    width: 100%;
-  }
-  .companies_info,.review_info{
-    font-size: 0.7rem; 
-  }
-}

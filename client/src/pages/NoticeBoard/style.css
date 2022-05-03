@@ -51,8 +51,21 @@
 .add_info-textarea{
     height: 300px !important;
 }
+
+.notice_info{
+    padding-left: 1.5rem;
+}
+.notice_img-wrapper{
+    width: 90%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    margin: auto;
+
+}
 .notice_img{
-    width: 80%;
+    width: 100%;
+    margin: auto;
 }
 /* media query for mobile phones */
 @media (max-width: 700px) {
