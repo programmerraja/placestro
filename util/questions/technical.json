@@ -1,65 +1,62 @@
-[{
-"questionDesc": "Who invented Java Programming?<br> a) Guido van Rossum<br> b) James Gosling<br> c) Dennis Ritchie<br>d) Bjarne Stroustrup<br>",
-"questionType": "TECHNICAL APPTITUDE",
-"answer": "B"
-},
-{
-"questionDesc": "Which statement is true about Java?<br> a) Java is a sequence-dependent programming language<br> b) Java is a code dependent programming language<br> c) Java is a platform-dependent programming language<br>d) Java is a platform-independent programming language<br>",
-"questionType": "TECHNICAL APPTITUDE",
-"answer": "D"
-},
-{
-"questionDesc": "Which component is used to compile, debug and execute the java programs?<br> a) JRE<br> b) JIT<br> c) JDK<br>d) JVM<br>",
-"questionType": "TECHNICAL APPTITUDE",
-"answer": "C"
-},
-{
-"questionDesc": "Which one of the following is not a Java feature?<br> a) Object-oriented<br> b) Use of pointers<br> c) Portable<br>d) Dynamic and Extensible<br>",
-"questionType": "TECHNICAL APPTITUDE",
-"answer": "B"
-},
-{
-"questionDesc": "Which of these cannot be used for a variable name in Java?<br> a) identifier &amp; keyword<br> b) identifier<br> c) keyword<br>d) none of the mentioned<br>",
-"questionType": "TECHNICAL APPTITUDE",
-"answer": "C"
-},
-{
-"questionDesc": "What is the extension of java code files?<br> a) .js<br> b) .txt<br> c) .class<br>d) .java<br>",
-"questionType": "TECHNICAL APPTITUDE",
-"answer": "D"
-},
-{
-"questionDesc": "Which environment variable is used to set the java path?<br> a) MAVEN_Path<br> b) JavaPATH<br> c) JAVA<br>d) JAVA_HOME<br>",
-"questionType": "TECHNICAL APPTITUDE",
-"answer": "D"
-},
-{
-"questionDesc": "Which of the following is not an OOPS concept in Java?<br> a) Polymorphism<br> b) Inheritance<br> c) Compilation<br>d) Encapsulation<br>",
-"questionType": "TECHNICAL APPTITUDE",
-"answer": "C"
-},
-{
-"questionDesc": "What is not the use of “this” keyword in Java?<br> a) Referring to the instance variable when a local variable has the same name<br> b) Passing itself to the method of the same class<br> c) Passing itself to another method<br>d) Calling another constructor in constructor chaining<br>",
-"questionType": "TECHNICAL APPTITUDE",
-"answer": "B"
-},
-{
-"questionDesc": "Which of the following is a type of polymorphism in Java Programming?<br> a) Multiple polymorphism<br> b) Compile time polymorphism<br> c) Multilevel polymorphism<br>d) Execution time polymorphism<br>",
-"questionType": "TECHNICAL APPTITUDE",
-"answer": "B"
-},
-{
-"questionDesc": "What is Truncation in Java?<br> a) Floating-point value assigned to a Floating type<br> b) Floating-point value assigned to an integer type<br> c) Integer value assigned to floating type<br>d) Integer value assigned to floating type<br>",
-"questionType": "TECHNICAL APPTITUDE",
-"answer": "B"
-},
-{
-"questionDesc": "What will be the output of the following Java program?<br><pre>class Output {public static void main(String args[]){   int arr[] = {1, 2, 3, 4, 5};for ( int i = 0; i < arr.length - 2; ++i)                System.out.println(arr[i] + ' ');        }     }    </pre><br> a) 1 2 3 4 5<br> b) 1 2 3 4<br> c) 1 2<br>d) 1 2 3<br>",
-"questionType": "TECHNICAL APPTITUDE",
-"answer": "D"
-},
-{
-"questionDesc": "What will be the output of the following Java code snippet?<br><br><pre>class abc{    public static void main(String args[])    {        if(args.length>0)        System.out.println(args.length);    }}</pre><br> a) The snippet compiles and runs but does not print anything<br> b) The snippet compiles, runs and prints 0<br> c) The snippet compiles, runs and prints 1<br>d) The snippet does not compile<br>",
-"questionType": "TECHNICAL APPTITUDE",
-"answer": "A"
-}]
+[  
+    {
+    "questionDesc": "When an array is passed to a method, what does the method receive?<br> a) The reference of the array<br> b) A copy of the array<br> c) Length of the array<br>d) Copy of first element<br>"
+    },
+    {
+    "questionDesc": "Which of the follwing below live on the heap in java?<br> a) Class<br> b) Instance variable<br> c) Method<br>d) Object<br>"
+    },
+    {
+    "questionDesc": "Which of these interface handle sequences?<br> a) Set<br> b) List<br> c) Comparator<br>d) Collection<br>"
+    },
+    {
+    "questionDesc": "Which is correct about an instance variable of type String?<br> a) It defaults to an empty string.<br> b)  It defaults to null.<br> c) It does not have a default value.<br>d) None<br>"
+    },
+    {
+    "questionDesc": "#include is called?<br> a) Preprocessor directive<br> b) Inclusion directive<br> c)  File inclusion directive<br>d) None<br>"
+    },
+    {
+    "questionDesc": "Property which allows to produce different executable for different platforms in C is called?<br> a) File inclusion<br> b) Selective inclusion<br> c) Conditional compilation<br>d) Recursive macros<br>"
+    },
+    {
+    "questionDesc": "typedef which of the following may create problem in the program?<br> a) ;<br> b) printf/scanf<br> c) Arithmetic operators<br>d) All of the mentioned<br>"
+    },
+    {
+    "questionDesc": " Which keyword can be used for coming out of recursion?<br> a) break<br> b)  return<br> c) exit<br>d) Both (a) and (b)<br>"
+    },
+    {
+    "questionDesc": " The keyword 'break' cannot be simply used within:<br> a) do-while<br> b) if-else<br> c) for<br>d) while<br>"
+    },
+    {
+    "questionDesc": " Which keyword is used to come out of a loop only for that iteration?<br> a) break<br> b) continue<br> c)  return<br>d) None of the mentioned<br>"
+    },
+    {
+    "questionDesc": "For tuples and list which is correct?<br> a) List and tuples both are mutable.<br> b) List is mutable whereas tuples are immutable.<br> c) List and tuples both are immutable.<br>d)  List is immutable whereas tuples are mutable.<br>"
+    },
+    {
+    "questionDesc": "What command is used to shuffle a list ‘L’?<br> a) L.shuffle()<br> b) random.shufflelist(L)<br> c) shuffle(L)<br>d) random.Shuffle(L)<br>"
+    },
+    {
+    "questionDesc": "What is the maximum length of the filename in DOS?<br> a) 4<br> b) 5<br> c) 8<br>d) 12<br>"
+    },
+    {
+    "questionDesc": "What else is a command interpreter called?<br> a) prompt<br> b) kernel<br> c) shell<br>d) command<br>"
+    },
+    {
+    "questionDesc": "Banker's algorithm is used??<br> a) To prevent deadlock<br> b) To deadlock recovery<br> c) To solve the deadlock<br>d) None of these<br>"
+    },
+    {
+    "questionDesc": "Where are placed the list of processes that are prepared to be executed and waiting?<br> a) Job queue<br> b) Ready queue<br> c) Execution queue<br>d) Process queue<br>"
+    },
+    {
+    "questionDesc": "Which of the following is a type of polymorphism in Java?<br> a) Execution time polymorphism<br> b) Compile time polymorphism<br> c) Multiple polymorphism<br>d) Multilevel polymorphism<br>"
+    },
+    {
+    "questionDesc": "We cannot create instance of_____?<br> a)  Abstract<br> b) Inheritance<br> c) Encapsulation<br>d) Class<br>"
+    },
+    {
+    "questionDesc": "Default member in a class?<br> a) Public<br> b) Private<br> c) Protected<br>d) Static<br>"
+    },
+    {
+    "questionDesc":"Which statement about a valid .java file is true?<br>a. It can only contain one class declaration. <br>b. It can contain one pulic class declaration and one public interface definition.<br>c. It must define at least one public class.<br>d. It may define at most one public class."
+    }
+]

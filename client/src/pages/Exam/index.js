@@ -48,7 +48,7 @@ function Exam(){
 	const submitAnswer=()=>{
 		API.submitAnswer(answers)
 		.then((res)=>{
-				errorHandler(true,res.data.msg);
+				errorHandler(false,"Your mark is "+res.data.mark);
 			})
 		.catch((res)=>{
 			if(res.data && res.data.msg){

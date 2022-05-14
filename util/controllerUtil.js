@@ -1,3 +1,4 @@
+const Answers = require("./questions/answers.json");
 
 const controllerUtil={
 
@@ -44,58 +45,16 @@ const controllerUtil={
               isAnonymous:review.is_anonymous
             }
     },
-    getCollegeName:(college_code)=>{
-        college_code=parseInt(college_code)
-        if(college_code>=1102 && college_code<=4126){
-          let colleges=require("./colleges/college1.json")
-          let college_name=colleges[String(college_code)]
-          if(college_name){
-            return college_name
-          }
-          else{
-            return false
-          }
+    getMarks:(answers)=>{
+      console.log( Answers.length,"answeres")
+      let mark=0;
+      Object.keys(answers)
+      .map((index)=>{
+        if(answers[index].toUpperCase()===Answers[index].answer){
+          mark+=1;
         }
-        else if(college_code>=4127 && college_code<=6228){
-          let colleges=require("./colleges/college2.json")
-          let college_name=colleges[String(college_code)]
-          if(college_name){
-            return college_name
-          }
-          else{
-            return false
-          }
-        }
-        else if(college_code>=6229 && college_code<=7309){
-          let colleges=require("./colleges/college3.json")
-          let college_name=colleges[String(college_code)]
-          if(college_name){
-            return college_name
-          }
-          else{
-            return false
-          }
-        }
-        else if(college_code>=7311 && college_code<=9119){
-          let colleges=require("./colleges/college4.json")
-          let college_name=colleges[String(college_code)]
-          if(college_name){
-            return college_name
-          }
-          else{
-            return false
-          }
-        }
-        else if(college_code>=9120 && college_code<=9638){
-          let colleges=require("./colleges/college5.json")
-          let college_name=colleges[String(college_code)]
-          if(college_name){
-            return college_name
-          }
-          else{
-            return false
-          }
-        }
+      })
+      return mark;
     }
 }
 

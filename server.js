@@ -23,7 +23,6 @@ let options = {
 
 
 
-
 const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
@@ -54,25 +53,25 @@ mongoose.connect(process.env.MONGODB_URI,  {
 });
 
 app.get("/model/python",(req,res)=>{
-      const pyProg = spawn(req.query.type);
-    // console.log(pyProg)
-    pyProg.stdout.on('data', function(data) {
-        // console.log(data.toString());
-        res.write(data);
-        res.end('end');
-    });
-    pyProg.stderr.on('data', function(data) {
-      // console.log(data.toString());
-      res.write(data);
-      res.end('end');
-    });
-  // PythonShell.run('machinelearning.py', options, function (err, result){
-  //   if (err) throw err;
-  //   // result is an array consisting of messages collected
-  //   //during execution of script.
-  //   console.log('result: ', result.toString());
-  //   res.send(result.toString())
-  // });
+  //     const pyProg = spawn("pytho");
+  //   // console.log(pyProg)
+  //   pyProg.stdout.on('data', function(data) {
+  //       // console.log(data.toString());
+  //       res.write(data);
+  //       res.end('end');
+  //   });
+  //   pyProg.stderr.on('data', function(data) {
+  //     // console.log(data.toString());
+  //     res.write(data);
+  //     res.end('end');
+  //   });
+   PythonShell.run('machinelearning.py', options, function (err, result){
+    if (err) throw err;
+    // result is an array consisting of messages collected
+    //during execution of script.
+    console.log('result: ', result.toString());
+    res.send(result.toString())
+  });  
 });
 
 app.get("/PlacestroAdmin", (req, res) => {

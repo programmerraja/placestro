@@ -16,6 +16,8 @@ const {
   sendMail
 } = require("../util/util");
 
+
+
 const controllerUtil = require("../util/controllerUtil");
 const company = require("./companyController");
 const { copy } = require("../routes/admin");
@@ -778,7 +780,84 @@ const admin = {
         });
     });
   },
+  getViews:function(req,res){
+    db.CompanyView.find()
+    .then(views=>{
+      res.json({status:"sucess",views:views})
+    }) 
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
+  },
+  createView:function(req,res){
+    db.CompanyView.create(req.body)
+    .then(()=>{
+      res.json({status:"sucess",msg:"View Created Sucessfully"})
+    })
+    .catch((err) => {
+      logError(err.msg, err);
+      res.json({
+        status: "failed",
+        msg: "Sorry Something went wrong. Please try again",
+      });
+    });
+  },
+  updateView:function(req,res){
+    let body={passedOut:req.body.passedOut,name:req.body.name,department:req.body.department}
+    db.CompanyView.findOneAndUpdate({_id:req.body._id},body)
+    .then(CompanyView=>{
+      res.json({status:"sucess",msg:"view updated Sucessfully"})
+    }) 
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
+  },
+  deleteView:function(req,res){
+    console.log(req.params)
+    db.CompanyView.findOneAndRemove({_id:req.params.viewId})
+    .then(CompanyView=>{
+      res.json({status:"sucess",msg:"view removed Sucessfully"})
+    }) 
+    .catch((err) => {
+      logError(err.msg, err);
+        res.json({
+          status: "failed",
+          msg: "Sorry Something went wrong. Please try again",
+        });
+    });
+  },
+  getViewUsers:function(req,res){
+    let limit = Number(req.query.limit) || 10;
+    let skip = req.query.page > 1 ? Number((req.query.page - 1) * limit) : 0;
 
+    db.CompanyView.findOne({_id:req.query.viewId})
+    .then((view)=>{
+        if(view){
+          console.log(view.passedOut)
+            db.User.find({passedOut:view.passedOut,department:view.department})
+            .skip(skip)
+            .limit(limit)
+            .then(users=>{
+              db.User.countDocuments({passedOut:view.passedOut,department:view.department})
+              .then((count) => {
+                  res.json({
+                    users: users,
+                    count: count,
+                    viewName:view.name
+                  });
+                })
+            })  
+         }
+    })
+  }
 };
 
 module.exports = admin;

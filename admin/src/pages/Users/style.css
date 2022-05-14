@@ -13,3 +13,6 @@ li button{
 .delete_icon{
 	color: var(--primary-color) !important;
 }
+.filter_option-wrapper button{
+	margin-top: 0.5rem;	
+}

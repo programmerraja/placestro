@@ -59,6 +59,11 @@ export default function Sidebar() {
         </Link>:<Link to ="/placestroAdmin/sendMails"><EmailIcon className="icon-collapsed"/></Link>}
       </div>
       <div className='Sidemenu'>
+        {expanded?<Link to="/placestroAdmin" className='menu-bars'><PeopleIcon className='icons'/>
+          <span className='sidebar-text'>Views</span>
+        </Link>:<Link to ="/placestroAdmin/views"><EmailIcon className="icon-collapsed"/></Link>}
+      </div>
+      <div className='Sidemenu'>
         {expanded?<Link to="/logout" className='menu-bars'><ExitToAppIcon className='icons'/>
           <span className='sidebar-text'>Logout</span>
         </Link>:<Link to ="/placestroAdmin/user/logout"><ExitToAppIcon className="icon-collapsed"/></Link>}

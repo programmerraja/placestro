@@ -1,61 +1,31 @@
 [
-{"questionDesc":"Which is the prime number?<br><br>A) 403      B) 129       C) 423       D) 211",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "A"
+{"questionDesc":"Which is the prime number?<br><br>A) 403      B) 129       C) 423       D) 211"
 },
-{"questionDesc":"A train running at the speed of 60 km/hr crosses a pole in 9 seconds. What is the length of the train?<br><br>A. 120 metres B. 180 metres C. 324 metres D. 150 metres",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "D"
+{"questionDesc":"A train running at the speed of 60 km/hr crosses a pole in 9 seconds. What is the length of the train?<br><br>A. 120 metres B. 180 metres C. 324 metres D. 150 metres"
 },
-{"questionDesc":"The length of the bridge, which a train 130 metres long and travelling at 45 km/hr can cross in 30 seconds, is?<br><br>A. 200 m B. 225 m C. 245 m D. 250 m",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "C"
+{"questionDesc":"The length of the bridge, which a train 130 metres long and travelling at 45 km/hr can cross in 30 seconds, is?<br><br>A. 200 m B. 225 m C. 245 m D. 250 m"
 },
-{"questionDesc":"Two goods train each 500 m long, are running in opposite directions on parallel tracks. Their speeds are 45 km/hr and 30 km/hr respectively. Find the time taken by the slower train to pass the driver of the faster one.<br><br>A. 12sec B. 24sec C. 48sec D. 60sec",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "B"
+{"questionDesc":"Two goods train each 500 m long, are running in opposite directions on parallel tracks. Their speeds are 45 km/hr and 30 km/hr respectively. Find the time taken by the slower train to pass the driver of the faster one.<br><br>A. 12sec B. 24sec C. 48sec D. 60sec"
 },
-{"questionDesc":"Two stations A and B are 110 km apart on a straight line. One train starts from A at 7 a.m. and travels towards B at 20 kmph. Another train starts from B at 8 a.m. and travels towards A at a speed of 25 kmph. At what time will they meet?<br><br>A. 9 a.m. B. 10 a.m. C. 10.30 a.m. D. 11 a.m.",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "B"
+{"questionDesc":"Two stations A and B are 110 km apart on a straight line. One train starts from A at 7 a.m. and travels towards B at 20 kmph. Another train starts from B at 8 a.m. and travels towards A at a speed of 25 kmph. At what time will they meet?<br><br>A. 9 a.m. B. 10 a.m. C. 10.30 a.m. D. 11 a.m."
 },
-{"questionDesc":"What is the length of a running train?<br>I. The train crosses a man in 9 seconds.<br>II.The train crosses a 240 metre long platform in 24 seconds.<br><br>A. I alone sufficient while II alone not sufficient to answer B. II alone sufficient while I alone not sufficient to answer C. Either I or II alone sufficient to answer D. Both I and II are not sufficient to answer E. Both I and II are necessary to answer",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "E"
+{"questionDesc":"What is the length of a running train?<br>I. The train crosses a man in 9 seconds.<br>II.The train crosses a 240 metre long platform in 24 seconds.<br><br>A. I alone sufficient while II alone not sufficient to answer B. II alone sufficient while I alone not sufficient to answer C. Either I or II alone sufficient to answer D. Both I and II are not sufficient to answer E. Both I and II are necessary to answer"
 },
-{"questionDesc":"What will be the ratio of simple interest earned by certain amount at the same rate of interest for 6 years and that for 9 years?<br><br>A. 1 : 3 B. 1 : 4 C. 2 : 3 D. Data inadequateE. None of these",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "C"
+{"questionDesc":"What will be the ratio of simple interest earned by certain amount at the same rate of interest for 6 years and that for 9 years?<br><br>A. 1 : 3 B. 1 : 4 C. 2 : 3 D. Data inadequateE. None of these"
 },
-{"questionDesc":"A sum of Rs. 12,500 amounts to Rs. 15,500 in 4 years at the rate of simple interest. What is the rate of interest?<br><br>A. 3% B. 4% C. 5% D. 6% E. None of these",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "D"
+{"questionDesc":"A sum of Rs. 12,500 amounts to Rs. 15,500 in 4 years at the rate of simple interest. What is the rate of interest?<br><br>A. 3% B. 4% C. 5% D. 6% E. None of these"
 },
-{"questionDesc":"On selling 17 balls at Rs. 720, there is a loss equal to the cost price of 5 balls. The cost price of a ball is:<br><br>A. Rs. 45 B. Rs. 50 C. Rs. 55 D. Rs. 60",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "D"
+{"questionDesc":"On selling 17 balls at Rs. 720, there is a loss equal to the cost price of 5 balls. The cost price of a ball is:<br><br>A. Rs. 45 B. Rs. 50 C. Rs. 55 D. Rs. 60"
 },
-{"questionDesc":"A sum of Rs. 725 is lent in the beginning of a year at a certain rate of interest. After 8 months, a sum of Rs. 362.50 more is lent but at the rate twice the former. At the end of the year, Rs. 33.50 is earned as interest from both the loans. What was the original rate of interest?<br><brA. 3.6% B. 4.5% C. 5% D. 6% E. None of these",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "E"
+{"questionDesc":"A sum of Rs. 725 is lent in the beginning of a year at a certain rate of interest. After 8 months, a sum of Rs. 362.50 more is lent but at the rate twice the former. At the end of the year, Rs. 33.50 is earned as interest from both the loans. What was the original rate of interest?<br><brA. 3.6% B. 4.5% C. 5% D. 6% E. None of these"
 },
-{"questionDesc":"The cost price of 20 articles is the same as the selling price of x articles. If the profit is 25%, then the value of x is:<br><br>A. 15 B. 16 C.18 D. 25",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "B"
+{"questionDesc":"The cost price of 20 articles is the same as the selling price of x articles. If the profit is 25%, then the value of x is:<br><br>A. 15 B. 16 C.18 D. 25"
 },
-{"questionDesc":"A trader mixes 26 kg of rice at Rs. 20 per kg with 30 kg of rice of other variety at Rs. 36 per kg and sells the mixture at Rs. 30 per kg. His profit percent is:<br><br>A. No profit, no loss B. 5% C. 8% D. 10% E. None of these",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "B"
+{"questionDesc":"A trader mixes 26 kg of rice at Rs. 20 per kg with 30 kg of rice of other variety at Rs. 36 per kg and sells the mixture at Rs. 30 per kg. His profit percent is:<br><br>A. No profit, no loss B. 5% C. 8% D. 10% E. None of these"
 },
-{"questionDesc":"The sum of ages of 5 children born at the intervals of 3 years each is 50 years. What is the age of the youngest child?<br><br>A. 4 years B. 8 years C. 10 years D. None of these",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "A"
+{"questionDesc":"The sum of ages of 5 children born at the intervals of 3 years each is 50 years. What is the age of the youngest child?<br><br>A. 4 years B. 8 years C. 10 years D. None of these"
 },
-{"questionDesc":"The present ages of three persons in proportions 4 : 7 : 9. Eight years ago, the sum of their ages was 56. Find their present ages (in years).<br><br>A. 8, 20, 28 B. 16, 28, 36 C. 20, 35, 45 D. None of these",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "B"
+{"questionDesc":"The present ages of three persons in proportions 4 : 7 : 9. Eight years ago, the sum of their ages was 56. Find their present ages (in years).<br><br>A. 8, 20, 28 B. 16, 28, 36 C. 20, 35, 45 D. None of these"
 },
-{"questionDesc":"The difference between compound interest and simple interest on an amount of Rs. 15,000 for 2 years is Rs. 96. What is the rate of interest per annum?<br><br>A. 8 B. 10 C. 12 D. Cannot be determinedE. None of these",
-"questionType": "QUANTITATIVE APPTITUDE",
-"answer": "A"
+{"questionDesc":"The difference between compound interest and simple interest on an amount of Rs. 15,000 for 2 years is Rs. 96. What is the rate of interest per annum?<br><br>A. 8 B. 10 C. 12 D. Cannot be determinedE. None of these"
 }]

@@ -73,6 +73,12 @@ export default {
 
 
   getAllUsers:userService.getAllUsers,
+  getViewUsers:userService.getViewUsers,
+  createView:userService.createView,
+  getViews:userService.getViews,
+  updateView:userService.updateView,
+  deleteView:userService.deleteView,
+
   deleteUser:userService.deleteUser,
   getMyProfile:userService.getMyProfile,
   updateProfile:userService.updateProfile,

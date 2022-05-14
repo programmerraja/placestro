@@ -166,5 +166,27 @@ router.get("/deleteNotice/:noticeId",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.deleteNotice)
+
+router.get("/user/getViews",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.getViews);
+
+router.post("/user/createView",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.createView);
+
+router.post("/user/updateView",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.updateView);
 			
+router.get("/user/deleteView/:viewId",
+			auth.isAuthenticatedAdmin(),
+			auth.isAdmin,
+			adminController.deleteView)
+
+router.get("/user/getViewUsers",
+			adminController.getViewUsers);
 module.exports = router;

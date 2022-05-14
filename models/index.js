@@ -1,13 +1,14 @@
 const User= require("./User")
 const Admin= require("./Admin")
 const Companies= require("./Companies")
+const CompanyView =require("./CompanyView")
 const Reviews= require("./Reviews")
 const Notices= require("./Notices")
 const Analytics=require("./Analytics")
 const fs = require("fs");
 // Analytics.findOneAndRemove({_id:"625a493c7d16419cd95f5a0b"}).then((a)=>{console.log(a)})
 
-module.exports = {User,Companies,Reviews,Analytics,Admin,Notices};
+module.exports = {User,Companies,Reviews,Analytics,Admin,Notices,CompanyView};
 
 // const user=require("../backup/user.json")
 // const college=require("../backup/college.json")

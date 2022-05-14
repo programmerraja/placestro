@@ -63,5 +63,22 @@ export default {
   },
   logout:function(){
     return axios.get("/admin/user/logout/");
-  }
+  },
+
+  getViewUsers: function (viewId,page,limit) {
+    let query=`viewId=${viewId}&limit=${limit}&page=${page}`;
+    return axios.get(`/admin/user/getViewUsers/?${query}`);
+  },
+  getViews:function(){
+    return axios.get(`/admin/user/getViews`);
+  },
+  createView: function (body) {
+    return axios.post(`/admin/user/createView`,body);
+  },
+  updateView:function(body){
+    return axios.post(`/admin/user/updateView`,body);
+  },
+  deleteView:function(id){
+    return axios.get(`/admin/user/deleteView/${id}`);
+  },
 };

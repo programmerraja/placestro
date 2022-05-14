@@ -27,6 +27,9 @@ import UserReviews from "./pages/UserReviews";
 import EditReviews from "./pages/EditReviews";
 import EditCompany from "./pages/EditCompany";
 import EditUser from "./pages/EditUser";
+import CompanyViews from "./pages/CompanyViews";
+import Views from "./pages/Views";
+
 
 import PlacedStudents from "./pages/PlacedStudents";
 import SendMails from "./pages/SendMails";
@@ -68,6 +71,7 @@ function App(props) {
             className="section_wrapper"
           >
         <Switch>
+          <Route exact path="/placestroAdmin/companyview/:viewId" component={CompanyViews}/> 
           <ProtectedRoute exact path="/placestroAdmin" component={Home}/>
           <ProtectedRoute exact path="/placestroAdmin/home" component={Home}/>
 
@@ -84,6 +88,8 @@ function App(props) {
           <ProtectedRoute path="/placestroAdmin/admins/"  component={Admins} />
           <ProtectedRoute path="/placestroAdmin/sendMails/"  component={SendMails} />
           <ProtectedRoute path="/placestroAdmin/notice/"  component={NoticeBoard} />
+          <ProtectedRoute path="/placestroAdmin/views/"  component={Views} />
+
           
           <ProtectedRoute path="/placestroAdmin/placedStudents/:companyId"  component={PlacedStudents} />
           
@@ -92,8 +98,6 @@ function App(props) {
           <ProtectedRoute path="/placestroAdmin/user/edit/review/:reviewId"  component={EditReviews} />
           <ProtectedRoute path="/placestroAdmin/edit/company/:companyId"  component={EditCompany} />
           <ProtectedRoute path="/placestroAdmin/edit/user/:userId"  component={EditUser} />
-
-
         </Switch>
         </div>
           </div>

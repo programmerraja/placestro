@@ -8,6 +8,7 @@ const aptitude = require("../util/questions/aptitude.json");
 const technicalQuestion = require("../util/questions/technical.json");
 
 
+
 const Util = require("../util/util");
 
 const controllerUtil = require("../util/controllerUtil");
@@ -649,13 +650,16 @@ deleteMyReview: function (req, res) {
 },
 
 getQuestion:function (req, res) {
-              let a=[];
-              const questionObj=["QUANTITATIVE APPTITUDE",[...aptitude],"OS",[...technicalQuestion]]
-                res.json({status: "sucess", question:questionObj});
-  },
+        let a=[];
+        console.log(aptitude.length,technicalQuestion.length,"question")
+        const questionObj=["QUANTITATIVE APPTITUDE",[...aptitude],"TECHINICAL",[...technicalQuestion]]
+          res.json({status: "sucess", question:questionObj});
+},
 submitAnswer:function(req,res){
-    console.log(req.body)
-    res.send(200)
+    let mark=controllerUtil.getMarks(req.body)
+    
+    res.json({status: "sucess", mark});
+
 },
 getNotice:function(req,res){
   db.Notices.find()
