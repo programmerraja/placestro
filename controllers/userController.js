@@ -12,6 +12,8 @@ const technicalQuestion = require("../util/questions/technical.json");
 const Util = require("../util/util");
 
 const controllerUtil = require("../util/controllerUtil");
+const {PythonShell} =require('python-shell');
+
 // Util.verfiyMail("boooathis123@gmail.com", "name", "dd");
 
 const user = {
@@ -655,8 +657,16 @@ getQuestion:function (req, res) {
         const questionObj=["QUANTITATIVE APPTITUDE",[...aptitude],"TECHINICAL",[...technicalQuestion]]
           res.json({status: "sucess", question:questionObj});
 },
+
 submitAnswer:function(req,res){
     let mark=controllerUtil.getMarks(req.body)
+    let options = {
+      mode: 'text',
+      pythonOptions: ['-u'], // get print results in real-time
+        scriptPath: '../python/', //If you are having python_test.py script in same folder, then it's optional.
+      args: [''] //An argument which can be accessed in the script using sys.argv[1]
+    };
+    PythonShell.run('machinelearning.py', options, function (err, result){console.log("hai")})
     
     res.json({status: "sucess", mark});
 

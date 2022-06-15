@@ -106,48 +106,23 @@ const admin = {
   },
 
   getCounts: function (req, res) {
-    db.User.countDocuments({})
-      .then((user_count) => {
-        db.Companies.countDocuments({})
-          .then((company_count) => {
-            db.Reviews.countDocuments({})
-              .then((review_count) => {
-                db.User.countDocuments({isPlaced:true})
-                 .then((placed_count) => {
-                        res.json({
-                          status: "sucess",
-                          user_count,
-                          company_count,
-                          review_count,
-                          placed_count
-                        });
-                })
+    Promise.all([db.User.countDocuments({}),db.Companies.countDocuments({}),db.Reviews.countDocuments({}), db.User.countDocuments({isPlaced:true})])
+    .then(([user_count,company_count,review_count,placed_count]) => {
+              res.json({
+                status: "sucess",
+                user_count,
+                company_count,
+                review_count,
+                placed_count
               })
-              .catch((err) => {
-                res
-                  .send(500)
-                  .json({
-                    status: "failure",
-                    message: "Some Error Occured. Try Again!",
-                  });
-              });
-          })
-          .catch((err) => {
-            res
-              .send(500)
-              .json({
-                status: "failure",
-                message: "Some Error Occured. Try Again!",
-              });
-          });
-      })
+       })
       .catch((err) => {
-        res
-          .send(500)
-          .json({
-            status: "failure",
-            message: "Some Error Occured. Try Again!",
-          });
+          res
+            .send(500)
+            .json({
+              status: "failure",
+              message: "Some Error Occured. Try Again!",
+            });
       });
   },
   getAllUsers: function (req, res) {
