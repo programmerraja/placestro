@@ -167,7 +167,7 @@ const admin = {
         });
       });
   },  
-  getUserProfile:function(req,res){
+  getProfile:function(req,res){
     db.User.findOne({_id:req.params.userId})
     .then((user)=>{
       db.Companies.find({}).then((company)=>{
@@ -176,13 +176,13 @@ const admin = {
       })
     })
   },
-  updateUserProfile:function(req,res){
+  updateProfile:function(req,res){
     db.User.findOneAndUpdate({_id:req.body.userId},req.body)
     .then((user)=>{
       res.json({status:"sucess",msg:"Sucessfully updated the user"})
     })
   },
-  updateUserReview: function (req, res) {
+  updateReview: function (req, res) {
     if (controllerUtil.checkReview(req.body)) {
       db.Companies.findOne({ name: req.body.name.toLowerCase() })
         .then((companyObj) => {
@@ -255,7 +255,7 @@ const admin = {
       res.json({ status: "failed", msg: "Please fill all the data" });
     }
   },    
-  deleteUserReview: function (req, res) {
+  deleteReview: function (req, res) {
     if (req.params.reviewId) {
       db.Reviews.findOneAndRemove({ _id: req.params.reviewId })
         .then((reviewObj) => {
@@ -316,7 +316,7 @@ const admin = {
         res.json({ status: "failed", list: [] });
       });
   },
-  deleteUserReview: function (req, res) {
+  deleteReview: function (req, res) {
     if (req.params.reviewId) {
       db.Reviews.findOneAndRemove({ _id: req.params.reviewId })
         .then((reviewObj) => {
@@ -386,7 +386,7 @@ const admin = {
         res.json({ status: "failed", msg: "Something went wrong" });
       });
   },
-  verifiyMyEmail: async function (req, res) {
+  verifiyEmail: async function (req, res) {
     let user_id = req.params.userId;
     if (user_id) {
       var user = await db.User.findOne({

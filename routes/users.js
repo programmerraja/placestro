@@ -12,34 +12,34 @@ router.post("/signin",
 router.post("/signup",
 			userController.signUp);
 
-router.get("/verifiyMyEmail/:userId",
-			userController.verifiyMyEmail);
+router.get("/verifiyEmail/:userId",
+			userController.verifiyEmail);
 
-router.get("/getMyProfile",
+router.get("/getProfile",
 			auth.isAuthenticatedUser(),
-			userController.getMyProfile);
+			userController.getProfile);
 
-router.post("/updateMyProfile",
+router.post("/updateProfile",
 			auth.isAuthenticatedUser(),
-			userController.updateMyProfile);
+			userController.updateProfile);
 
-router.post("/forgetMyPassword",
-			userController.forgetMyPassword);
+router.post("/forgetPassword",
+			userController.forgetPassword);
 
-router.post("/resetMyPassword",
-			userController.resetMyPassword);
+router.post("/resetPassword",
+			userController.resetPassword);
 
 
 router.get("/companyNames",
 			userController.getCompanyList);
 
-router.get("/getMyReviews",
+router.get("/getUserReviews",
 			auth.isAuthenticatedUser(),
-			userController.getMyReviews);
+			userController.getUserReviews);
 
-router.get("/getMyReview/:reviewId",
+router.get("/getUserReview/:reviewId",
 			auth.isAuthenticatedUser(),
-			userController.getMyReview);
+			userController.getUserReview);
 
 router.get("/likeTheReview/:reviewId",
 			auth.isAuthenticatedUser(),
@@ -47,17 +47,17 @@ router.get("/likeTheReview/:reviewId",
 			userController.likeTheReview);
 
 
-router.post("/addMyReview",
+router.post("/addReview",
 			auth.isAuthenticatedUser(),checkMailVerified,
-			userController.addMyReview);
+			userController.addReview);
 
-router.post("/updateMyReview",
+router.post("/updateReview",
 			auth.isAuthenticatedUser(),checkMailVerified,
-			userController.updateMyReview);
+			userController.updateReview);
 
-router.get("/deleteMyReview/:reviewId",
+router.get("/deleteReview/:reviewId",
 			auth.isAuthenticatedUser(),
-			userController.deleteMyReview);
+			userController.deleteReview);
 
 
 router.get("/getQuestion/",

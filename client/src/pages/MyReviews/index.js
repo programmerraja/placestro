@@ -24,7 +24,7 @@ function MyReviews(){
   const history = useHistory();
 
    useEffect(()=>{
-    API.getMyReviews()
+    API.getUserReviews()
     .then((res)=>{
         setLoading(false);
         if(res.data.status==="sucess"){
@@ -49,7 +49,7 @@ function MyReviews(){
       dangerMode: true,
     }).then((confirm) => {
       if (confirm) {
-        API.deleteMyReview(review_id)
+        API.deleteReview(review_id)
         .then((res)=>{
             setLoading(false);
             if(res.data.status==="sucess"){

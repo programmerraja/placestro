@@ -39,7 +39,7 @@ function UserProfile() {
  
    const handleClick=()=> {
        setLoading(true)
-        API.updateUserProfile({userId,name,linkdein_url,cgpa,passedOut,noOfArrear,historyOfArrear,placedCompany,mobileNo,department,marks})
+        API.updateProfile({userId,name,linkdein_url,cgpa,passedOut,noOfArrear,historyOfArrear,placedCompany,mobileNo,department,marks})
           .then((res)=>{
               setLoading(false);
               if(res.data.status==="sucess"){
@@ -57,7 +57,7 @@ function UserProfile() {
 
    const getProfile=()=>{
     console.log("haiai")
-    API.getUserProfile(userId)
+    API.getProfile(userId)
     .then((res)=>{
         console.log(res)
         setLoading(false);

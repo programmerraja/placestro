@@ -287,9 +287,9 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
       }
 
       if(!isEdit){
-        API.submitReview=API.addMyReview;
+        API.submitReview=API.addReview;
       }else{
-        API.submitReview=API.updateUserReview;
+        API.submitReview=API.updateReview;
       }
 
       API.submitReview(review_obj)

@@ -64,7 +64,7 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
 
    useEffect(()=>{
       if(reviewId){
-       API.getMyReview(reviewId)
+       API.getUserReview(reviewId)
         .then((res)=>{
           setLoading(false);
           if(res.data.status==="sucess"){
@@ -287,9 +287,9 @@ function ReviewWrapper({onSucess,loading,setLoading,isEdit=false,reviewId=null})
       }
 
       if(!isEdit){
-        API.submitReview=API.addMyReview;
+        API.submitReview=API.addReview;
       }else{
-        API.submitReview=API.updateMyReview;
+        API.submitReview=API.updateReview;
       }
 
       API.submitReview(review_obj)

@@ -55,31 +55,31 @@ router.get("/user/getUserReview/:reviewId",
 			auth.isAdmin,
 			adminController.getUserReview);
 
-router.get("/user/deleteUserReview/:reviewId",
+router.get("/user/deleteReview/:reviewId",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
-			adminController.deleteUserReview);
+			adminController.deleteReview);
 
-router.post("/user/updateUserReview",
+router.post("/user/updateReview",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
-			adminController.updateUserReview);
+			adminController.updateReview);
 
 router.get("/user/getAllUsers",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
 			adminController.getAllUsers);
 
-router.get("/user/getUserProfile/:userId",
+router.get("/user/getProfile/:userId",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
-			adminController.getUserProfile);
+			adminController.getProfile);
 			
 
-router.post("/user/updateUserProfile",
+router.post("/user/updateProfile",
 			auth.isAuthenticatedAdmin(),
 			auth.isAdmin,
-			adminController.updateUserProfile);
+			adminController.updateProfile);
 			
 router.get("/user/deleteUser/:userId",
 			auth.isAuthenticatedAdmin(),

@@ -63,13 +63,13 @@ export default {
   signUp:userService.signUp,
   verfiyEmail:userService.verfiyEmail,
 
-  addMyReview:userService.addMyReview,
-  deleteUserReview:userService.deleteUserReview,
+  addReview:userService.addReview,
+  deleteReview:userService.deleteReview,
   
   getCompanyNames:userService.getCompanyNames,
   getUserReviews:userService.getUserReviews,
   getUserReview:userService.getUserReview,
-  updateUserReview:userService.updateUserReview,
+  updateReview:userService.updateReview,
 
 
   getAllUsers:userService.getAllUsers,
@@ -80,7 +80,7 @@ export default {
   deleteView:userService.deleteView,
 
   deleteUser:userService.deleteUser,
-  getMyProfile:userService.getMyProfile,
+  getProfile:userService.getProfile,
   updateProfile:userService.updateProfile,
   
   sendForgetPassword:userService.sendForgetPassword,
@@ -90,8 +90,8 @@ export default {
   updateAnalytic:userService.updateAnalytic,
   generateAnalytics:userService.generateAnalytics,
 
-  getUserProfile:userService.getUserProfile,
-  updateUserProfile:userService.updateUserProfile,
+  getProfile:userService.getProfile,
+  updateProfile:userService.updateProfile,
 
   logout:userService.logout,
 

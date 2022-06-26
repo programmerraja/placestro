@@ -14,45 +14,45 @@ export default {
     return axios.post("/user/submitAnswer",answer)
   },
   verfiyEmail:function(user_id){
-    return axios.get("/user/verifiyMyEmail/"+user_id);
+    return axios.get("/user/verifiyEmail/"+user_id);
   },
   sendForgetPassword:function(email){
-    return axios.post("/user/forgetMypassword",{email:email});
+    return axios.post("/user/forgetPassword",{email:email});
   },
   sendResetPassword:function(password_data){
-    return axios.post("/user/resetMypassword",password_data);
+    return axios.post("/user/resetPassword",password_data);
   },
   logout:function(){
     return axios.get("/user/logout/");
   },
 
-  getMyProfile:function(){
-    return axios.get("/user/getMyProfile/");
+  getProfile:function(){
+    return axios.get("/user/getProfile/");
   },
   updateProfile:function(user){
-    return axios.post("/user/updateMyProfile/",user);
+    return axios.post("/user/updateProfile/",user);
   },
 
   getCompanyNames:function(){
     return axios.get("/user/companyNames/");
   },
-  getMyReviews:function(){
-    return axios.get("/user/getMyReviews/");
+  getUserReviews:function(){
+    return axios.get("/user/getUserReviews/");
   },
-  getMyReview:function(review_id){
-    return axios.get("/user/getMyReview/"+review_id);
+  getUserReview:function(review_id){
+    return axios.get("/user/getUserReview/"+review_id);
   },
   likeTheReview:function(review_id){
     return axios.get("/user/likeTheReview/"+review_id);
   },
-  addMyReview:function(review){
-    return axios.post("/user/addMyReview/",review);
+  addReview:function(review){
+    return axios.post("/user/addReview/",review);
   },
-  updateMyReview:function(review){
-    return axios.post("/user/updateMyReview/",review);
+  updateReview:function(review){
+    return axios.post("/user/updateReview/",review);
   },
-  deleteMyReview:function(review_id){
-    return axios.get("/user/deleteMyReview/"+review_id);
+  deleteReview:function(review_id){
+    return axios.get("/user/deleteReview/"+review_id);
   },
   getNotice:function(){
     return axios.get("/user/getNotice/");

@@ -14,7 +14,6 @@ const Util = require("../util/util");
 const controllerUtil = require("../util/controllerUtil");
 const {PythonShell} =require('python-shell');
 
-// Util.verfiyMail("boooathis123@gmail.com", "name", "dd");
 
 const user = {
 
@@ -93,7 +92,7 @@ signUp: async function (req, res) {
         res.json({ status: "failed", msg: "Please enter all the detail's." });
   } 
 },
-verifiyMyEmail: function (req, res) {
+verifiyEmail: function (req, res) {
   db.User.findOneAndUpdate(
     { _id: req.params.userId },
     { isEmailVerified: true }
@@ -113,7 +112,7 @@ verifiyMyEmail: function (req, res) {
       });
     });
 },
-getMyProfile: function (req, res) {
+getProfile: function (req, res) {
   db.Companies.find({})
   .then((company)=>{
      company=company.map((res)=>res.name);
@@ -125,7 +124,7 @@ getMyProfile: function (req, res) {
   })
   
 },
-updateMyProfile: async function (req, res) {
+updateProfile: async function (req, res) {
   if (req.body.name && req.body.old_password) {
     let { name, old_password, new_password } = req.body;
     let user_id = req.user._id;
@@ -216,7 +215,7 @@ updateMyProfile: async function (req, res) {
     }
   }
 },
-forgetMyPassword: async function (req, res) {
+forgetPassword: async function (req, res) {
   if (req.body.email) {
     let email = req.body.email;
     try {
@@ -271,7 +270,7 @@ forgetMyPassword: async function (req, res) {
     }
   }
 },
-resetMyPassword: async function (req, res) {
+resetPassword: async function (req, res) {
   let password_reset_token = req.body.passwordId;
   let new_password = req.body.password;
   if (password_reset_token && new_password) {
@@ -324,7 +323,7 @@ getCompanyList: function (req, res) {
       res.json({ status: "failed", list: [] });
     });
 },
-getMyReviews: function (req, res) {
+getUserReviews: function (req, res) {
   db.Reviews.find({ userId: req.user._id })
     .then(async (reviews) => {
       async function appendCompanyAndUser(index) {
@@ -353,7 +352,7 @@ getMyReviews: function (req, res) {
       res.json({ status: "failed", msg: "Something went wrong" });
     });
 },
-getMyReview: function (req, res) {
+getUserReview: function (req, res) {
   db.Reviews.findOne({ userId: req.user._id, _id: req.params.reviewId })
     .then((review) => {
       db.Companies.findOne({ _id: review.companyId })
@@ -394,7 +393,7 @@ likeTheReview:function(req,res){
       })
   }
 },
-addMyReview: function (req, res) {
+addReview: function (req, res) {
   if (controllerUtil.checkReview(req.body)) {
     db.Companies.findOne({ name: req.body.name.toLowerCase() })
       .then((companyObj) => {
@@ -540,7 +539,7 @@ addMyReview: function (req, res) {
     res.json({ status: "failed", msg: "Please fill all the data" });
   }
 },
-updateMyReview: function (req, res) {
+updateReview: function (req, res) {
   if (controllerUtil.checkReview(req.body)) {
     db.Companies.findOne({ name: req.body.name.toLowerCase() })
       .then((companyObj) => {
@@ -613,7 +612,7 @@ updateMyReview: function (req, res) {
     res.json({ status: "failed", msg: "Please fill all the data" });
   }
 },
-deleteMyReview: function (req, res) {
+deleteReview: function (req, res) {
   if (req.params.reviewId) {
     db.Reviews.findOneAndRemove({
       _id: req.params.reviewId,
@@ -663,12 +662,20 @@ submitAnswer:function(req,res){
     let options = {
       mode: 'text',
       pythonOptions: ['-u'], // get print results in real-time
-        scriptPath: '../python/', //If you are having python_test.py script in same folder, then it's optional.
-      args: [''] //An argument which can be accessed in the script using sys.argv[1]
+        scriptPath: '/home/boopathi/Videos/.myprogram/placestro/python/', //If you are having python_test.py script in same folder, then it's optional.
+      args: [req.user.marks.SSLC,req.user.marks.HSSLC,req.user.marks.sem1,req.user.marks.sem2,req.user.marks.sem3,req.user.marks.sem4,req.user.marks.sem5,req.user.marks.sem6,req.user.marks.sem7,req.user.marks.sem8,mark] //An argument which can be accessed in the script using sys.argv[1]
     };
-    PythonShell.run('machinelearning.py', options, function (err, result){console.log("hai")})
+    PythonShell.run('machinelearning.py', options, function (err, result){
+      console.log(err,result)
+      if(err){
+        res.json({status: "sucess", mark:"Sorry Something went wrong"});
+      }else{
+        if(result[0]=== '0')
+        return res.json({status: "sucess", mark:"We are Sorry to say the probablity of you getting placed is very low But Dont loose the hope"});
+        res.json({status: "sucess", mark:"Ohh you have high possiblity of getting placed congrats"});
+      }
+    })
     
-    res.json({status: "sucess", mark});
 
 },
 getNotice:function(req,res){

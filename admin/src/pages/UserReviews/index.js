@@ -51,7 +51,7 @@ function UserReviews(){
       dangerMode: true,
     }).then((confirm) => {
       if (confirm) {
-        API.deleteUserReview(review_id)
+        API.deleteReview(review_id)
         .then((res)=>{
             setLoading(false);
             if(res.data.status==="sucess"){

@@ -62,16 +62,16 @@ export default {
 
   getCompanyNames:userService.getCompanyNames,
 
-  addMyReview:userService.addMyReview,
-  getMyReviews:userService.getMyReviews,
-  getMyReview:userService.getMyReview,
+  addReview:userService.addReview,
+  getUserReviews:userService.getUserReviews,
+  getUserReview:userService.getUserReview,
   likeTheReview:userService.likeTheReview,
-  updateMyReview:userService.updateMyReview,
-  deleteMyReview:userService.deleteMyReview,
+  updateReview:userService.updateReview,
+  deleteReview:userService.deleteReview,
 
 
   
-  getMyProfile:userService.getMyProfile,
+  getProfile:userService.getProfile,
   updateProfile:userService.updateProfile,
   
   getQuestion:userService.getQuestion,

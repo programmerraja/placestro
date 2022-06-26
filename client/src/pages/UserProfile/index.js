@@ -56,7 +56,7 @@ function UserProfile() {
    }
 
    const getProfile=()=>{
-    let res= API.getMyProfile()
+    let res= API.getProfile()
     .then((res)=>{
       setLoading(false);
       if(res.data.status==="sucess"){

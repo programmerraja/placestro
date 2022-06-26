@@ -15,11 +15,11 @@ export default {
 
     return axios.get(`/admin/user/getAllUsers/?${query}`);
   },
-  getUserProfile:function(userId){
-    return axios.get(`/admin/user/getUserProfile/${userId}`)
+  getProfile:function(userId){
+    return axios.get(`/admin/user/getProfile/${userId}`)
   },
-  updateUserProfile:function(body){
-    return axios.get(`/admin/user/updateUserProfile/`,body)
+  updateProfile:function(body){
+    return axios.get(`/admin/user/updateProfile/`,body)
   },
   generateAnalytics:function(year){
     return axios.get("/admin/user/generateAnalytics/"+year);
@@ -35,16 +35,16 @@ export default {
       return axios.get("/admin/user/deleteUser/"+user_id);
   },
   verfiyEmail:function(user_id){
-    return axios.get("/admin/user/verifiyMyEmail/"+user_id);
+    return axios.get("/admin/user/verifiyEmail/"+user_id);
   },
-  addMyReview:function(review){
-    return axios.post("/admin/user/addMyReview/",review);
+  addReview:function(review){
+    return axios.post("/admin/user/addReview/",review);
   },
-  updateUserReview:function(review){
-    return axios.post("/admin/user/updateUserReview/",review);
+  updateReview:function(review){
+    return axios.post("/admin/user/updateReview/",review);
   },
-  deleteUserReview:function(review_id){
-    return axios.get("/admin/user/deleteUserReview/"+review_id);
+  deleteReview:function(review_id){
+    return axios.get("/admin/user/deleteReview/"+review_id);
   },
   getCompanyNames:function(){
     return axios.get("/admin/user/companyNames/");
@@ -55,11 +55,11 @@ export default {
   getUserReview:function(review_id){
   return axios.get("/admin/user/getUserReview/"+review_id);
   },
-  getMyProfile:function(){
-    return axios.get("/admin/user/getMyProfile/");
+  getProfile:function(){
+    return axios.get("/admin/user/getProfile/");
   },
   updateProfile:function(user){
-    return axios.post("/admin/user/updateMyProfile/",user);
+    return axios.post("/admin/user/updateProfile/",user);
   },
   logout:function(){
     return axios.get("/admin/user/logout/");
