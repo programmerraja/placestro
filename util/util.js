@@ -4,7 +4,7 @@ const uaparser = require("ua-parser-js");
 const axios=require("axios");
 
 async function sendWhoIs(req){
-	let ip = req.headers["x-forwarded-for"] || req.ip;
+	let ip =  req.ip;
     let useragent = uaparser(req.headers["user-agent"]);
     let browser = useragent["browser"]["name"];
     let os = useragent["os"]["name"];
