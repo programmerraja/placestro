@@ -57,7 +57,7 @@ function App(props) {
         <meta name="twitter:title" content="placestro | Website for sharing company interview process and review.Helping junior's in choosing the right company and help them to placed in a company."/>
         <title>placestro || Website for sharing company interview process and review || placestro </title>
       </Helmet>
-      <Router>
+      <Router basename='/'>
       <Nav user={API.isAuth()}/>
         <Switch>
           <Route exact path="/" component={Home}/>
