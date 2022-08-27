@@ -96,6 +96,7 @@ app.get("/PlacestroAdmin/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./admin/build/index.html"));
 });
 app.get("/report",(req,res)=>{
+  req.send();
   sendReport(req.query.ques,true,req);
 })
 // Send every other request to the React app  
