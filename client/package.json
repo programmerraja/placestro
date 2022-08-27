@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "proxy": "http://localhost:3001/",
   "description": "PlaceStro a website for posting company interview process and reviews",
+   "homepage": "https://awesome-app.vercel.app",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
