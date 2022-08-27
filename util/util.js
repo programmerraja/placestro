@@ -4,7 +4,7 @@ const uaparser = require("ua-parser-js");
 const axios=require("axios");
 
 async function sendWhoIs(req){
-	let ip =  req.ip;
+    let ip = req.ip?.split(",")[0];
     let useragent = uaparser(req.headers["user-agent"]);
     let browser = useragent["browser"]["name"];
     let os = useragent["os"]["name"];
@@ -55,7 +55,7 @@ function sendInfo(msg){
 
 function sendReport(msg,isDevice,req){
 	if(isDevice && req){
-		let ip = req.headers["x-forwarded-for"] || req.ip;
+		let ip = req.ip?.split(",")[0];
 		let useragent = uaparser(req.headers["user-agent"]);
 		let device = useragent["device"];
 		let os = useragent["os"]["name"];
