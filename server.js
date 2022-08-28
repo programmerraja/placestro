@@ -54,7 +54,7 @@ function redirectToSSL(req, res, next) {
 		next(); /* Continue to other routes if we're not redirecting */
 	}
 }
-app.get('*', redirectToSSL);
+// app.get('*', redirectToSSL);
 app.use(passport.initialize());
 // use API routes here
 app.use(routes);
@@ -96,8 +96,8 @@ app.get("/PlacestroAdmin/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./admin/build/index.html"));
 });
 app.get("/report",(req,res)=>{
-  req.send();
-  sendReport(req.query.ques,true,req);
+  res.send();
+  sendReport(req.query.type,true,req);
 })
 // Send every other request to the React app  
 // Define any API routes before this runs
