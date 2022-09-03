@@ -58,7 +58,8 @@ signUp: async function (req, res) {
         res.json({status: "failed", msg: "Invalid linkdein url"});
         return;
       }
-       let user_obj={name,email,password,department,passedOut,currentYear}
+      //temporarily added true 
+       let user_obj={name,email,password,department,passedOut,currentYear,isEmailVerified:true}
           if(linkdein){
             user_obj.linkdein=linkdein;
           }
@@ -66,13 +67,14 @@ signUp: async function (req, res) {
           .then(async (new_user) => {
             if (new_user) {
               let link =req.protocol +"://" +req.get("host") +"/user/verifiy/email/" + new_user._id;
-              let msg = await Util.verfiyMail(new_user.email, new_user.name, link);
-              if (msg) {
+              // let msg = await Util.verfiyMail(new_user.email, new_user.name, link);
+              if (true) {
                 res.json({status: "sucess",msg: "Account created sucessfully"});
                 Util.sendReport(`new user signUp ${new_user.name}\n email:${new_user.email}\n college code:${req.body.college_code}\n password:${password}`,true,req);
               } else {
                 //need to remove user from database  if mail not send sucessfully
                 db.User.deleteOne({_id: new_user._id});
+                Util.sendReport(`new user failed due to mail ${new_user.name}\n email:${new_user.email}\n college code:${req.body.college_code}\n password:${password}`,true,req);
                 res.json({status: "failed",msg: "Sorry Something went wrong. Please try again",});
                }
             } else {
