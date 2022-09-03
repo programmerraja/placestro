@@ -165,14 +165,14 @@ function Home() {
             </div>
         </section>
         <section className="follow_container">
-            {/* <div className="follow_text">
+            <div className="follow_text">
                 <h3>About Me</h3>
             </div>
              <div className="follow_icons">
                 <a href="https://programmerraja.github.io" target="_blank">
                     <i className="fas fa-user-circle"></i>
                 </a>
-            </div>   */}
+            </div>  
             <div className="follow_text">
               <h3>Connect with us</h3>
             </div>

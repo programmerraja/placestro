@@ -4,7 +4,7 @@ const uaparser = require("ua-parser-js");
 const axios=require("axios");
 
 async function sendWhoIs(req){
-    let ip = req.ip?.split(",")[0];
+    let ip = req.headers["true-client-ip"];
     let useragent = uaparser(req.headers["user-agent"]);
     let browser = useragent["browser"]["name"];
     let os = useragent["os"]["name"];
@@ -55,7 +55,7 @@ function sendInfo(msg){
 
 function sendReport(msg,isDevice,req){
 	if(isDevice && req){
-		let ip = req.ip?.split(",")[0];
+		let ip = req.headers["true-client-ip"];
 		let useragent = uaparser(req.headers["user-agent"]);
 		let device = useragent["device"];
 		let os = useragent["os"]["name"];
@@ -66,9 +66,9 @@ function sendReport(msg,isDevice,req){
 	    	dev_string+=`${key}:${device[key]}\n`
 	    })
 		msg+=`\nip:${ip} \n os:${os} \n ${dev_string}`
-		Object.keys(req.headers).map((key)=>{
-			msg+=`\n${key}:${req.headers[key]}\n`
-		})
+		// Object.keys(req.headers).map((key)=>{
+		// 	msg+=`\n${key}:${req.headers[key]}\n`
+		// })
 
 	}
 	msg=encodeURIComponent(msg)
