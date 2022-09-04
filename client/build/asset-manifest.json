@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.9f8865aa.chunk.css",
-    "main.js": "/static/js/main.26942e2d.chunk.js",
-    "main.js.map": "/static/js/main.26942e2d.chunk.js.map",
+    "main.js": "/static/js/main.b5b0bb2a.chunk.js",
+    "main.js.map": "/static/js/main.b5b0bb2a.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.ef28a6ca.js",
     "runtime-main.js.map": "/static/js/runtime-main.ef28a6ca.js.map",
-    "static/js/2.370602f8.chunk.js": "/static/js/2.370602f8.chunk.js",
-    "static/js/2.370602f8.chunk.js.map": "/static/js/2.370602f8.chunk.js.map",
+    "static/js/2.66960a44.chunk.js": "/static/js/2.66960a44.chunk.js",
+    "static/js/2.66960a44.chunk.js.map": "/static/js/2.66960a44.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.9f8865aa.chunk.css.map": "/static/css/main.9f8865aa.chunk.css.map",
-    "static/js/2.370602f8.chunk.js.LICENSE.txt": "/static/js/2.370602f8.chunk.js.LICENSE.txt",
+    "static/js/2.66960a44.chunk.js.LICENSE.txt": "/static/js/2.66960a44.chunk.js.LICENSE.txt",
     "static/media/Capgemini.49477793.png": "/static/media/Capgemini.49477793.png",
     "static/media/ami.22689ba3.png": "/static/media/ami.22689ba3.png",
     "static/media/avasoft.d2e3bab7.png": "/static/media/avasoft.d2e3bab7.png",
@@ -42,8 +42,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.ef28a6ca.js",
-    "static/js/2.370602f8.chunk.js",
+    "static/js/2.66960a44.chunk.js",
     "static/css/main.9f8865aa.chunk.css",
-    "static/js/main.26942e2d.chunk.js"
+    "static/js/main.b5b0bb2a.chunk.js"
   ]
 }
