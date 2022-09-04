@@ -8,6 +8,8 @@ import CardLoader from '../../components/CardLoader';
 import API from "../../utils/API";
 import errorHandler from "../../utils/errorHandler";
 import askQuestion from "../../utils/askQuestion";
+import {askFeedBack} from "../../utils/askQuestion";
+
 
 import "./style.css";
 
@@ -46,6 +48,7 @@ function Reviews({isLoggedin}){
               setCompany({...res.data.reviews[0].company})
               setCollegeLists(res.data.college_list);
               askQuestion(history)
+              askFeedBack()
          }
          else{
           errorHandler(true,res.data.msg);

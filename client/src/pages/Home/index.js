@@ -34,6 +34,8 @@ import Capgemini from "../../img/company/Capgemini.png";
 
 
 import askQuestion from "../../utils/askQuestion";
+import {askFeedBack} from "../../utils/askQuestion";
+
 
 
 function Home() {
@@ -42,6 +44,7 @@ function Home() {
 
     useEffect(()=>{
         askQuestion(history);
+        askFeedBack()
     },[askQuestion])
     
     return ( <>
@@ -166,21 +169,21 @@ function Home() {
         </section>
         <section className="follow_container">
             <div className="follow_text">
-                <h3>About Me</h3>
+                <h3>About Us</h3>
             </div>
              <div className="follow_icons">
                 <a href="https://programmerraja.github.io" target="_blank">
                     <i className="fas fa-user-circle"></i>
                 </a>
             </div>  
-            <div className="follow_text">
+            {/* <div className="follow_text">
               <h3>Connect with us</h3>
             </div>
             <div className="follow_icons">
               <a href="https://t.me/+9_4feGpoutgwMjc1" target="_blank">
                     <i className="fab fa-telegram"></i>
                 </a>
-          </div>
+          </div> */}
             <div className="follow_text">
                 <h3>Contribute</h3>
             </div>
