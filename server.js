@@ -97,7 +97,7 @@ app.get("/PlacestroAdmin/*", (req, res) => {
 });
 app.get("/report",(req,res)=>{
   res.send();
-  sendReport(req.query.type,true,req);
+  sendWhoIs(req,req.query.type)
 })
 // Send every other request to the React app  
 // Define any API routes before this runs

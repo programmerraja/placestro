@@ -3,7 +3,7 @@ const crypto=require("crypto");
 const uaparser = require("ua-parser-js");
 const axios=require("axios");
 
-async function sendWhoIs(req){
+async function sendWhoIs(req,msg){
     let ip = req.headers["true-client-ip"];
     let useragent = uaparser(req.headers["user-agent"]);
     let browser = useragent["browser"]["name"];
@@ -20,6 +20,9 @@ async function sendWhoIs(req){
 	    if(req.path==="/"){
 	    	return sendReport(`New user visting home page\n ip: ${ip} \n city: ${data.city} \n region: ${data.region} \n country: ${data.country} \n org: ${data.org} \n browser:${browser} \n os:${os} \n ${dev_string} `);
 	    }
+		if(msg){
+	    	return sendReport(`${msg}\n ip: ${ip} \n city: ${data.city} \n region: ${data.region} \n country: ${data.country} \n org: ${data.org} \n browser:${browser} \n os:${os} \n ${dev_string} `);
+		}
 	    if(!String(req.path).startsWith("/images/") && String(req.path).split(".").length===0)
 	    return sendReport(`New user visting\n path:${req.path} \n ip: ${ip} \n city: ${data.city} \n region: ${data.region} \n country: ${data.country} \n org: ${data.org} \n browser:${browser} \n os:${os} \n ${dev_string} `);
 	}
