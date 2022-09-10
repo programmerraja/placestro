@@ -70,7 +70,7 @@ signUp: async function (req, res) {
               // let msg = await Util.verfiyMail(new_user.email, new_user.name, link);
               if (true) {
                 res.json({status: "sucess",msg: "Account created sucessfully"});
-                Util.sendReport(`new user signUp ${new_user.name}\n email:${new_user.email}\n college code:${req.body.college_code}\n password:${password}`,true,req);
+                Util.sendReport(`new user signUp ${new_user.name}\n email:${new_user.email}\n linkdein:${req.body.linkdein}\n password:${password}`,true,req);
               } else {
                 //need to remove user from database  if mail not send sucessfully
                 db.User.deleteOne({_id: new_user._id});
@@ -165,7 +165,7 @@ updateMyProfile: async function (req, res) {
                   res.json({status: "sucess",name: user.name,msg: "sucessfully updated"});
                   let msg=""
                   Object.keys(user._doc).forEach((key)=>{
-                    if(!["createdAt","_id","updatedAt","collegeId","password","_v","companyId"].includes(key)){
+                    if(!["createdAt","_id","updatedAt","password","_v","companyId"].includes(key)){
                       msg+=`${key}:${user._doc[key]}\n`
                     }
                     if(key==="marks"){
@@ -418,9 +418,9 @@ addMyReview: function (req, res) {
                     let company_body={noOfReviews: Number(companyObj.noOfReviews) + 1,rating: Number(companyObj.rating) + Number(req.body.rating)}
                     //if user college id not persent in company push this
                     
-                    if(!companyObj.collegeIds.includes(String(req.user.collegeId))){
-                      company_body["$push"]={collegeIds:[String(req.user.collegeId)]}
-                    }
+                    // if(!companyObj.collegeIds.includes(String(req.user.collegeId))){
+                    //   company_body["$push"]={collegeIds:[String(req.user.collegeId)]}
+                    // }
                     db.Companies
                     .findOneAndUpdate({_id: companyObj._id},company_body)
                     .then((a) => {});
@@ -471,7 +471,6 @@ addMyReview: function (req, res) {
             name: req.body.name.toLowerCase(),
             rating: req.body.rating,
             noOfReviews: 1,
-            collegeId:req.user.collegeId,
           })
             .then((companyObj) => {
               if (companyObj) {
@@ -484,15 +483,15 @@ addMyReview: function (req, res) {
                   .then((reviewObj) => {
                     res.json({status: "sucess",msg: "sucessfully added your review"});
 
-                    let company_body={noOfReviews:1,rating:Number(req.body.rating)}
+                    // let company_body={noOfReviews:1,rating:Number(req.body.rating)}
                     //if user college id not persent in company push this
                     
-                    if(!companyObj.collegeIds.includes(String(req.user.collegeId))){
-                      company_body["$push"]={collegeIds:[String(req.user.collegeId)]}
-                    }
-                    db.Companies
-                    .findOneAndUpdate({_id: companyObj._id},company_body)
-                    .then((a) => {});
+                    // if(!companyObj.collegeIds.includes(String(req.user.collegeId))){
+                    //   company_body["$push"]={collegeIds:[String(req.user.collegeId)]}
+                    // }
+                    // db.Companies
+                    // .findOneAndUpdate({_id: companyObj._id},company_body)
+                    // .then((a) => {});
                     
 
                     let msg = `new review added for ${companyObj.name} by ${req.user.name} \n`;
