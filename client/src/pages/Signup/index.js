@@ -32,11 +32,11 @@ function Signup() {
       return false;
    }
    function validateUrl(){
-      if(linkdein && !linkdein.startsWith("https://linkdein.com/")){
+      if(linkdein && !linkdein.includes("linkdein.com")){
         errorHandler(true,"Please enter valid linkdein url");
         return false
       }
-      if(linkdein && linkdein.startsWith("https://linkdein.com/")){
+      if(linkdein && linkdein.includes("linkdein.com")){
         return true
       }
       return true

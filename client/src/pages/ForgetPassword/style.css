@@ -37,6 +37,7 @@
 .forget_email,
 .reset_password {
   border: 1px solid white;
+  color: white;
   background-color: var(--secondary-color-light);
   border-radius: 5px;
   align-self: flex-start;
