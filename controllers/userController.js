@@ -405,7 +405,7 @@ addMyReview: function (req, res) {
             userId: req.user._id,
           })
             .then((isHas) => {
-              if (!!isHas) {
+              if (!isHas) {
                 let review = controllerUtil.createReview({
                   ...req.body,
                   companyId: companyObj._id,
