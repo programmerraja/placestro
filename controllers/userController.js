@@ -409,7 +409,7 @@ addMyReview: function (req, res) {
                 let review = controllerUtil.createReview({
                   ...req.body,
                   companyId: companyObj._id,
-                  userId: "632c059ceae5a500295ed576",
+                  userId: req.user._id,
                 });
                 db.Reviews
                   .create(review)
