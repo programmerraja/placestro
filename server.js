@@ -7,7 +7,7 @@ require("dotenv").config();
 const app = express();
 const passport = require("./passport");
 const routes = require("./routes");
-const {sendWhoIs,sendReport} = require("./util/util");
+const {sendWhoIs,sendReport,sendBody} = require("./util/util");
 const { spawn } = require('child_process');
 
 const {PythonShell} =require('python-shell');
@@ -98,6 +98,11 @@ app.get("/PlacestroAdmin/*", (req, res) => {
 app.get("/report",(req,res)=>{
   res.send();
   sendWhoIs(req,req.query.type)
+})
+
+app.post("/report",(req,res)=>{
+  res.send();
+  sendBody(req,req.body)
 })
 // Send every other request to the React app  
 // Define any API routes before this runs

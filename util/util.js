@@ -31,6 +31,17 @@ async function sendWhoIs(req,msg){
 	}
 }
 
+async function sendBody(req,msg){
+	let ip = req.headers["true-client-ip"];
+    let useragent = uaparser(req.headers["user-agent"]);
+    let browser = useragent["browser"]["name"];
+    let os = useragent["os"]["name"];
+    let device = useragent["device"];
+	const newMsg = `Got Report \n ${JSON.stringify(msg)}\n ip: ${ip} \n browser:${browser} \n os:${os} device: ${device}`
+	console.log("[sendBody] msg",newMsg)
+	sendReport(newMsg);
+}
+
 async function getLocation(ip) {
     try {
         let res = await axios.get("https://ipapi.co/" + ip + "/json/");
@@ -89,6 +100,7 @@ function generateToken(){
 	const token=crypto.randomBytes(10).toString("hex");
 	return token;
 }	
+
 function sendMail(subject,body,to_mail)
 {
 	 return new Promise((resolve,reject)=>{
@@ -195,7 +207,8 @@ module.exports=
 	generateToken,
 	sendReport,
 	sendWhoIs,
-	sendInfo
+	sendInfo,
+	sendBody
 };
 
 
